@@ -48,6 +48,7 @@ void Scanner::BufferChar(char c)
 {
 	if (tokenBuffer.length() < ID_STRING_LEN)
 		tokenBuffer += toupper(c);
+	cerr << tokenBuffer << endl;
 }
 
 Token Scanner::CheckReserved()

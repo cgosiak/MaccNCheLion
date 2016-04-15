@@ -36,8 +36,8 @@ int main() {
 		<< endl;
 
 	cout << " Source file (.mnc extension is assumed): ";
-	getline(cin, sourceName);
-	// sourceName = "test1 (2)";
+	// getline(cin, sourceName);
+	sourceName = "/home/gosi1cal/Desktop/MaccNCheLion/test";
 
 	// Add appropriate extensions to file names.
 	outName = sourceName + ".asm";

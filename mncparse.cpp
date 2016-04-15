@@ -52,7 +52,8 @@ Parser::Parser()
 
 void Parser::SyntaxError(Token t, string msg)
 {
-	cout << "Syntax Error: " + msg << endl;
+    cerr << "COmpare2222: " << t << " " << NextToken() << endl;
+	cerr << "Syntax Error: " << t << endl;
 	exit(1); // abort on any syntax error
 }
 
@@ -68,10 +69,12 @@ Token Parser::NextToken()
 
 void Parser::Match(Token t)
 {
+    cerr << "COmpare: " << t << " " << NextToken() << endl;
 	if (t != NextToken())
 		SyntaxError(t, "");
 	else
 		tokenAvailable = false;
+    cerr << "Matched Token: " << t << endl;
 }
 
 
@@ -615,6 +618,8 @@ void Parser::ItemList()//ExprRec& expr)
 {
 	ExprRec expr;
 
+    cerr << "In item list" << endl;
+
 	Expression(/*expr*/);
 	code.Shout(expr);
 	ItemListTail(expr);
@@ -728,7 +733,12 @@ void Parser::BreakStmt()
 
 void Parser::ShoutStmt(const ExprRec& expr)
 {
+    cerr << "Entered shout" << endl;
+
 	Match(SHOUT_SYM);
+
+    cerr << "Passed shout" << endl;
+
 	ItemList(/*expr*/);
 	code.NewLine();
 	Match(SEMICOLON);
@@ -811,6 +821,7 @@ void Parser::StmtTail()
 	case LISTEN_SYM:
 	case SELECT_SYM:
 	case SHOUT_SYM:
+
 	case WHILE_SYM:
 	case ID:
 		Statement();
@@ -837,13 +848,6 @@ void Parser::Statement()
 	case BREAK_SYM:
 	case LISTEN_SYM:
 	case SHOUT_SYM:
-		Expression(/*expr*/);
-
-		SimpleStmt(expr);
-
-		break;
-
-
 	case ID:
 		SimpleStmt(expr);
 		break;
