@@ -1,9 +1,15 @@
 decs {
 	int: a, b, c;
 	cheese: y, r, q;
+	float: t, w, n;
+	bool: p;
 }
 
 a = 1;
 b = 2;
 c = 3;
-shout "a", "b", "c";
+
+y = "test";
+r = 123;
+
+shout a, b, c;

@@ -9,16 +9,43 @@
 				the MACC2 virtual computer.
  _______________________________________________________________
 
- April 18, 2016 at 08:54 AM
- Source file: /home/gosi1cal/Desktop/MaccNCheLion/test.mnc
+ April 18, 2016 at 06:50 PM
+ Source file: /home/caleb/Desktop/MaccNCheLion/test.mnc
 
  LINE #
                     LDA       R15,VARS
      1  decs {
      2  	int: a, b, c;
      3  	cheese: y, r, q;
-     4  }
-     5  
-     6  a = 1;
-     7  b = 2;
-     8  c = 3;
+     4  	float: t, w, n;
+     5  	bool: p;
+     6  }
+     7  
+     8  a = 1;
+     9  b = 2;
+    10  c = 3;
+    11  
+    12  y = "test";
+    13  r = 123;
+    14  
+                    WRI       
+                    WRI       
+                    WRI       
+                    WRNL      
+    15  shout a, b, c;
+    16  
+    17  
+                    HALT      
+                    LABEL     VARS
+                    SKIP      2
+
+
+ _____________________________________________
+ <><><><>   S Y M B O L   T A B L E   <><><><>
+
+ Relative
+ Address      Identifier
+ --------     --------------------------------
+ _____________________________________________
+
+ Normal successful compilation.
