@@ -10,6 +10,24 @@ SymbolTable::SymbolTable() {
 }
 
 void SymbolTable::AddEntry(std::string id, DataTypes type) {
+    std::string type_string;
+    switch (type) {
+        case TYPE_CHEESE_LIT:
+            type_string = "CHEESE_LIT";
+            break;
+        case TYPE_FLOAT_LIT:
+            type_string = "FLOAT_LIT";
+            break;
+        case TYPE_INT_LIT:
+            type_string = "INT_LIT";
+            break;
+        case TYPE_BOOL_LIT:
+            type_string = "BOOL_LIT";
+            break;
+        default:
+        std::cerr << "Undefined type error" << std::endl;
+    }
+
     // First Check if the entry exists
     if (SymbolTable::EntryExists(id)) {
         // Should update the entry, rather than create a new one
@@ -23,7 +41,7 @@ void SymbolTable::AddEntry(std::string id, DataTypes type) {
         std::string lbl_name = "lbl" + std::to_string(total_entries);
 
         // Create a new entry
-        std::cout << "Added entry!" << std::endl;
+        std::cout << "Added entry! Type: " << type_string << std::endl;
         DataEntry my_entry(id, type, lbl_name);
         table_entries.push_back(my_entry);
     }

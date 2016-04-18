@@ -195,6 +195,8 @@ void CodeGen::Finish()
 void CodeGen::Shout(ExprRec& e) {
 	string s;
 
+	cout << e.val << endl;
+
 	switch (e.kind) {
 		case CHEESE_LIT:
 			e.sval = scan.stringBuffer;
@@ -262,6 +264,7 @@ void CodeGen::ProcessLiteral(ExprRec& e)
 {
 	e.kind = LITERAL_EXPR;
 	e.val = atoi(scan.tokenBuffer.data());
+	cout << scan.tokenBuffer.data() << endl;
 }
 
 void CodeGen::ProcessOp(OpRec& o)

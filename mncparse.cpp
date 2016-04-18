@@ -29,6 +29,10 @@ struct Tokens {
 	X(DIV_OP)X(LT_OP)X(LE_OP)X(GT_OP)X(GE_OP)X(EQ_OP1)X(EQ_OP2)X(NE_OP)X(ID)X(INT_LIT)X(FLOAT_LIT)X(CHEESE_LIT)
 };
 #undef X
+
+DataTypes currentType;
+std::string currentVar;
+
 std::string getTokenText(int token) {
 	int size = (sizeof(Tokens) / sizeof(*Tokens));
 	for (int i = 0; i < size; i++) {
@@ -52,7 +56,6 @@ Parser::Parser()
 
 void Parser::SyntaxError(Token t, string msg)
 {
-    cerr << "COmpare2222: " << t << " " << NextToken() << endl;
 	cerr << "Syntax Error: " << t << endl;
 	exit(1); // abort on any syntax error
 }
@@ -69,12 +72,10 @@ Token Parser::NextToken()
 
 void Parser::Match(Token t)
 {
-    cerr << "COmpare: " << t << " " << NextToken() << endl;
 	if (t != NextToken())
 		SyntaxError(t, "");
 	else
 		tokenAvailable = false;
-    cerr << "Matched Token: " << t << endl;
 }
 
 
@@ -102,6 +103,7 @@ void Parser::VarDecTail()
 		Match(COMMA);
 		Match(ID);
 		// code.DefineVar();
+		symbolTable.AddEntry(scan.tokenBuffer.data(),currentType);
 		VarDecTail();
 		break;
 	case SEMICOLON:
@@ -114,6 +116,7 @@ void Parser::VarDecTail()
 void Parser::VarDecList()
 {
 	Match(ID);
+	symbolTable.AddEntry(scan.tokenBuffer.data(),currentType);
 	// code.DefineVar();
 	VarDecTail();
 }
@@ -214,15 +217,19 @@ void Parser::Type()
 	{
 	case BOOL_SYM:
 		Match(BOOL_SYM);
+		currentType = TYPE_BOOL_LIT;
 		break;
 	case INT_SYM:
 		Match(INT_SYM);
+		currentType = TYPE_INT_LIT;
 		break;
 	case FLOAT_SYM:
 		Match(FLOAT_SYM);
+		currentType = TYPE_FLOAT_LIT;
 		break;
 	case CHEESE_SYM:
 		CheeseType();
+		currentType = TYPE_CHEESE_LIT;
 		break;
 	default:
 		SyntaxError(NextToken(), "");
@@ -236,15 +243,19 @@ void Parser::Literal()
 	case FALSE_SYM:
 	case TRUE_SYM:
 		BoolLit();
+		symbolTable.UpdateEntry(currentVar,scan.tokenBuffer.data());
 		break;
 	case INT_LIT:
 		Match(INT_LIT);
+		symbolTable.UpdateEntry(currentVar,scan.tokenBuffer.data());
 		break;
 	case FLOAT_LIT:
 		Match(FLOAT_LIT);
+		symbolTable.UpdateEntry(currentVar,scan.tokenBuffer.data());
 		break;
 	case CHEESE_LIT:
 		Match(CHEESE_LIT);
+		symbolTable.UpdateEntry(currentVar,scan.tokenBuffer.data());
 		break;
 	default:
 		SyntaxError(NextToken(), "");
@@ -308,7 +319,6 @@ void Parser::Primary()
 	case FLOAT_LIT:
 	case CHEESE_LIT:{
 		Literal();
-
 		ExprRec e;
 		code.ProcessLiteral(e);
 		break;
@@ -618,7 +628,6 @@ void Parser::ItemList()//ExprRec& expr)
 {
 	ExprRec expr;
 
-    cerr << "In item list" << endl;
 
 	Expression(/*expr*/);
 	code.Shout(expr);
@@ -721,6 +730,7 @@ void Parser::AssignTail()
 void Parser::Variable()
 {
 	Match(ID);
+	currentVar = scan.tokenBuffer.data();
 	VariableTail();
 }
 
@@ -733,12 +743,7 @@ void Parser::BreakStmt()
 
 void Parser::ShoutStmt(const ExprRec& expr)
 {
-    cerr << "Entered shout" << endl;
-
 	Match(SHOUT_SYM);
-
-    cerr << "Passed shout" << endl;
-
 	ItemList(/*expr*/);
 	code.NewLine();
 	Match(SEMICOLON);
@@ -821,7 +826,6 @@ void Parser::StmtTail()
 	case LISTEN_SYM:
 	case SELECT_SYM:
 	case SHOUT_SYM:
-
 	case WHILE_SYM:
 	case ID:
 		Statement();
