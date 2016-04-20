@@ -1,24 +1,23 @@
 LDA       R15,VARS
-WRST      lbl4
-WRI       lbl2
-WRI       lbl3
-WRST      lbl5
+WRST      L4T0
+WRNL      
+RDST      L4T1
+WRST      L4T1
+WRNL      
+RDST      L4T2
+WRST      L4T2
 WRNL      
 HALT      
 % Data Area ------------
 % ----------------------
-LABEL    lbl1
-INT   0
-LABEL    lbl2
-INT   0
-LABEL    lbl3
-INT   0
-LABEL    lbl4
+LABEL    LBL4
 STRING   ""
-LABEL    lbl5
-STRING   ""
-LABEL    lbl10
-INT   0
+LABEL    L4T0
+STRING    "Test"
+LABEL    L4T1
+STRING    ""
+LABEL    L4T2
+STRING    ""
 
 LABEL     VARS
 SKIP      2

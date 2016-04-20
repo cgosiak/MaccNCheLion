@@ -340,15 +340,15 @@ void Parser::Primary(bool is_assign)
         }
     }
     else {
-        switch (NextToken()) {
+        Token nex_token = NextToken();
+        switch (nex_token) {
             case FALSE_SYM:
             case TRUE_SYM:
             case INT_LIT:
             case FLOAT_LIT:
             case CHEESE_LIT: {
                 Literal();
-                ExprRec t;
-                code.ProcessLiteral(t);
+                code.Shout(nex_token);
                 break;
             }
             case ID: {
@@ -703,8 +703,7 @@ void Parser::VarListTail()
 	case COMMA:
 		Match(COMMA);
 		Variable();
-		// code.ProcessVar();
-		// code.Listen();
+        code.Listen(currentVar);
 		VarListTail();
 		break;
 	case SEMICOLON:
@@ -717,8 +716,7 @@ void Parser::VarListTail()
 void Parser::VarList()
 {
 	Variable();
-	// code.ProcessVar();
-	// code.Listen();
+    code.Listen(currentVar);
 	VarListTail();
 }
 

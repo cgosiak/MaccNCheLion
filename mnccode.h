@@ -14,7 +14,7 @@ struct OpRec // information about an operator
 	OpKind op;
 };
 
-enum ExprKind { ID_EXPR, LITERAL_EXPR, TEMP_EXPR };
+enum ExprKind { ID_EXPR, LITERAL_EXPR, TEMP_EXPR};
 
 struct ExprRec // information about a constant, variable, or
 	// an intermediate (temporary) result
@@ -46,14 +46,14 @@ class CodeGen {
 	void Assign(const ExprRec & target, const ExprRec & source);
 	// Produces the assembly code for an assignment from Source to Target.
 
-	void Listen(ExprRec& e);
+	void Listen(std::string input_var);
 
 	void Break();
 
 	void NewLine();
 	// Produces the assembly code for starting a new output line.
 
-	void Shout(ExprRec& e);
+	void Shout(Token type_used);
 
 	void Shout_Variable(std::string input_var);
 

@@ -25,6 +25,9 @@ void DataEntry::AssignValue(std::string val) {
 
     switch (entry_type) {
         case TYPE_INT_LIT:
+            if (val == "") {
+                val = "0";
+            }
             if (DataEntry::isInt(val)) {
                 value = val;
                 data_line = "INT   0";
@@ -34,6 +37,9 @@ void DataEntry::AssignValue(std::string val) {
             }
             break;
         case TYPE_BOOL_LIT:
+            if (val == "") {
+                val = "FALSE";
+            }
             if (DataEntry::isBool(val)) {
                 value = DataEntry::UpperCase(val);
                 data_line = "INT   0";
@@ -50,6 +56,9 @@ void DataEntry::AssignValue(std::string val) {
             break;
         case TYPE_FLOAT_LIT:
             // DataEntry::RaiseError_Assignment(val, "TYPE_FLOAT_LIT");
+            if (val == "") {
+                val = "0.0";
+            }
             data_line = "REAL   0.0";
             break;
         default:
@@ -128,6 +137,9 @@ void DataEntry::AssignTempValue(std::string val) {
     // Need to have case statement here to make sure assignment matches type
     switch (entry_type) {
         case TYPE_INT_LIT:
+            if (val == "") {
+                val = "0";
+            }
             if (DataEntry::isInt(val)) {
                 value = val;
                 data_line = "INT   0";
@@ -137,6 +149,9 @@ void DataEntry::AssignTempValue(std::string val) {
             }
             break;
         case TYPE_BOOL_LIT:
+            if (val == "") {
+                val = "FALSE";
+            }
             if (DataEntry::isBool(val)) {
                 value = DataEntry::UpperCase(val);
                 data_line = "INT   0";
@@ -162,6 +177,9 @@ void DataEntry::AssignTempValue(std::string val) {
             break;
         case TYPE_FLOAT_LIT:
             // DataEntry::RaiseError_Assignment(val, "TYPE_FLOAT_LIT");
+            if (val == "") {
+                val = "0.0";
+            }
             data_line = "REAL   0.0";
             break;
         default:

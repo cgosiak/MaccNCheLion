@@ -196,24 +196,26 @@ void CodeGen::Finish()
 	listFile.close();
 }
 
-void CodeGen::Shout(ExprRec& e) {
+void CodeGen::Shout(Token type_used) {
 	string s;
 
-	switch (e.kind) {
+	if (!(symbolTable.EntryExists("DECS"))) {
+			symbolTable.AddEntry("DECS",TYPE_CHEESE_LIT);
+	}
+
+	switch (type_used) {
 		case CHEESE_LIT:
-			e.sval = scan.stringBuffer;
-			IntToAlpha(e.val, s);
+			s = scan.stringBuffer.data();
 			break;
 		case INT_LIT:
-			e.val = atoi(scan.tokenBuffer.data());
-			IntToAlpha(e.val, s);
+			IntToAlpha(atoi(scan.tokenBuffer.data()), s);
 			break;
 		case FLOAT_LIT:
-		//	e.fval = ;
 			IntToAlpha(atof(scan.tokenBuffer.data()), s);
 			break;
 	}
-	Generate("WRI       ", s, "");	
+	symbolTable.UpdateEntry("DECS",s);
+	Shout_Variable("DECS");
 }
 
 void CodeGen::Shout_Variable(std::string input_var) {
@@ -233,8 +235,23 @@ void CodeGen::Shout_Variable(std::string input_var) {
 	}
 }
 
-void CodeGen::Listen(ExprRec& e) {
+void CodeGen::Listen(std::string input_var) {
+	symbolTable.UpdateEntry(input_var,"");
 
+	DataEntry cur_entry = symbolTable.GetDataObject(input_var);
+
+	switch (cur_entry.GetType()) {
+		case TYPE_CHEESE_LIT:
+			Generate("RDST      ", cur_entry.GetCurrentTempVar(), "");
+			break;
+		case TYPE_BOOL_LIT:
+		case TYPE_INT_LIT:
+			Generate("RDI       ", cur_entry.GetCurrentTempVar(), "");
+			break;
+		case TYPE_FLOAT_LIT:
+			Generate("RDF       ", cur_entry.GetCurrentTempVar(), "");
+			break;
+	}
 }
 
 void CodeGen::GenInfix(const ExprRec & e1, const OpRec & op, 
