@@ -52,7 +52,7 @@ void DataEntry::AssignValue(std::string val) {
             // should technically never be an error, any grouping of characters can be viewed as a string
             //DataEntry::RaiseError_Assignment(val, TYPE_CHEESE_LIT);
             value = val;
-            data_line = "STRING   \"\"";
+            data_line = "SKIP    50";
             break;
         case TYPE_FLOAT_LIT:
             // DataEntry::RaiseError_Assignment(val, "TYPE_FLOAT_LIT");

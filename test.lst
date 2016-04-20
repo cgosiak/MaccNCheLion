@@ -9,8 +9,8 @@
 				the MACC2 virtual computer.
  _______________________________________________________________
 
- April 19, 2016 at 10:56 PM
- Source file: /home/caleb/Desktop/MaccNCheLion/test.mnc
+ April 20, 2016 at 08:39 AM
+ Source file: /home/gosi1cal/Desktop/MaccNCheLion/test.mnc
 
  LINE #
                     LDA       R15,VARS
@@ -70,7 +70,7 @@ INT   0
 LABEL    L3T0
 INT       0
 LABEL    LBL4
-STRING   ""
+SKIP    50
 LABEL    L4T0
 STRING    "Test"
 LABEL    L4T1
@@ -78,7 +78,7 @@ STRING    ""
 LABEL    L4T2
 STRING    ""
 LABEL    LBL11
-STRING   ""
+SKIP    50
 LABEL    L11T0
 STRING    "Type 3 Integers (Each separated by a newline)::"
 LABEL    L11T1
