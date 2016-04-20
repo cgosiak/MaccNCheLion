@@ -5,20 +5,14 @@ decs {
 	bool: p;
 }
 
-a = 1;
-b = 2;
-c = 3;
-
-y = "test";
-r = "complete";
-
-p = "FALSE";
-
-shout y, b, c, r, p;
-
-shout "This is test:",27;
-
-y = "Caleb Says:";
+y = "Test";
 shout y;
-y = "TEST OVER";
+
+listen y;
 shout y;
+
+listen y;
+shout y;
+
+listen a, b, c;
+shout a, " ", b, " ", c;

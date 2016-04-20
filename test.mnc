@@ -13,3 +13,7 @@ shout y;
 
 listen y;
 shout y;
+
+shout "Type 3 Integers (Each separated by a newline):";
+listen a, b, c;
+shout a, " ", b, " ", c;
