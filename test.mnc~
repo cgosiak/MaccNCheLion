@@ -5,11 +5,13 @@ decs {
 	bool: p;
 }
 
-a = test;
+a = 1;
 b = 2;
 c = 3;
 
 y = "test";
-r = 123;
+r = "complete";
 
-shout a, b, c;
+p = "FALSE";
+
+shout a, b, c, r;

@@ -50,6 +50,7 @@ void DataEntry::AssignValue(std::string val) {
             break;
     }
     entry_used = true;
+    std::cout << "Value: " << val << " assigned." << std::endl;
 }
 
 DataTypes DataEntry::GetType() {

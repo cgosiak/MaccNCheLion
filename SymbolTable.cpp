@@ -38,7 +38,7 @@ void SymbolTable::AddEntry(std::string id, DataTypes type) {
         total_entries++;
 
         // Create label entry name
-        std::string lbl_name = "lbl" + std::to_string(total_entries);
+        std::string lbl_name = "LBL" + std::to_string(total_entries);
 
         // Create a new entry
         std::cout << "Added entry! Type: " << type_string << std::endl;

@@ -85,7 +85,7 @@ void Parser::InitTail()
 	{
 	case COMMA:
 		Match(COMMA);
-		Expression();
+		Expression(false);
 		InitTail();
 		break;
 	case RMUSTACHE:
@@ -243,19 +243,15 @@ void Parser::Literal()
 	case FALSE_SYM:
 	case TRUE_SYM:
 		BoolLit();
-		symbolTable.UpdateEntry(currentVar,scan.tokenBuffer.data());
 		break;
 	case INT_LIT:
 		Match(INT_LIT);
-		symbolTable.UpdateEntry(currentVar,scan.tokenBuffer.data());
 		break;
 	case FLOAT_LIT:
 		Match(FLOAT_LIT);
-		symbolTable.UpdateEntry(currentVar,scan.tokenBuffer.data());
 		break;
 	case CHEESE_LIT:
 		Match(CHEESE_LIT);
-		symbolTable.UpdateEntry(currentVar,scan.tokenBuffer.data());
 		break;
 	default:
 		SyntaxError(NextToken(), "");
@@ -277,7 +273,7 @@ void Parser::MultOp()
 	}
 }
 
-void Parser::FactorTail()//ExprRec& expr)
+void Parser::FactorTail(bool is_assign)//ExprRec& expr)
 {
 	switch (NextToken())
 	{
@@ -285,9 +281,9 @@ void Parser::FactorTail()//ExprRec& expr)
 	case DIV_OP:
 		MultOp();
 		// code.ProcessOp();
-		Primary();
+		Primary(is_assign);
 		// code.GenInfix();
-		FactorTail();
+		FactorTail(is_assign);
 		break;
 	case RSTAPLE:
 	case RBANANA:
@@ -309,32 +305,66 @@ void Parser::FactorTail()//ExprRec& expr)
 	}
 }
 
-void Parser::Primary()
+void Parser::Primary(bool is_assign)
 {
-	switch (NextToken())
-	{
-	case FALSE_SYM:
-	case TRUE_SYM:
-	case INT_LIT:
-	case FLOAT_LIT:
-	case CHEESE_LIT:{
-		Literal();
-		ExprRec e;
-		code.ProcessLiteral(e);
-		break;
-	}
-	case ID:
-		Variable();
-		// code.ProcessVar();
-		break;
-	case LBANANA:
-		Match(LBANANA);
-		Expression();
-		Match(RBANANA);
-		break;
-	default:
-		SyntaxError(NextToken(), "");
-	}
+    if (is_assign) {
+        switch (NextToken()) {
+            case FALSE_SYM:
+            case TRUE_SYM:
+            case INT_LIT:
+            case FLOAT_LIT: {
+                symbolTable.UpdateEntry(currentVar, scan.tokenBuffer.data());
+                Literal();
+                ExprRec e;
+                code.ProcessLiteral(e);
+                break;
+            }
+            case CHEESE_LIT: {
+                symbolTable.UpdateEntry(currentVar, scan.stringBuffer.data());
+                Literal();
+                ExprRec t;
+                code.ProcessLiteral(t);
+                break;
+            }
+            case ID:
+                Variable();
+                // code.ProcessVar();
+                break;
+            case LBANANA:
+                Match(LBANANA);
+                Expression(is_assign);
+                Match(RBANANA);
+                break;
+            default:
+                SyntaxError(NextToken(), "");
+        }
+    }
+    else {
+        switch (NextToken()) {
+            case FALSE_SYM:
+            case TRUE_SYM:
+            case INT_LIT:
+            case FLOAT_LIT:
+            case CHEESE_LIT: {
+                Literal();
+                ExprRec t;
+                code.ProcessLiteral(t);
+                break;
+            }
+            case ID: {
+                Variable();
+                code.Shout_Variable(currentVar);
+                break;
+            }
+            case LBANANA:
+                Match(LBANANA);
+                Expression(is_assign);
+                Match(RBANANA);
+                break;
+            default:
+                SyntaxError(NextToken(), "");
+        }
+    }
 }
 
 void Parser::AddOp()
@@ -352,7 +382,7 @@ void Parser::AddOp()
 	}
 }
 
-void Parser::ExprTail()
+void Parser::ExprTail(bool is_assign)
 {
 	switch (NextToken())
 	{
@@ -360,9 +390,9 @@ void Parser::ExprTail()
 	case MINUS_OP:
 		AddOp();
 		// code.ProcessOp();
-		Factor();
+		Factor(is_assign);
 		// code.GenInfix();
-		ExprTail();
+		ExprTail(is_assign);
 		break;
 	case RSTAPLE:
 	case RBANANA:
@@ -382,10 +412,10 @@ void Parser::ExprTail()
 	}
 }
 
-void Parser::Factor()// ExprRec& expr)
+void Parser::Factor(bool is_assign)// ExprRec& expr)
 {
-	Primary(/*expr*/);
-	FactorTail(/*expr*/);
+	Primary(is_assign);
+	FactorTail(is_assign);
 }
 
 void Parser::RelOp()
@@ -431,7 +461,7 @@ void Parser::CondTail()
 	case NE_OP:
 		RelOp();
 		// code.ProcessOp();
-		Expression();
+		Expression(false);
 		break;
 	case RBANANA:
 	case SEMICOLON:
@@ -500,7 +530,7 @@ void Parser::ForAssign()
 	Variable();
 	// code.ProcessVar();
 	Match(ASSIGN_OP);
-	Expression();
+	Expression(false);
 	// code.ForAssign();
 }
 
@@ -522,7 +552,7 @@ void Parser::ElseClause()
 
 void Parser::Condition()
 {
-	Expression();
+	Expression(false);
 	CondTail();
 	// code.SetCondition();
 }
@@ -539,7 +569,7 @@ void Parser::SelectStmt()
 {
 	Match(SELECT_SYM);
 	Match(LBANANA);
-	Expression();
+	Expression(false);
 	Match(RBANANA);
 	// code.SelectBegin();
 	CaseList();
@@ -607,15 +637,14 @@ void Parser::IfStmt()
 	// code.IfEnd();
 }
 
-void Parser::ItemListTail(ExprRec& expr)
+void Parser::ItemListTail(ExprRec& expr, bool is_assign)
 {
 	switch (NextToken())
 	{
 	case COMMA:
 		Match(COMMA);
-		Expression(/*expr*/);
-		code.Shout(expr);
-		ItemListTail(expr);
+		Expression(is_assign);
+		ItemListTail(expr, is_assign);
 		break;
 	case SEMICOLON:
 		break;
@@ -624,14 +653,15 @@ void Parser::ItemListTail(ExprRec& expr)
 	}
 }
 
-void Parser::ItemList()//ExprRec& expr) 
+void Parser::ItemList(bool is_assign)//ExprRec& expr)
 {
 	ExprRec expr;
 
 
-	Expression(/*expr*/);
-	code.Shout(expr);
-	ItemListTail(expr);
+	Expression(is_assign);
+
+    cout << "ITEM LIST" << endl;
+	ItemListTail(expr, is_assign);
 }
 
 void Parser::VariableTail()
@@ -640,7 +670,7 @@ void Parser::VariableTail()
 	{
 	case LSTAPLE:
 		Match(LSTAPLE);
-		Expression();
+		Expression(false);
 		Match(RSTAPLE);
 		break;
 	case RSTAPLE:
@@ -694,14 +724,14 @@ void Parser::VarList()
 
 void Parser::InitList()
 {
-	Expression();
+	Expression(false);
 	InitTail();
 }
 
-void Parser::Expression()// ExprRec& expr)
+void Parser::Expression(bool is_assign)
 {
-	Factor(/*expr*/);
-	ExprTail(/*expr*/);
+	Factor(is_assign);
+	ExprTail(is_assign);
 }
 
 void Parser::AssignTail()
@@ -715,7 +745,7 @@ void Parser::AssignTail()
 	case INT_LIT:
 	case FLOAT_LIT:
 	case CHEESE_LIT:
-		Expression();
+		Expression(true);
 		break;
 	case LMUSTACHE:
 		Match(LMUSTACHE);
@@ -744,7 +774,7 @@ void Parser::BreakStmt()
 void Parser::ShoutStmt(const ExprRec& expr)
 {
 	Match(SHOUT_SYM);
-	ItemList(/*expr*/);
+	ItemList(false);
 	code.NewLine();
 	Match(SEMICOLON);
 }

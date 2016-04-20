@@ -232,6 +232,7 @@ Token Scanner::GetNextToken()
 					return CHEESE_LIT;
 				}
 				stringBuffer += currentChar;
+                // BufferChar(currentChar);
 			}
 			while (c != '\n');
 		else

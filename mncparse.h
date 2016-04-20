@@ -57,15 +57,15 @@ private:
 
 	void MultOp();
 
-	void FactorTail();// ExprRec& expr);
+	void FactorTail(bool is_assign);// ExprRec& expr);
 
-	void Primary();
+	void Primary(bool is_assign);
 
 	void AddOp();
 
-	void ExprTail();
+	void ExprTail(bool is_assign);
 
-	void Factor();// ExprRec& expr);
+	void Factor(bool is_assign);// ExprRec& expr);
 
 	void RelOp();
 
@@ -99,9 +99,9 @@ private:
 
 	void IfStmt();
 
-	void ItemListTail(ExprRec& expr);
+	void ItemListTail(ExprRec& expr, bool is_assign);
 
-	void ItemList();// ExprRec& expr);
+	void ItemList(bool is_assign);// ExprRec& expr);
 
 	void VariableTail();
 
@@ -111,7 +111,7 @@ private:
 
 	void InitList();
 
-	void Expression();//ExprRec& expr);
+	void Expression(bool is_assign);//ExprRec& expr);
 
 	void AssignTail();
 

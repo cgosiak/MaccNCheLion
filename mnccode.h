@@ -55,6 +55,8 @@ class CodeGen {
 
 	void Shout(ExprRec& e);
 
+	void Shout_Variable(std::string input_var);
+
 	void IfThen();
 
 	void IfElse();
@@ -103,7 +105,7 @@ class CodeGen {
 
 	private:
 
-	vector<string> symbolTable;
+	vector<string> symbolTable_Vector;
 
 	int  maxTemp;     // max temporary allocated so far; initially 0
 

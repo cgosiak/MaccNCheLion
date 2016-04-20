@@ -10,6 +10,8 @@ b = 2;
 c = 3;
 
 y = "test";
-r = 123;
+r = "complete";
 
-shout a, b, c;
+p = "FALSE";
+
+shout y, b, c, r;

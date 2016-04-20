@@ -1,23 +1,23 @@
 LDA       R15,VARS
-WRST      LBL4
-WRI       LBL2
-WRI       LBL3
-WRST      LBL5
+WRST      lbl4
+WRI       lbl2
+WRI       lbl3
+WRST      lbl5
 WRNL      
 HALT      
 % Data Area ------------
 % ----------------------
-LABEL    LBL1
+LABEL    lbl1
 INT   0
-LABEL    LBL2
+LABEL    lbl2
 INT   0
-LABEL    LBL3
+LABEL    lbl3
 INT   0
-LABEL    LBL4
+LABEL    lbl4
 STRING   ""
-LABEL    LBL5
+LABEL    lbl5
 STRING   ""
-LABEL    LBL10
+LABEL    lbl10
 INT   0
 
 LABEL     VARS

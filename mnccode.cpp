@@ -53,7 +53,7 @@ void CodeGen::CheckId(const string & s)
 
 void CodeGen::Enter(const string & s)
 {
-	symbolTable.push_back(s);
+	symbolTable_Vector.push_back(s);
 }
 
 void CodeGen::ExtractExpr(const ExprRec & e, string& s)
@@ -67,7 +67,7 @@ void CodeGen::ExtractExpr(const ExprRec & e, string& s)
 	case TEMP_EXPR:  // operand form: +k(R15)
 		s = e.name;
 		n = 0;
-		while (symbolTable[n] != s) n++;
+		while (symbolTable_Vector[n] != s) n++;
 		k = 2 * n;  // offset: 2 bytes per variable
 		IntToAlpha(k, t);
 		s = "+" + t + "(R15)";
@@ -140,8 +140,8 @@ void CodeGen::IntToAlpha(int val, string& str)
 
 bool CodeGen::LookUp(const string & s)
 {
-	for (unsigned i = 0; i < symbolTable.size(); i++)
-	if (symbolTable[i] == s)
+	for (unsigned i = 0; i < symbolTable_Vector.size(); i++)
+	if (symbolTable_Vector[i] == s)
 		return true;
 
 	return false;
@@ -168,8 +168,12 @@ void CodeGen::Finish()
 	listFile.width(6);
 	listFile << ++scan.lineNumber << "  " << scan.lineBuffer << endl;
 	Generate("HALT      ", "", "");
+	
+	// Output Symbol Table
+	Generate(symbolTable.FinishSymbolTable(),"","");
+
 	Generate("LABEL     ", "VARS", "");
-	IntToAlpha(int(2*(symbolTable.size()+1)), s);
+	IntToAlpha(int(2*(symbolTable_Vector.size()+1)), s);
 	Generate("SKIP      ", s, "");
 	outFile.close();
 	listFile << endl << endl;
@@ -180,10 +184,10 @@ void CodeGen::Finish()
 	listFile << " Address      Identifier" << endl;
 	listFile << " --------     --------------------------------" 
 		<< endl;
-	for (unsigned i = 0; i < symbolTable.size(); i++)
+	for (unsigned i = 0; i < symbolTable_Vector.size(); i++)
 	{
 		listFile.width(7);
-		listFile << 2*i << "       " << symbolTable[i] << endl;
+		listFile << 2*i << "       " << symbolTable_Vector[i] << endl;
 	}
 	listFile << " _____________________________________________" 
 		<< endl;
@@ -210,6 +214,23 @@ void CodeGen::Shout(ExprRec& e) {
 			break;
 	}
 	Generate("WRI       ", s, "");	
+}
+
+void CodeGen::Shout_Variable(std::string input_var) {
+	DataEntry cur_entry = symbolTable.GetDataObject(input_var);
+
+	switch (cur_entry.GetType()) {
+		case TYPE_CHEESE_LIT:
+			Generate("WRST      ", cur_entry.GetDataLabel(), "");
+			break;
+		case TYPE_BOOL_LIT:
+		case TYPE_INT_LIT:
+			Generate("WRI       ", cur_entry.GetDataLabel(), "");
+			break;
+		case TYPE_FLOAT_LIT:
+			Generate("WRF       ", cur_entry.GetDataLabel(), "");
+			break;
+	}
 }
 
 void CodeGen::Listen(ExprRec& e) {
