@@ -14,4 +14,9 @@ r = "complete";
 
 p = "FALSE";
 
-shout y, b, c, r;
+shout y, b, c, r, p;
+
+y = "Caleb Says:";
+shout y;
+y = "TEST OVER";
+shout y;

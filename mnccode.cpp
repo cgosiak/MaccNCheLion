@@ -221,14 +221,14 @@ void CodeGen::Shout_Variable(std::string input_var) {
 
 	switch (cur_entry.GetType()) {
 		case TYPE_CHEESE_LIT:
-			Generate("WRST      ", cur_entry.GetDataLabel(), "");
+			Generate("WRST      ", cur_entry.GetCurrentTempVar(), "");
 			break;
 		case TYPE_BOOL_LIT:
 		case TYPE_INT_LIT:
-			Generate("WRI       ", cur_entry.GetDataLabel(), "");
+			Generate("WRI       ", cur_entry.GetCurrentTempVar(), "");
 			break;
 		case TYPE_FLOAT_LIT:
-			Generate("WRF       ", cur_entry.GetDataLabel(), "");
+			Generate("WRF       ", cur_entry.GetCurrentTempVar(), "");
 			break;
 	}
 }

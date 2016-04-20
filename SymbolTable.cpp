@@ -42,7 +42,7 @@ void SymbolTable::AddEntry(std::string id, DataTypes type) {
 
         // Create a new entry
         std::cout << "Added entry! Type: " << type_string << std::endl;
-        DataEntry my_entry(id, type, lbl_name);
+        DataEntry my_entry(id, type, lbl_name, total_entries);
         table_entries.push_back(my_entry);
     }
 }
@@ -98,6 +98,7 @@ std::string SymbolTable::FinishSymbolTable() {
         if (table_entries[i].WasUsed()) {
             // Add entry to finished symbol table
             symbol_table = symbol_table + "LABEL    " + table_entries[i].GetDataLabel() + "\n" + table_entries[i].GetDataLine() + "\n";
+            symbol_table = symbol_table + table_entries[i].GetTempLabels();
         }
     }
 

@@ -9,7 +9,7 @@
 				the MACC2 virtual computer.
  _______________________________________________________________
 
- April 19, 2016 at 06:40 PM
+ April 19, 2016 at 09:46 PM
  Source file: /home/caleb/Desktop/MaccNCheLion/test.mnc
 
  LINE #
@@ -30,29 +30,55 @@
     14  
     15  p = "FALSE";
     16  
-                    WRST      LBL4
-                    WRI       LBL2
-                    WRI       LBL3
-                    WRST      LBL5
+                    WRST      L4T0
+                    WRI       L2T0
+                    WRI       L3T0
+                    WRST      L5T0
+                    WRI       L10T0
                     WRNL      
-    17  shout y, b, c, r;
+    17  shout y, b, c, r, p;
     18  
-    19  
+    19  y = "Caleb Says:";
+                    WRST      L4T1
+                    WRNL      
+    20  shout y;
+    21  y = "TEST OVER";
+                    WRST      L4T2
+                    WRNL      
+    22  shout y;
+    23  
+    24  
                     HALT      
                     % Data Area ------------
 % ----------------------
 LABEL    LBL1
 INT   0
+LABEL    L1T0
+INT       1
 LABEL    LBL2
 INT   0
+LABEL    L2T0
+INT       2
 LABEL    LBL3
 INT   0
+LABEL    L3T0
+INT       3
 LABEL    LBL4
 STRING   ""
+LABEL    L4T0
+STRING    "test"
+LABEL    L4T1
+STRING    "Caleb Says::"
+LABEL    L4T2
+STRING    "TEST OVER"
 LABEL    LBL5
 STRING   ""
+LABEL    L5T0
+STRING    "complete"
 LABEL    LBL10
 INT   0
+LABEL    L10T0
+INT       0
 
                     LABEL     VARS
                     SKIP      2
