@@ -198,6 +198,9 @@ std::string DataEntry::GetTempLabels() {
             case TYPE_CHEESE_LIT:
                 temps = temps + "LABEL    " + temp_variables[i].GetDataLabel() + "\nSTRING    \"" + temp_variables[i].GetValue() + "\"\n";
                 break;
+            case TYPE_SPECIAL_CHEESE_LIT:
+                temps = temps + "LABEL    " + temp_variables[i].GetDataLabel() + "\nSKIP      50\n";
+                break;
             case TYPE_FLOAT_LIT:
                 temps = temps + "LABEL    " + temp_variables[i].GetDataLabel() + "\nREAL      " + temp_variables[i].GetValue() + "\n";
                 break;
@@ -224,4 +227,22 @@ std::string DataEntry::ReplaceAll(std::string str, const std::string &from, cons
         start_pos += to.length(); // Handles case where 'to' is a substring of 'from'
     }
     return str;
+}
+
+void DataEntry::ReserveSpace() {
+
+    // Need to have case statement here to make sure assignment matches type
+    std::string temp_name = "L" + std::to_string(lbl) + "T" + std::to_string(temps_used);
+    temps_used++;
+    DataEntry new_data(variable_name, entry_type, temp_name, lbl);
+    cur_temp_assigned = temp_name;
+
+    new_data.ReserveCheeseSpace();
+    temp_variables.push_back(new_data);
+
+    entry_used = true;
+}
+
+void DataEntry::ReserveCheeseSpace() {
+    entry_type = TYPE_SPECIAL_CHEESE_LIT;
 }

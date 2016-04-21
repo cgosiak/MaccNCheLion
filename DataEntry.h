@@ -8,7 +8,7 @@
 #include <string>
 #include <vector>
 
-enum DataTypes  { TYPE_BOOL_LIT, TYPE_CHEESE_LIT, TYPE_INT_LIT, TYPE_FLOAT_LIT, TYPE_NONE};
+enum DataTypes  { TYPE_BOOL_LIT, TYPE_CHEESE_LIT, TYPE_SPECIAL_CHEESE_LIT, TYPE_INT_LIT, TYPE_FLOAT_LIT, TYPE_NONE};
 
 class DataEntry {
 
@@ -18,6 +18,8 @@ public:
     // void AssignType(DataTypes type); // define the type of the object
 
     void AssignValue(std::string val); // assign a value to the variable
+
+    void ReserveSpace(); // reserve space for string
 
     DataTypes GetType(); // return the type of the object
 
@@ -50,6 +52,8 @@ private:
     std::vector<DataEntry> temp_variables;
 
     void AssignTempValue(std::string val); // assign a value to the variable
+
+    void ReserveCheeseSpace(); // reserve space for empty string assignment
 
     // Data line, for data section in assembly
     std::string data_line;

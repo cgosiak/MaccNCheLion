@@ -1,19 +1,26 @@
 decs {
 	int: a, b, c;
-	cheese: y, r, q;
-	float: t, w, n;
-	bool: p;
+	cheese: y, t;
 }
 
-y = "Test";
-shout y;
+a = 10;
 
-listen y;
-shout y;
+shout "A: ", a;
 
-listen y;
-shout y;
+b = 276;
 
-shout "Type 3 Integers (Each separated by a newline):";
-listen a, b, c;
-shout a, " ", b, " ", c;
+shout "B: ", b;
+
+a = b;
+
+shout "A = B: ", a;
+
+y = "Test1";
+
+shout "Y: ", y;
+
+t = "TEST 2 DAWG!";
+
+y = t;
+
+shout "Y: ", y;

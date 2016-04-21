@@ -19,6 +19,8 @@ public:
 
     void UpdateEntry(std::string id, std::string entry_data); // If the entry already exists, and we need to update it
 
+    void ReserveNewLabel(std::string id); // need to add this to reserve space specifically for cheese_lit
+
     int GetEntry(std::string id); // Get the location of the variable in or vector object
 
     DataEntry GetDataObject(std::string id); // returns the data entry object

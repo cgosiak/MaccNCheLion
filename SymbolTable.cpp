@@ -104,3 +104,12 @@ std::string SymbolTable::FinishSymbolTable() {
 
     return symbol_table;
 }
+
+void SymbolTable::ReserveNewLabel(std::string id) {
+    if (SymbolTable::EntryExists(id)) {
+        table_entries[SymbolTable::GetEntry(id)].ReserveSpace();
+    }
+    else {
+        //some error
+    }
+}

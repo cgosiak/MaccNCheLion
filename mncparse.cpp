@@ -32,6 +32,7 @@ struct Tokens {
 
 DataTypes currentType;
 std::string currentVar;
+std::string assign_to_var;
 
 std::string getTokenText(int token) {
 	int size = (sizeof(Tokens) / sizeof(*Tokens));
@@ -327,8 +328,10 @@ void Parser::Primary(bool is_assign)
                 break;
             }
             case ID:
+				assign_to_var = currentVar;
                 Variable();
-                // code.ProcessVar();
+				// Assign last accessed var with current var
+				code.Assign_Var2Var(assign_to_var,currentVar);
                 break;
             case LBANANA:
                 Match(LBANANA);
@@ -787,10 +790,8 @@ void Parser::ListenStmt()
 void Parser::AssignStmt()
 {
 	Variable();
-	// code.ProcessVar();
 	Match(ASSIGN_OP);
 	AssignTail();
-	// code.Assign();
 	Match(SEMICOLON);
 }
 

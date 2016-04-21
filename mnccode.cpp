@@ -338,3 +338,18 @@ void CodeGen::WriteString()
 	s = scan.tokenBuffer.data();
 	Generate("WRST      ", s, "");
 }
+
+void CodeGen::Assign_Var2Var(std::string target, std::string source) {
+	DataEntry tar = symbolTable.GetDataObject(target);
+	DataEntry sou = symbolTable.GetDataObject(source);
+    if (tar.GetType() == TYPE_CHEESE_LIT) {
+        symbolTable.ReserveNewLabel(target);
+        tar = symbolTable.GetDataObject(target);
+        Generate("LD        ", "R0", sou.GetCurrentTempVar());
+        Generate("STO       ", "R0", tar.GetCurrentTempVar());
+    }
+    else {
+        Generate("LD        ", "R0", sou.GetCurrentTempVar());
+        Generate("STO       ", "R0", tar.GetCurrentTempVar());
+    }
+}

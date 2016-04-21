@@ -46,6 +46,8 @@ class CodeGen {
 	void Assign(const ExprRec & target, const ExprRec & source);
 	// Produces the assembly code for an assignment from Source to Target.
 
+	void Assign_Var2Var(std::string target, std::string source);
+
 	void Listen(std::string input_var);
 
 	void Break();
