@@ -12,14 +12,12 @@ WRI       L1T0
 WRNL      
 WRST      L6T3
 WRST      L4T0
-WRNL
-      
-LD        R0,L5T0
+WRNL      
+LDA       R0,L5T0
+LD        R1,#3
 BKT       R0,L4T1
-
 WRST      L6T4
 WRST      L4T1
-
 WRNL      
 HALT      
 % Data Area ------------
@@ -41,7 +39,7 @@ SKIP      50
 LABEL    LBL5
 SKIP    50
 LABEL    L5T0
-STRING    "FIRETRUCK 2 DAWG!"
+STRING    "FIRE IS BAD!"
 LABEL    LBL6
 SKIP    50
 LABEL    L6T0

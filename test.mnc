@@ -19,7 +19,13 @@ y = "Test1";
 
 shout "Y: ", y;
 
-t = "TEST 2 DAWG!";
+t = "FIRE IS BAD!";
+
+y = t;
+
+shout "Y: ", y, "Caleb";
+
+t = "whoa";
 
 y = t;
 

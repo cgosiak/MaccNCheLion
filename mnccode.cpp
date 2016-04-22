@@ -345,8 +345,9 @@ void CodeGen::Assign_Var2Var(std::string target, std::string source) {
     if (tar.GetType() == TYPE_CHEESE_LIT) {
         symbolTable.ReserveNewLabel(target);
         tar = symbolTable.GetDataObject(target);
-        Generate("LD        ", "R0", sou.GetCurrentTempVar());
-        Generate("STO       ", "R0", tar.GetCurrentTempVar());
+        Generate("LDA       ", "R0", sou.GetCurrentTempVar());
+		Generate("LD        ", "R1", "#50");
+        Generate("BKT       ", "R0", tar.GetCurrentTempVar());
     }
     else {
         Generate("LD        ", "R0", sou.GetCurrentTempVar());

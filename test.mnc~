@@ -14,3 +14,19 @@ shout "B: ", b;
 a = b;
 
 shout "A = B: ", a;
+
+y = "Test1";
+
+shout "Y: ", y;
+
+t = "FIRE IS BAD!";
+
+y = t;
+
+shout "Y: ", y, "Caleb";
+
+t = "whoa";
+
+y = t;
+
+shout "Y: ", y;

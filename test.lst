@@ -9,7 +9,7 @@
 				the MACC2 virtual computer.
  _______________________________________________________________
 
- April 21, 2016 at 03:20 PM
+ April 22, 2016 at 08:47 AM
  Source file: /home/gosi1cal/Desktop/MaccNCheLion/test.mnc
 
  LINE #
@@ -49,18 +49,32 @@
                     WRNL      
     20  shout "Y: ", y;
     21  
-    22  t = "TEST 2 DAWG!";
+    22  t = "FIRE IS BAD!";
     23  
-                    LD        R0,L5T0
-                    STO       R0,L4T1
+                    LDA       R0,L5T0
+                    LD        R1,#50
+                    BKT       R0,L4T1
     24  y = t;
     25  
                     WRST      L6T4
                     WRST      L4T1
+                    WRST      L6T5
                     WRNL      
-    26  shout "Y: ", y;
+    26  shout "Y: ", y, "Caleb";
     27  
-    28  
+    28  t = "whoa";
+    29  
+                    LDA       R0,L5T1
+                    LD        R1,#50
+                    BKT       R0,L4T2
+    30  y = t;
+    31  
+                    WRST      L6T6
+                    WRST      L4T2
+                    WRNL      
+    32  shout "Y: ", y;
+    33  
+    34  
                     HALT      
                     % Data Area ------------
 % ----------------------
@@ -78,10 +92,14 @@ LABEL    L4T0
 STRING    "Test1"
 LABEL    L4T1
 SKIP      50
+LABEL    L4T2
+SKIP      50
 LABEL    LBL5
 SKIP    50
 LABEL    L5T0
-STRING    "TEST 2 DAWG!"
+STRING    "FIRE IS BAD!"
+LABEL    L5T1
+STRING    "whoa"
 LABEL    LBL6
 SKIP    50
 LABEL    L6T0
@@ -93,6 +111,10 @@ STRING    "A = B:: "
 LABEL    L6T3
 STRING    "Y:: "
 LABEL    L6T4
+STRING    "Y:: "
+LABEL    L6T5
+STRING    "Caleb"
+LABEL    L6T6
 STRING    "Y:: "
 
                     LABEL     VARS
