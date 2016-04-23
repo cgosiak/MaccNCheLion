@@ -111,6 +111,8 @@ class CodeGen {
 
 	int  maxTemp;     // max temporary allocated so far; initially 0
 
+	int string_reservation_space = 50;
+
 	void CheckId(const string & s);
 	// Declares s as a new variable and enters it into the symbol table when s
 	// is not already in the symbol table.

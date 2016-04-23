@@ -49,6 +49,8 @@ private:
 
     int lbl = 0;
 
+    int string_reservation_space = 50;
+
     std::vector<DataEntry> temp_variables;
 
     void AssignTempValue(std::string val); // assign a value to the variable

@@ -26,6 +26,12 @@ BKT       R0,L4T2
 WRST      L6T6
 WRST      L4T2
 WRNL      
+WRST      L6T7
+WRNL      
+RDST      L4T3
+WRST      L6T8
+WRST      L4T3
+WRNL      
 HALT      
 % Data Area ------------
 % ----------------------
@@ -45,6 +51,8 @@ LABEL    L4T1
 SKIP      50
 LABEL    L4T2
 SKIP      50
+LABEL    L4T3
+STRING    ""
 LABEL    LBL5
 SKIP    50
 LABEL    L5T0
@@ -66,6 +74,10 @@ STRING    "Y:: "
 LABEL    L6T5
 STRING    "Caleb"
 LABEL    L6T6
+STRING    "Y:: "
+LABEL    L6T7
+STRING    "Please Enter a string::"
+LABEL    L6T8
 STRING    "Y:: "
 
 LABEL     VARS

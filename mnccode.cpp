@@ -346,7 +346,7 @@ void CodeGen::Assign_Var2Var(std::string target, std::string source) {
         symbolTable.ReserveNewLabel(target);
         tar = symbolTable.GetDataObject(target);
         Generate("LDA       ", "R0", sou.GetCurrentTempVar());
-		Generate("LD        ", "R1", "#50");
+		Generate("LD        ", "R1", "#" + std::to_string(string_reservation_space));
         Generate("BKT       ", "R0", tar.GetCurrentTempVar());
     }
     else {

@@ -30,3 +30,9 @@ t = "whoa";
 y = t;
 
 shout "Y: ", y;
+
+shout "Please Enter a string:";
+
+listen y;
+
+shout "Y: ", y;

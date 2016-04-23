@@ -9,8 +9,8 @@
 				the MACC2 virtual computer.
  _______________________________________________________________
 
- April 22, 2016 at 08:47 AM
- Source file: /home/gosi1cal/Desktop/MaccNCheLion/test.mnc
+ April 23, 2016 at 11:33 AM
+ Source file: /home/caleb/Desktop/MaccNCheLion/test.mnc
 
  LINE #
                     LDA       R15,VARS
@@ -74,7 +74,19 @@
                     WRNL      
     32  shout "Y: ", y;
     33  
-    34  
+                    WRST      L6T7
+                    WRNL      
+    34  shout "Please Enter a string:";
+    35  
+                    RDST      L4T3
+    36  listen y;
+    37  
+                    WRST      L6T8
+                    WRST      L4T3
+                    WRNL      
+    38  shout "Y: ", y;
+    39  
+    40  
                     HALT      
                     % Data Area ------------
 % ----------------------
@@ -94,6 +106,8 @@ LABEL    L4T1
 SKIP      50
 LABEL    L4T2
 SKIP      50
+LABEL    L4T3
+STRING    ""
 LABEL    LBL5
 SKIP    50
 LABEL    L5T0
@@ -115,6 +129,10 @@ STRING    "Y:: "
 LABEL    L6T5
 STRING    "Caleb"
 LABEL    L6T6
+STRING    "Y:: "
+LABEL    L6T7
+STRING    "Please Enter a string::"
+LABEL    L6T8
 STRING    "Y:: "
 
                     LABEL     VARS
