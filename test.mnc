@@ -1,38 +1,24 @@
-decs {
-	int: a, b, c;
-	cheese: y, t;
-}
+// Assign01.mnc
+// 
+// Simple variables and input/output.
 
-a = 10;
+decs {	int:  x, y;
+	// float: a, b;
+	cheese: c, d;
+	}
 
-shout "A: ", a;
-
-b = 276;
-
-shout "B: ", b;
-
-a = b;
-
-shout "A = B: ", a;
-
-y = "Test1";
-
-shout "Y: ", y;
-
-t = "FIRE IS BAD!";
-
-y = t;
-
-shout "Y: ", y, "Caleb";
-
-t = "whoa";
-
-y = t;
-
-shout "Y: ", y;
-
-shout "Please Enter a string:";
-
-listen y;
-
-shout "Y: ", y;
+   shout "Enter an integer: ";
+   listen x;
+   shout x, "";
+   y = x;
+   shout y, "";
+   x = 17;
+   shout x, "";
+   
+   shout "Enter a character: ";
+   listen c;
+   shout c, "";
+   d = c;
+   shout d, "";
+   c = "$";
+   shout c, "";

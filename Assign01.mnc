@@ -9,16 +9,24 @@ decs {	int:  x, y;
 
    shout "Enter an integer: ";
    listen x;
-   shout x, "";
+   shout x, "\n";
    y = x;
-   shout y, "";
+   shout y, "\n";
    x = 17;
-   shout x, "";
+   shout x, "\n\n";
+   
+   shout "Enter a real number: ";
+   listen a;
+   shout a, "\n";
+   b = a;
+   shout b, "\n";
+   a = 26.03;
+   shout a, "\n\n";
    
    shout "Enter a character: ";
    listen c;
-   shout c, "";
+   shout c, "\n";
    d = c;
-   shout d, "";
+   shout d, "\n";
    c = "$";
-   shout c, "";
+   shout c, "\n\n";

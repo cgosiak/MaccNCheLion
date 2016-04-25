@@ -180,6 +180,7 @@ void DataEntry::AssignTempValue(std::string val) {
             if (val == "") {
                 val = "0.0";
             }
+            value = val;
             data_line = "REAL   0.0";
             break;
         default:

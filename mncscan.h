@@ -92,6 +92,8 @@ public:
 	Token GetNextToken();
 	// Retrieves the next token available in the input stream.
 
+	string GetTokenString(int input);
+
 private:
 
    void BufferChar(char c);
