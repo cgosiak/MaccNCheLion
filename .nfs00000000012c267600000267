@@ -1,0 +1,14 @@
+/: Testing Comments
+
+Does this still work? :/
+decs {
+	int: a, b, c;
+	float: t;
+	cheese: y,z;
+}
+
+shout "A should equal 14:";
+
+a = (10 / 5) * 10 / (2 + 7);
+
+shout "A:",a;

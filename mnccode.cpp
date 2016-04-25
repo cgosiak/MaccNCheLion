@@ -398,8 +398,10 @@ void CodeGen::ProcessOperation_SymbolTable(string id, string old_lbl, Token op_u
         case PLUS_OP:
             switch (symbolTable.GetDataObject(id).GetType()) {
                 case TYPE_FLOAT_LIT:
-                    Generate("LD    ","R7",old_lbl);
-                    Generate("IA    ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
+                    Generate("LDA   ","R1",old_lbl);
+                    Generate("LD    ","R7","+0(R1)");
+                    Generate("LD    ","R8","+2(R1)");
+                    Generate("FA    ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
                     Generate("STO   ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
                     break;
                 case TYPE_INT_LIT:
@@ -412,8 +414,10 @@ void CodeGen::ProcessOperation_SymbolTable(string id, string old_lbl, Token op_u
         case MINUS_OP:
             switch (symbolTable.GetDataObject(id).GetType()) {
                 case TYPE_FLOAT_LIT:
-                    Generate("LD    ","R7",old_lbl);
-                    Generate("IS    ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
+                    Generate("LDA   ","R1",old_lbl);
+                    Generate("LD    ","R7","+0(R1)");
+                    Generate("LD    ","R8","+2(R1)");
+                    Generate("FS    ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
                     Generate("STO   ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
                     break;
                 case TYPE_INT_LIT:
@@ -426,8 +430,10 @@ void CodeGen::ProcessOperation_SymbolTable(string id, string old_lbl, Token op_u
         case DIV_OP:
             switch (symbolTable.GetDataObject(id).GetType()) {
                 case TYPE_FLOAT_LIT:
-                    Generate("LD    ","R7",old_lbl);
-                    Generate("ID    ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
+                    Generate("LDA   ","R1",old_lbl);
+                    Generate("LD    ","R7","+0(R1)");
+                    Generate("LD    ","R8","+2(R1)");
+                    Generate("FD    ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
                     Generate("STO   ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
                     break;
                 case TYPE_INT_LIT:
@@ -440,8 +446,10 @@ void CodeGen::ProcessOperation_SymbolTable(string id, string old_lbl, Token op_u
         case MULT_OP:
             switch (symbolTable.GetDataObject(id).GetType()) {
                 case TYPE_FLOAT_LIT:
-                    Generate("LD    ","R7",old_lbl);
-                    Generate("IM    ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
+                    Generate("LDA   ","R1",old_lbl);
+                    Generate("LD    ","R7","+0(R1)");
+                    Generate("LD    ","R8","+2(R1)");
+                    Generate("FM    ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
                     Generate("STO   ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
                     break;
                 case TYPE_INT_LIT:
