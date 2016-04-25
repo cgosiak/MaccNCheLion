@@ -1,5 +1,5 @@
 Assign01.mnc:            ASCII text	-PASSED
-Assign02.mnc:            ASCII text
+Assign02.mnc:            ASCII text	-PASSED
 Assign03.mnc:            ASCII text
 Assign04.mnc:            ASCII text
 declarations.mnc:        ASCII text

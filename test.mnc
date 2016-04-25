@@ -9,13 +9,10 @@ decs {
 
 shout "A should equal 2:";
 
-a = (10 / 5) * 10 / (2 + 7);
+b = 9;
+c = 2;
+
+a = b + c;
 
 shout "A:", a;
 
-shout "T should equal 2:";
-
-// t = ((5.0 / 0.25) * 0.5) + (1 / 3);
-t = ((5.0 * 5.1) / 0.1) + 17.8346;
-
-shout "T:", t;

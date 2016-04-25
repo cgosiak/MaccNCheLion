@@ -1,0 +1,135 @@
+
+   SAM 2016 Assembler Listing
+
+   April 25, 2016 at 3:39 P.M.
+   SOURCE FILE: /home/gosi1cal/Desktop/MaccNCheLion/Assign03.asm
+
+        LN    LC
+         0     0: LDA       R15,VARS
+         1     4: LD        R0,L3T0
+         2     8: STO       R0,L4T0
+         3     C: LD        R0,L1T0
+         4    10: STO       R0,L3T0
+         5    14: LD        R0,L2T0
+         6    18: STO       R0,L1T0
+         7    1C: LD    R7,L1T0
+         8    20: IA    R7,L2T0
+         9    24: STO   R7,L2T0
+        10    28: LD    R7,L3T0
+        11    2C: IM    R7,L2T0
+        12    30: STO   R7,L2T0
+        13    34: WRI       L4T0
+        14    38: WRNL      
+        15    3A: LD        R0,L1T0
+        16    3E: STO       R0,L4T1
+        17    42: LD        R0,L2T0
+        18    46: STO       R0,L1T0
+        19    4A: LD    R7,L1T0
+        20    4E: IA    R7,L2T0
+        21    52: STO   R7,L2T0
+        22    56: LD    R7,L4T1
+        23    5A: IM    R7,L2T0
+        24    5E: STO   R7,L2T0
+        25    62: WRI       L4T1
+        26    66: WRNL      
+        27    68: WRI       L1T0
+        28    6C: WRI       L2T0
+        29    70: LD    R7,L1T0
+        30    74: IA    R7,L2T0
+        31    78: STO   R7,L2T0
+        32    7C: WRI       L3T0
+        33    80: LD    R7,L2T0
+        34    84: IM    R7,L3T0
+        35    88: STO   R7,L3T0
+        36    8C: WRNL      
+        37    8E: LDA       R0,L7T0
+        38    92: LD        R1,#4
+        39    96: BKT       R0,L8T0
+        40    9A: LDA       R0,L5T0
+        41    9E: LD        R1,#4
+        42    A2: BKT       R0,L7T0
+        43    A6: LDA       R0,L6T0
+        44    AA: LD        R1,#4
+        45    AE: BKT       R0,L5T0
+        46    B2: LDA   R1,L5T0
+        47    B6: LD    R7,+0(R1)
+        48    BA: LD    R8,+2(R1)
+        49    BE: FS    R7,L6T0
+        50    C2: LDA   R1,L6T0
+        51    C6: STO   R7,+0(R1)
+        52    CA: STO   R8,+2(R1)
+        53    CE: LDA   R1,L7T0
+        54    D2: LD    R7,+0(R1)
+        55    D6: LD    R8,+2(R1)
+        56    DA: FM    R7,L6T0
+        57    DE: LDA   R1,L6T0
+        58    E2: STO   R7,+0(R1)
+        59    E6: STO   R8,+2(R1)
+        60    EA: WRF       L8T0
+        61    EE: WRNL      
+        62    F0: HALT      
+        63    F2: % Data Area ------------
+        64    F2: % ----------------------
+        65    F2: LABEL    LBL1
+        66    F2: INT   0
+        67    F4: LABEL    L1T0
+        68    F4: INT       5
+        69    F6: LABEL    LBL2
+        70    F6: INT   0
+        71    F8: LABEL    L2T0
+        72    F8: INT       7
+        73    FA: LABEL    LBL3
+        74    FA: INT   0
+        75    FC: LABEL    L3T0
+        76    FC: INT       4
+        77    FE: LABEL    LBL4
+        78    FE: INT   0
+        79   100: LABEL    L4T0
+        80   100: INT       4
+        81   102: LABEL    L4T1
+        82   102: INT       4
+        83   104: LABEL    LBL5
+        84   104: REAL   0.0
+        85   108: LABEL    L5T0
+        86   108: REAL      2.5
+        87   10C: LABEL    LBL6
+        88   10C: REAL   0.0
+        89   110: LABEL    L6T0
+        90   110: REAL      3.1
+        91   114: LABEL    LBL7
+        92   114: REAL   0.0
+        93   118: LABEL    L7T0
+        94   118: REAL      4.0
+        95   11C: LABEL    LBL8
+        96   11C: REAL   0.0
+        97   120: LABEL    L8T0
+        98   120: REAL      0
+        99   124: 
+       100   124: LABEL     VARS
+       101   124: SKIP      2
+
+
+MACC Memory Hexadecimal Dump
+
+ ADDR |   0   1   2   3   4   5   6   7   8   9   A   B   C   D   E   F
+------+----------------------------------------------------------------
+    0 |  9F  90  01  24  88  10  00  FC  90  10  01  00  88  10  00  F4
+   10 |  90  10  00  FC  88  10  00  F8  90  10  00  F4  8B  90  00  F4
+   20 |  0B  90  00  F8  93  90  00  F8  8B  90  00  FC  1B  90  00  F8
+   30 |  93  90  00  F8  D0  10  01  00  D5  80  88  10  00  F4  90  10
+   40 |  01  02  88  10  00  F8  90  10  00  F4  8B  90  00  F4  0B  90
+   50 |  00  F8  93  90  00  F8  8B  90  01  02  1B  90  00  F8  93  90
+   60 |  00  F8  D0  10  01  02  D5  80  D0  10  00  F4  D0  10  00  F8
+   70 |  8B  90  00  F4  0B  90  00  F8  93  90  00  F8  D0  10  00  FC
+   80 |  8B  90  00  F8  1B  90  00  FC  93  90  00  FC  D5  80  98  10
+   90 |  01  18  88  B0  00  04  80  10  01  20  98  10  01  08  88  B0
+   A0 |  00  04  80  10  01  18  98  10  01  10  88  B0  00  04  80  10
+   B0 |  01  08  98  90  01  08  8B  A1  00  00  8C  21  00  02  3B  90
+   C0 |  01  10  98  90  01  10  93  A1  00  00  94  21  00  02  98  90
+   D0 |  01  18  8B  A1  00  00  8C  21  00  02  43  90  01  10  98  90
+   E0 |  01  10  93  A1  00  00  94  21  00  02  D0  90  01  20  D5  80
+   F0 |  F8  00  00  00  00  05  00  00  00  07  00  00  00  04  00  00
+  100 |  00  04  00  04  00  00  00  00  40  20  00  00  00  00  00  00
+  110 |  40  46  66  66  00  00  00  00  40  80  00  00  00  00  00  00
+  120 |  00  00  00  00  00  00
+

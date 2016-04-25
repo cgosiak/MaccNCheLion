@@ -9,7 +9,7 @@
 				the MACC2 virtual computer.
  _______________________________________________________________
 
- April 25, 2016 at 03:33 PM
+ April 25, 2016 at 03:54 PM
  Source file: /home/gosi1cal/Desktop/MaccNCheLion/test.mnc
 
  LINE #
@@ -27,94 +27,46 @@
                     WRNL      
     10  shout "A should equal 2:";
     11  
-                    LD    R7,L1T0
-                    ID    R7,L1T1
-                    STO   R7,L1T1
-                    LD    R7,L1T1
-                    IM    R7,L1T2
-                    STO   R7,L1T2
-                    LD    R7,L1T3
-                    IA    R7,L1T4
-                    STO   R7,L1T4
-                    LD    R7,L1T2
-                    ID    R7,L1T4
-                    STO   R7,L1T4
-    12  a = (10 / 5) * 10 / (2 + 7);
-    13  
+    12  b = 9;
+    13  c = 2;
+    14  
+                    LD        R0,L2T0
+                    STO       R0,L1T0
+                    LD        R0,L3T0
+                    STO       R0,L2T0
+                    LD    R7,L2T0
+                    IA    R7,L3T0
+                    STO   R7,L3T0
+    15  a = b + c;
+    16  
                     WRST      L7T1
-                    WRI       L1T4
+                    WRI       L1T0
                     WRNL      
-    14  shout "A:", a;
-    15  
-                    WRST      L7T2
-                    WRNL      
-    16  shout "T should equal 2:";
-    17  
-    18  // t = ((5.0 / 0.25) * 0.5) + (1 / 3);
-                    LDA   R1,L4T0
-                    LD    R7,+0(R1)
-                    LD    R8,+2(R1)
-                    FM    R7,L4T1
-                    LDA   R1,L4T1
-                    STO   R7,+0(R1)
-                    STO   R8,+2(R1)
-                    LDA   R1,L4T1
-                    LD    R7,+0(R1)
-                    LD    R8,+2(R1)
-                    FD    R7,L4T2
-                    LDA   R1,L4T2
-                    STO   R7,+0(R1)
-                    STO   R8,+2(R1)
-                    LDA   R1,L4T2
-                    LD    R7,+0(R1)
-                    LD    R8,+2(R1)
-                    FA    R7,L4T3
-                    LDA   R1,L4T3
-                    STO   R7,+0(R1)
-                    STO   R8,+2(R1)
-    19  t = ((5.0 * 5.1) / 0.1) + 17.8346;
+    17  shout "A:", a;
+    18  
+    19  
     20  
-                    WRST      L7T3
-                    WRF       L4T3
-                    WRNL      
-    21  shout "T:", t;
-    22  
-    23  
                     HALT      
                     % Data Area ------------
 % ----------------------
 LABEL    LBL1
 INT   0
 LABEL    L1T0
-INT       10
-LABEL    L1T1
-INT       5
-LABEL    L1T2
-INT       10
-LABEL    L1T3
+INT       0
+LABEL    LBL2
+INT   0
+LABEL    L2T0
+INT       9
+LABEL    LBL3
+INT   0
+LABEL    L3T0
 INT       2
-LABEL    L1T4
-INT       7
-LABEL    LBL4
-REAL   0.0
-LABEL    L4T0
-REAL      5.0
-LABEL    L4T1
-REAL      5.1
-LABEL    L4T2
-REAL      0.1
-LABEL    L4T3
-REAL      17.8346
 LABEL    LBL7
 SKIP    50
 LABEL    L7T0
 STRING    "A should equal 2::"
 LABEL    L7T1
 STRING    "A::"
-LABEL    L7T2
-STRING    "T should equal 2::"
-LABEL    L7T3
-STRING    "T::"
 
                     LABEL     VARS
                     SKIP      2
