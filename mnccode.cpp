@@ -393,17 +393,63 @@ void CodeGen::Assign_Var2Var(std::string target, std::string source) {
     }
 }
 
-void CodeGen::ProcessOperation_SymbolTable(string id, string old_lbl, OpKind op_used) {
+void CodeGen::ProcessOperation_SymbolTable(string id, string old_lbl, Token op_used) {
     switch (op_used) {
-        case PLUS:
-            Generate("LD    ","R7",old_lbl);
-            Generate("IA    ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
-            Generate("STO   ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
+        case PLUS_OP:
+            switch (symbolTable.GetDataObject(id).GetType()) {
+                case TYPE_FLOAT_LIT:
+                    Generate("LD    ","R7",old_lbl);
+                    Generate("IA    ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
+                    Generate("STO   ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
+                    break;
+                case TYPE_INT_LIT:
+                    Generate("LD    ","R7",old_lbl);
+                    Generate("IA    ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
+                    Generate("STO   ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
+                    break;
+            }
             break;
-        case MINUS:
-            Generate("LD    ","R7",old_lbl);
-            Generate("IS    ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
-            Generate("STO   ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
+        case MINUS_OP:
+            switch (symbolTable.GetDataObject(id).GetType()) {
+                case TYPE_FLOAT_LIT:
+                    Generate("LD    ","R7",old_lbl);
+                    Generate("IS    ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
+                    Generate("STO   ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
+                    break;
+                case TYPE_INT_LIT:
+                    Generate("LD    ","R7",old_lbl);
+                    Generate("IS    ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
+                    Generate("STO   ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
+                    break;
+            }
+            break;
+        case DIV_OP:
+            switch (symbolTable.GetDataObject(id).GetType()) {
+                case TYPE_FLOAT_LIT:
+                    Generate("LD    ","R7",old_lbl);
+                    Generate("ID    ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
+                    Generate("STO   ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
+                    break;
+                case TYPE_INT_LIT:
+                    Generate("LD    ","R7",old_lbl);
+                    Generate("ID    ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
+                    Generate("STO   ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
+                    break;
+            }
+            break;
+        case MULT_OP:
+            switch (symbolTable.GetDataObject(id).GetType()) {
+                case TYPE_FLOAT_LIT:
+                    Generate("LD    ","R7",old_lbl);
+                    Generate("IM    ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
+                    Generate("STO   ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
+                    break;
+                case TYPE_INT_LIT:
+                    Generate("LD    ","R7",old_lbl);
+                    Generate("IM    ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
+                    Generate("STO   ","R7",symbolTable.GetDataObject(id).GetCurrentTempVar());
+                    break;
+            }
             break;
         default:
             break;

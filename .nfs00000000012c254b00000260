@@ -9,6 +9,6 @@ decs {
 
 shout "A should equal 14:";
 
-a = (10 / 5);
+a = (10 + 1) + 3;
 
 shout "A:",a;

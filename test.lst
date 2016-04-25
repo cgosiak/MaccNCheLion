@@ -9,7 +9,7 @@
 				the MACC2 virtual computer.
  _______________________________________________________________
 
- April 25, 2016 at 02:47 PM
+ April 25, 2016 at 03:04 PM
  Source file: /home/gosi1cal/Desktop/MaccNCheLion/test.mnc
 
  LINE #
@@ -25,18 +25,24 @@
      9  
                     WRST      L7T0
                     WRNL      
-    10  shout "A should equal 4:";
+    10  shout "A should equal 14:";
     11  
                     LD    R7,L1T0
-                    IA    R7,L1T1
+                    ID    R7,L1T1
                     STO   R7,L1T1
                     LD    R7,L1T1
-                    IA    R7,L1T2
+                    IM    R7,L1T2
                     STO   R7,L1T2
-    12  a = (10 + 1) + 3;
+                    LD    R7,L1T3
+                    IA    R7,L1T4
+                    STO   R7,L1T4
+                    LD    R7,L1T2
+                    ID    R7,L1T4
+                    STO   R7,L1T4
+    12  a = (10 / 5) * 10 / (2 + 7);
     13  
                     WRST      L7T1
-                    WRI       L1T2
+                    WRI       L1T4
                     WRNL      
     14  shout "A:",a;
     15  
@@ -49,13 +55,17 @@ INT   0
 LABEL    L1T0
 INT       10
 LABEL    L1T1
-INT       1
+INT       5
 LABEL    L1T2
-INT       3
+INT       10
+LABEL    L1T3
+INT       2
+LABEL    L1T4
+INT       7
 LABEL    LBL7
 SKIP    50
 LABEL    L7T0
-STRING    "A should equal 4::"
+STRING    "A should equal 14::"
 LABEL    L7T1
 STRING    "A::"
 

@@ -276,15 +276,19 @@ void Parser::MultOp()
 
 void Parser::FactorTail(bool is_assign)//ExprRec& expr)
 {
-	switch (NextToken())
+    string old_label;
+    Token t = NextToken();
+	switch (t)
 	{
 	case MULT_OP:
 	case DIV_OP:
-		MultOp();
-		// code.ProcessOp();
-		Primary(is_assign);
-		// code.GenInfix();
-		FactorTail(is_assign);
+        MultOp();
+        // code.ProcessOp();
+        old_label =  symbolTable.GetDataObject(currentVar).GetCurrentTempVar();
+        Primary(is_assign);
+        code.ProcessOperation_SymbolTable(currentVar,old_label,t);
+        // code.GenInfix();
+        FactorTail(is_assign);
 		break;
 	case RSTAPLE:
 	case RBANANA:
@@ -388,24 +392,16 @@ void Parser::AddOp()
 void Parser::ExprTail(bool is_assign)
 {
     string old_label;
-    string new_label;
-	switch (NextToken())
+    Token t = NextToken();
+	switch (t)
 	{
 	case PLUS_OP:
-        AddOp();
-        // code.ProcessOp();
-        old_label =  symbolTable.GetDataObject(currentVar).GetCurrentTempVar();
-        Factor(is_assign);
-        code.ProcessOperation_SymbolTable(currentVar,old_label,PLUS);
-        // code.GenInfix();
-        ExprTail(is_assign);
-        break;
 	case MINUS_OP:
 		AddOp();
 		// code.ProcessOp();
         old_label =  symbolTable.GetDataObject(currentVar).GetCurrentTempVar();
 		Factor(is_assign);
-        code.ProcessOperation_SymbolTable(currentVar,old_label,MINUS);
+        code.ProcessOperation_SymbolTable(currentVar,old_label,t);
 		// code.GenInfix();
 		ExprTail(is_assign);
 		break;

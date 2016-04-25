@@ -1,7 +1,7 @@
 
    SAM 2016 Assembler Listing
 
-   April 25, 2016 at 2:47 P.M.
+   April 25, 2016 at 3:04 P.M.
    SOURCE FILE: /home/gosi1cal/Desktop/MaccNCheLion/test.asm
 
         LN    LC
@@ -9,46 +9,58 @@
          1     4: WRST      L7T0
          2     8: WRNL      
          3     A: LD    R7,L1T0
-         4     E: IA    R7,L1T1
+         4     E: ID    R7,L1T1
          5    12: STO   R7,L1T1
          6    16: LD    R7,L1T1
-         7    1A: IA    R7,L1T2
+         7    1A: IM    R7,L1T2
          8    1E: STO   R7,L1T2
-         9    22: WRST      L7T1
-        10    26: WRI       L1T2
-        11    2A: WRNL      
-        12    2C: HALT      
-        13    2E: % Data Area ------------
-        14    2E: % ----------------------
-        15    2E: LABEL    LBL1
-        16    2E: INT   0
-        17    30: LABEL    L1T0
-        18    30: INT       10
-        19    32: LABEL    L1T1
-        20    32: INT       1
-        21    34: LABEL    L1T2
-        22    34: INT       3
-        23    36: LABEL    LBL7
-        24    36: SKIP    50
-        25    68: LABEL    L7T0
-        26    68: STRING    "A should equal 4::"
-        27    7A: LABEL    L7T1
-        28    7A: STRING    "A::"
-        29    7E: 
-        30    7E: LABEL     VARS
-        31    7E: SKIP      2
+         9    22: LD    R7,L1T3
+        10    26: IA    R7,L1T4
+        11    2A: STO   R7,L1T4
+        12    2E: LD    R7,L1T2
+        13    32: ID    R7,L1T4
+        14    36: STO   R7,L1T4
+        15    3A: WRST      L7T1
+        16    3E: WRI       L1T4
+        17    42: WRNL      
+        18    44: HALT      
+        19    46: % Data Area ------------
+        20    46: % ----------------------
+        21    46: LABEL    LBL1
+        22    46: INT   0
+        23    48: LABEL    L1T0
+        24    48: INT       10
+        25    4A: LABEL    L1T1
+        26    4A: INT       5
+        27    4C: LABEL    L1T2
+        28    4C: INT       10
+        29    4E: LABEL    L1T3
+        30    4E: INT       2
+        31    50: LABEL    L1T4
+        32    50: INT       7
+        33    52: LABEL    LBL7
+        34    52: SKIP    50
+        35    84: LABEL    L7T0
+        36    84: STRING    "A should equal 14::"
+        37    98: LABEL    L7T1
+        38    98: STRING    "A::"
+        39    9C: 
+        40    9C: LABEL     VARS
+        41    9C: SKIP      2
 
 
 MACC Memory Hexadecimal Dump
 
  ADDR |   0   1   2   3   4   5   6   7   8   9   A   B   C   D   E   F
 ------+----------------------------------------------------------------
-    0 |  9F  90  00  7E  D4  90  00  68  D5  80  8B  90  00  30  0B  90
-   10 |  00  32  93  90  00  32  8B  90  00  32  0B  90  00  34  93  90
-   20 |  00  34  D4  90  00  7A  D0  10  00  34  D5  80  F8  00  00  00
-   30 |  00  0A  00  01  00  03  00  00  00  00  00  00  00  00  00  00
-   40 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
-   50 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
-   60 |  00  00  00  00  00  00  00  00  41  20  73  68  6F  75  6C  64
-   70 |  20  65  71  75  61  6C  20  34  3A  00  41  3A  00  3A  00  00
+    0 |  9F  90  00  9C  D4  90  00  84  D5  80  8B  90  00  48  23  90
+   10 |  00  4A  93  90  00  4A  8B  90  00  4A  1B  90  00  4C  93  90
+   20 |  00  4C  8B  90  00  4E  0B  90  00  50  93  90  00  50  8B  90
+   30 |  00  4C  23  90  00  50  93  90  00  50  D4  90  00  98  D0  10
+   40 |  00  50  D5  80  F8  00  00  00  00  0A  00  05  00  0A  00  02
+   50 |  00  07  00  00  00  00  00  00  00  00  00  00  00  00  00  00
+   60 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
+   70 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
+   80 |  00  00  00  00  41  20  73  68  6F  75  6C  64  20  65  71  75
+   90 |  61  6C  20  31  34  3A  00  3A  41  3A  00  3A  00  00
 
