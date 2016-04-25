@@ -1,11 +1,11 @@
-// Testing Comments
-//
-// Does this still work?
+/: Testing Comments
+
+Does this still work? :/
 decs {
 	int: a, b, c;
 	float: t;
 	cheese: y,z;
 }
 
-y = "$";
+y = "Test two";
 shout y;

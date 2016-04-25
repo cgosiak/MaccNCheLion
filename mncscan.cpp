@@ -216,6 +216,14 @@ Token Scanner::GetNextToken()
                     currentChar = NextChar();
                 while (currentChar != '\n');
             }
+            else if (sourceFile.peek() == ':') {// comment
+                currentChar = NextChar();
+                do  // skip comment
+                    currentChar = NextChar();
+                while (currentChar != ':' && sourceFile.peek() != '/');
+                currentChar = NextChar();
+                currentChar = NextChar();
+            }
 			else
 			{
 				BufferChar(currentChar);      // division operator

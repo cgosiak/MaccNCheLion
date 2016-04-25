@@ -1,0 +1,32 @@
+
+   SAM 2016 Assembler Listing
+
+   April 25, 2016 at 2:17 P.M.
+   SOURCE FILE: /home/gosi1cal/Desktop/MaccNCheLion/test.asm
+
+        LN    LC
+         0     0: LDA       R15,VARS
+         1     4: WRST      L5T0
+         2     8: WRNL      
+         3     A: HALT      
+         4     C: % Data Area ------------
+         5     C: % ----------------------
+         6     C: LABEL    LBL5
+         7     C: SKIP    50
+         8    3E: LABEL    L5T0
+         9    3E: STRING    "Test two"
+        10    48: 
+        11    48: LABEL     VARS
+        12    48: SKIP      2
+
+
+MACC Memory Hexadecimal Dump
+
+ ADDR |   0   1   2   3   4   5   6   7   8   9   A   B   C   D   E   F
+------+----------------------------------------------------------------
+    0 |  9F  90  00  48  D4  90  00  3E  D5  80  F8  00  00  00  00  00
+   10 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
+   20 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
+   30 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  54  65
+   40 |  73  74  20  74  77  6F  00  6F  00  00
+

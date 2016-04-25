@@ -1,0 +1,52 @@
+
+
+ M A C C - N - C H E E S E   C O M P I L E R   L I S T I N G
+
+					   Team HomeAID
+					   Version 2016
+
+		   Generated code is SAM assembly language for
+				the MACC2 virtual computer.
+ _______________________________________________________________
+
+ April 25, 2016 at 02:17 PM
+ Source file: /home/gosi1cal/Desktop/MaccNCheLion/test.mnc
+
+ LINE #
+                    LDA       R15,VARS
+     1  /: Testing Comments
+     2  
+     3  Does this still work? :/
+     4  decs {
+     5  	int: a, b, c;
+     6  	float: t;
+     7  	cheese: y,z;
+     8  }
+     9  
+    10  y = "Test two";
+                    WRST      L5T0
+                    WRNL      
+    11  shout y;
+    12  
+    13  
+                    HALT      
+                    % Data Area ------------
+% ----------------------
+LABEL    LBL5
+SKIP    50
+LABEL    L5T0
+STRING    "Test two"
+
+                    LABEL     VARS
+                    SKIP      2
+
+
+ _____________________________________________
+ <><><><>   S Y M B O L   T A B L E   <><><><>
+
+ Relative
+ Address      Identifier
+ --------     --------------------------------
+ _____________________________________________
+
+ Normal successful compilation.

@@ -27,7 +27,7 @@ string Time();
 // Returns the current time.
 
 int main() {
-	string sourceName, outName, listName;
+	string sourceName, outName, listName, sam_name;
 
 	cout
 		<< "\n"
@@ -37,9 +37,11 @@ int main() {
 
 	cout << " Source file (.mnc extension is assumed): ";
 	// getline(cin, sourceName);
-	// sourceName = "/home/gosi1cal/Desktop/MaccNCheLion/test"; // school
-	sourceName = "/home/gosi1cal/Desktop/MaccNCheLion/Assign01"; // school
+	sourceName = "/home/gosi1cal/Desktop/MaccNCheLion/test"; // school
+	// sourceName = "/home/gosi1cal/Desktop/MaccNCheLion/Assign01"; // school
 	// sourceName = "/home/caleb/Desktop/MaccNCheLion/test"; // home
+
+    sam_name = sourceName;
 
 	// Add appropriate extensions to file names.
 	outName = sourceName + ".asm";
@@ -75,6 +77,10 @@ int main() {
 		<< "\n Listing file --> " << listName << endl << endl;
 
 	//	cin.get();
+
+    string ter = "/home/gosi1cal/Desktop/MaccNCheLion/sam \"" + sam_name + "\"";
+    system(ter.c_str());
+
 	return 0;
 }
 
