@@ -1,0 +1,94 @@
+LDA       R15,VARS
+WRST      L7T0
+WRNL      
+RDI       L1T0
+WRI       L1T0
+WRNL
+WRNL      
+LD        R0,L1T0
+STO       R0,L2T0
+WRI       L2T0
+WRNL
+WRNL      
+WRI       L1T1
+WRNL
+WRNL
+WRNL      
+WRST      L7T1
+WRNL      
+RDF       L3T0
+RDNL       
+WRF       L3T0
+WRNL
+WRNL      
+LDA       R0,L3T0
+LD        R1,#4
+BKT       R0,L4T0
+WRF       L4T0
+WRNL
+WRNL      
+WRF       L3T1
+WRNL
+WRNL
+WRNL      
+WRST      L7T2
+WRNL      
+RDST      L5T1
+LDA       R0,L5T1
+LD        R1,#50
+BKT       R0,L6T1
+WRST      L6T1
+WRNL
+WRNL      
+WRST      L5T2
+WRNL
+WRNL
+WRNL      
+HALT      
+% Data Area ------------
+% ----------------------
+LABEL    LBL1
+INT   0
+LABEL    L1T0
+INT       0
+LABEL    L1T1
+INT       17
+LABEL    LBL2
+INT   0
+LABEL    L2T0
+INT       0
+LABEL    LBL3
+REAL   0.0
+LABEL    L3T0
+REAL      0.0
+LABEL    L3T1
+REAL      26.03
+LABEL    LBL4
+REAL   0.0
+LABEL    L4T0
+REAL      0
+LABEL    LBL5
+SKIP    50
+LABEL    L5T0
+STRING    ""
+LABEL    L5T1
+SKIP      50
+LABEL    L5T2
+STRING    "$"
+LABEL    LBL6
+SKIP    50
+LABEL    L6T0
+STRING    "0"
+LABEL    L6T1
+SKIP      50
+LABEL    LBL7
+SKIP    50
+LABEL    L7T0
+STRING    "Enter an integer:: "
+LABEL    L7T1
+STRING    "Enter a real number:: "
+LABEL    L7T2
+STRING    "Enter a character:: "
+
+LABEL     VARS
+SKIP      2

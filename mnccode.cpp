@@ -206,16 +206,15 @@ void CodeGen::Shout(Token type_used) {
 	switch (type_used) {
 		case CHEESE_LIT:
 			s = scan.stringBuffer.data();
+            WriteString(s);
 			break;
 		case INT_LIT:
-			IntToAlpha(atoi(scan.tokenBuffer.data()), s);
-			break;
 		case FLOAT_LIT:
 			IntToAlpha(atof(scan.tokenBuffer.data()), s);
+            symbolTable.UpdateEntry("DECS",s);
+            Shout_Variable("DECS");
 			break;
 	}
-	symbolTable.UpdateEntry("DECS",s);
-	Shout_Variable("DECS");
 }
 
 void CodeGen::Shout_Variable(std::string input_var) {
@@ -242,6 +241,8 @@ void CodeGen::Listen(std::string input_var) {
 
 	switch (cur_entry.GetType()) {
 		case TYPE_CHEESE_LIT:
+            symbolTable.ReserveNewLabel(input_var);
+            cur_entry = symbolTable.GetDataObject(input_var);
 			Generate("RDST      ", cur_entry.GetCurrentTempVar(), "");
 			break;
 		case TYPE_BOOL_LIT:
@@ -250,6 +251,7 @@ void CodeGen::Listen(std::string input_var) {
 			break;
 		case TYPE_FLOAT_LIT:
 			Generate("RDF       ", cur_entry.GetCurrentTempVar(), "");
+            Generate("RDNL       ", "", "");
 			break;
 	}
 }
@@ -332,21 +334,57 @@ void CodeGen::WriteExpr(const ExprRec & outExpr)
 	Generate("WRI       ", s, "");
 }
 
-void CodeGen::WriteString()
+void CodeGen::WriteString(string input)
 {
-	string s;
-	s = scan.tokenBuffer.data();
-	Generate("WRST      ", s, "");
+	string s = "";
+	for (int i = 0; i < input.length(); i++){
+
+        if (input[i] == '\\' && i != input.length() - 1){
+            if ( input[i + 1] == 'n') {
+                cerr << s << endl;
+
+                // symbolTable.UpdateEntry("DECS",s);
+                // Shout_Variable("DECS");
+
+                Generate("WRNL", "", "");
+                i++;
+                s = "";
+            }
+        }
+        else {
+            s += input[i];
+        }
+    }
+    if (s.length()) {
+        cerr << s << endl;
+        symbolTable.UpdateEntry("DECS",s);
+        Shout_Variable("DECS");
+    }
 }
 
 void CodeGen::Assign_Var2Var(std::string target, std::string source) {
 	DataEntry tar = symbolTable.GetDataObject(target);
 	DataEntry sou = symbolTable.GetDataObject(source);
+
+    if (sou.GetCurrentTempVar() == "") {
+        symbolTable.UpdateEntry(source,"0");
+    }
+    if (tar.GetCurrentTempVar() == "") {
+        symbolTable.UpdateEntry(target,"0");
+    }
+    tar = symbolTable.GetDataObject(target);
+    sou = symbolTable.GetDataObject(source);
+
     if (tar.GetType() == TYPE_CHEESE_LIT) {
         symbolTable.ReserveNewLabel(target);
         tar = symbolTable.GetDataObject(target);
         Generate("LDA       ", "R0", sou.GetCurrentTempVar());
-		Generate("LD        ", "R1", "#" + std::to_string(string_reservation_space));
+        Generate("LD        ", "R1", "#" + std::to_string(string_reservation_space));
+        Generate("BKT       ", "R0", tar.GetCurrentTempVar());
+    }
+    else if (tar.GetType() == TYPE_FLOAT_LIT) {
+        Generate("LDA       ", "R0", sou.GetCurrentTempVar());
+        Generate("LD        ", "R1", "#4");
         Generate("BKT       ", "R0", tar.GetCurrentTempVar());
     }
     else {

@@ -1,0 +1,6 @@
+WRST NEWSTR
+HALT
+
+
+LABEL NEWSTR
+STRING "This is a\ntest"

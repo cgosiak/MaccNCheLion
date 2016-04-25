@@ -1,24 +1,11 @@
-// Assign01.mnc
-// 
-// Simple variables and input/output.
+// Testing Comments
+//
+// Does this still work?
+decs {
+	int: a, b, c;
+	float: t;
+	cheese: y,z;
+}
 
-decs {	int:  x, y;
-	// float: a, b;
-	cheese: c, d;
-	}
-
-   shout "Enter an integer: ";
-   listen x;
-   shout x, "";
-   y = x;
-   shout y, "";
-   x = 17;
-   shout x, "";
-   
-   shout "Enter a character: ";
-   listen c;
-   shout c, "";
-   d = c;
-   shout d, "";
-   c = "$";
-   shout c, "";
+y = "$";
+shout y;

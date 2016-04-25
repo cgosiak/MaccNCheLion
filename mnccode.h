@@ -100,7 +100,7 @@ class CodeGen {
 	void WriteExpr(const ExprRec & OutExpr);
 	// Produces the assembly code for writing the value of OutExpr.
 
-	void WriteString();
+	void WriteString(string input);
 
 	/* _____________________________________________________________________________
 	*/

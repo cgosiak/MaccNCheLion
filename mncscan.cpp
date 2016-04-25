@@ -219,7 +219,6 @@ Token Scanner::GetNextToken()
 			else
 			{
 				BufferChar(currentChar);      // division operator
-                cerr << "ERROR BRUH" << endl;
 				return DIV_OP;
 			}
 		else if (currentChar == '"')		// string character

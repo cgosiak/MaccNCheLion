@@ -37,8 +37,8 @@ int main() {
 
 	cout << " Source file (.mnc extension is assumed): ";
 	// getline(cin, sourceName);
-	sourceName = "/home/gosi1cal/Desktop/MaccNCheLion/test"; // school
-	// sourceName = "/home/gosi1cal/Desktop/MaccNCheLion/Assign01"; // school
+	// sourceName = "/home/gosi1cal/Desktop/MaccNCheLion/test"; // school
+	sourceName = "/home/gosi1cal/Desktop/MaccNCheLion/Assign01"; // school
 	// sourceName = "/home/caleb/Desktop/MaccNCheLion/test"; // home
 
 	// Add appropriate extensions to file names.

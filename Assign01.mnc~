@@ -25,7 +25,7 @@ decs {	int:  x, y;
    
    shout "Enter a character: ";
    listen c;
-   shout c, "\n";
+   // shout c, "\n";
    d = c;
    shout d, "\n";
    c = "$";
