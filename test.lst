@@ -9,7 +9,7 @@
 				the MACC2 virtual computer.
  _______________________________________________________________
 
- April 25, 2016 at 02:17 PM
+ April 25, 2016 at 02:47 PM
  Source file: /home/gosi1cal/Desktop/MaccNCheLion/test.mnc
 
  LINE #
@@ -23,19 +23,41 @@
      7  	cheese: y,z;
      8  }
      9  
-    10  y = "Test two";
-                    WRST      L5T0
+                    WRST      L7T0
                     WRNL      
-    11  shout y;
-    12  
+    10  shout "A should equal 4:";
+    11  
+                    LD    R7,L1T0
+                    IA    R7,L1T1
+                    STO   R7,L1T1
+                    LD    R7,L1T1
+                    IA    R7,L1T2
+                    STO   R7,L1T2
+    12  a = (10 + 1) + 3;
     13  
+                    WRST      L7T1
+                    WRI       L1T2
+                    WRNL      
+    14  shout "A:",a;
+    15  
+    16  
                     HALT      
                     % Data Area ------------
 % ----------------------
-LABEL    LBL5
+LABEL    LBL1
+INT   0
+LABEL    L1T0
+INT       10
+LABEL    L1T1
+INT       1
+LABEL    L1T2
+INT       3
+LABEL    LBL7
 SKIP    50
-LABEL    L5T0
-STRING    "Test two"
+LABEL    L7T0
+STRING    "A should equal 4::"
+LABEL    L7T1
+STRING    "A::"
 
                     LABEL     VARS
                     SKIP      2

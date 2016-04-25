@@ -387,13 +387,25 @@ void Parser::AddOp()
 
 void Parser::ExprTail(bool is_assign)
 {
+    string old_label;
+    string new_label;
 	switch (NextToken())
 	{
 	case PLUS_OP:
+        AddOp();
+        // code.ProcessOp();
+        old_label =  symbolTable.GetDataObject(currentVar).GetCurrentTempVar();
+        Factor(is_assign);
+        code.ProcessOperation_SymbolTable(currentVar,old_label,PLUS);
+        // code.GenInfix();
+        ExprTail(is_assign);
+        break;
 	case MINUS_OP:
 		AddOp();
 		// code.ProcessOp();
+        old_label =  symbolTable.GetDataObject(currentVar).GetCurrentTempVar();
 		Factor(is_assign);
+        code.ProcessOperation_SymbolTable(currentVar,old_label,MINUS);
 		// code.GenInfix();
 		ExprTail(is_assign);
 		break;
@@ -789,7 +801,7 @@ void Parser::ListenStmt()
 
 void Parser::AssignStmt()
 {
-	Variable();
+	Variable(); // update current var
 	Match(ASSIGN_OP);
 	AssignTail();
 	Match(SEMICOLON);
