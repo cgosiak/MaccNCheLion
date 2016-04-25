@@ -1,7 +1,7 @@
 
    SAM 2016 Assembler Listing
 
-   April 25, 2016 at 3:14 P.M.
+   April 25, 2016 at 3:33 P.M.
    SOURCE FILE: /home/gosi1cal/Desktop/MaccNCheLion/test.asm
 
         LN    LC
@@ -29,63 +29,87 @@
         21    4E: LD    R7,+0(R1)
         22    52: LD    R8,+2(R1)
         23    56: FM    R7,L4T1
-        24    5A: STO   R7,L4T1
-        25    5E: WRST      L7T3
-        26    62: WRF       L4T1
-        27    66: WRNL      
-        28    68: HALT      
-        29    6A: % Data Area ------------
-        30    6A: % ----------------------
-        31    6A: LABEL    LBL1
-        32    6A: INT   0
-        33    6C: LABEL    L1T0
-        34    6C: INT       10
-        35    6E: LABEL    L1T1
-        36    6E: INT       5
-        37    70: LABEL    L1T2
-        38    70: INT       10
-        39    72: LABEL    L1T3
-        40    72: INT       2
-        41    74: LABEL    L1T4
-        42    74: INT       7
-        43    76: LABEL    LBL4
-        44    76: REAL   0.0
-        45    7A: LABEL    L4T0
-        46    7A: REAL      5.0
-        47    7E: LABEL    L4T1
-        48    7E: REAL      5.1
-        49    82: LABEL    LBL7
-        50    82: SKIP    50
-        51    B4: LABEL    L7T0
-        52    B4: STRING    "A should equal 2::"
-        53    C6: LABEL    L7T1
-        54    C6: STRING    "A::"
-        55    CA: LABEL    L7T2
-        56    CA: STRING    "T should equal 2::"
-        57    DC: LABEL    L7T3
-        58    DC: STRING    "T::"
-        59    E0: 
-        60    E0: LABEL     VARS
-        61    E0: SKIP      2
+        24    5A: LDA   R1,L4T1
+        25    5E: STO   R7,+0(R1)
+        26    62: STO   R8,+2(R1)
+        27    66: LDA   R1,L4T1
+        28    6A: LD    R7,+0(R1)
+        29    6E: LD    R8,+2(R1)
+        30    72: FD    R7,L4T2
+        31    76: LDA   R1,L4T2
+        32    7A: STO   R7,+0(R1)
+        33    7E: STO   R8,+2(R1)
+        34    82: LDA   R1,L4T2
+        35    86: LD    R7,+0(R1)
+        36    8A: LD    R8,+2(R1)
+        37    8E: FA    R7,L4T3
+        38    92: LDA   R1,L4T3
+        39    96: STO   R7,+0(R1)
+        40    9A: STO   R8,+2(R1)
+        41    9E: WRST      L7T3
+        42    A2: WRF       L4T3
+        43    A6: WRNL      
+        44    A8: HALT      
+        45    AA: % Data Area ------------
+        46    AA: % ----------------------
+        47    AA: LABEL    LBL1
+        48    AA: INT   0
+        49    AC: LABEL    L1T0
+        50    AC: INT       10
+        51    AE: LABEL    L1T1
+        52    AE: INT       5
+        53    B0: LABEL    L1T2
+        54    B0: INT       10
+        55    B2: LABEL    L1T3
+        56    B2: INT       2
+        57    B4: LABEL    L1T4
+        58    B4: INT       7
+        59    B6: LABEL    LBL4
+        60    B6: REAL   0.0
+        61    BA: LABEL    L4T0
+        62    BA: REAL      5.0
+        63    BE: LABEL    L4T1
+        64    BE: REAL      5.1
+        65    C2: LABEL    L4T2
+        66    C2: REAL      0.1
+        67    C6: LABEL    L4T3
+        68    C6: REAL      17.8346
+        69    CA: LABEL    LBL7
+        70    CA: SKIP    50
+        71    FC: LABEL    L7T0
+        72    FC: STRING    "A should equal 2::"
+        73   10E: LABEL    L7T1
+        74   10E: STRING    "A::"
+        75   112: LABEL    L7T2
+        76   112: STRING    "T should equal 2::"
+        77   124: LABEL    L7T3
+        78   124: STRING    "T::"
+        79   128: 
+        80   128: LABEL     VARS
+        81   128: SKIP      2
 
 
 MACC Memory Hexadecimal Dump
 
  ADDR |   0   1   2   3   4   5   6   7   8   9   A   B   C   D   E   F
 ------+----------------------------------------------------------------
-    0 |  9F  90  00  E0  D4  90  00  B4  D5  80  8B  90  00  6C  23  90
-   10 |  00  6E  93  90  00  6E  8B  90  00  6E  1B  90  00  70  93  90
-   20 |  00  70  8B  90  00  72  0B  90  00  74  93  90  00  74  8B  90
-   30 |  00  70  23  90  00  74  93  90  00  74  D4  90  00  C6  D0  10
-   40 |  00  74  D5  80  D4  90  00  CA  D5  80  98  90  00  7A  8B  A1
-   50 |  00  00  8C  21  00  02  43  90  00  7E  93  90  00  7E  D4  90
-   60 |  00  DC  D0  90  00  7E  D5  80  F8  00  00  00  00  0A  00  05
-   70 |  00  0A  00  02  00  07  00  00  00  00  40  A0  00  00  40  A3
-   80 |  33  33  00  00  00  00  00  00  00  00  00  00  00  00  00  00
-   90 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
-   A0 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
-   B0 |  00  00  00  00  41  20  73  68  6F  75  6C  64  20  65  71  75
-   C0 |  61  6C  20  32  3A  00  41  3A  00  3A  54  20  73  68  6F  75
-   D0 |  6C  64  20  65  71  75  61  6C  20  32  3A  00  54  3A  00  3A
-   E0 |  00  00
+    0 |  9F  90  01  28  D4  90  00  FC  D5  80  8B  90  00  AC  23  90
+   10 |  00  AE  93  90  00  AE  8B  90  00  AE  1B  90  00  B0  93  90
+   20 |  00  B0  8B  90  00  B2  0B  90  00  B4  93  90  00  B4  8B  90
+   30 |  00  B0  23  90  00  B4  93  90  00  B4  D4  90  01  0E  D0  10
+   40 |  00  B4  D5  80  D4  90  01  12  D5  80  98  90  00  BA  8B  A1
+   50 |  00  00  8C  21  00  02  43  90  00  BE  98  90  00  BE  93  A1
+   60 |  00  00  94  21  00  02  98  90  00  BE  8B  A1  00  00  8C  21
+   70 |  00  02  4B  90  00  C2  98  90  00  C2  93  A1  00  00  94  21
+   80 |  00  02  98  90  00  C2  8B  A1  00  00  8C  21  00  02  33  90
+   90 |  00  C6  98  90  00  C6  93  A1  00  00  94  21  00  02  D4  90
+   A0 |  01  24  D0  90  00  C6  D5  80  F8  00  00  00  00  0A  00  05
+   B0 |  00  0A  00  02  00  07  00  00  00  00  40  A0  00  00  40  A3
+   C0 |  33  33  3D  CC  CC  CD  41  8E  AD  43  00  00  00  00  00  00
+   D0 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
+   E0 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
+   F0 |  00  00  00  00  00  00  00  00  00  00  00  00  41  20  73  68
+  100 |  6F  75  6C  64  20  65  71  75  61  6C  20  32  3A  00  41  3A
+  110 |  00  3A  54  20  73  68  6F  75  6C  64  20  65  71  75  61  6C
+  120 |  20  32  3A  00  54  3A  00  3A  00  00
 

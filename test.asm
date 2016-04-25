@@ -22,9 +22,25 @@ LDA   R1,L4T0
 LD    R7,+0(R1)
 LD    R8,+2(R1)
 FM    R7,L4T1
-STO   R7,L4T1
+LDA   R1,L4T1
+STO   R7,+0(R1)
+STO   R8,+2(R1)
+LDA   R1,L4T1
+LD    R7,+0(R1)
+LD    R8,+2(R1)
+FD    R7,L4T2
+LDA   R1,L4T2
+STO   R7,+0(R1)
+STO   R8,+2(R1)
+LDA   R1,L4T2
+LD    R7,+0(R1)
+LD    R8,+2(R1)
+FA    R7,L4T3
+LDA   R1,L4T3
+STO   R7,+0(R1)
+STO   R8,+2(R1)
 WRST      L7T3
-WRF       L4T1
+WRF       L4T3
 WRNL      
 HALT      
 % Data Area ------------
@@ -47,6 +63,10 @@ LABEL    L4T0
 REAL      5.0
 LABEL    L4T1
 REAL      5.1
+LABEL    L4T2
+REAL      0.1
+LABEL    L4T3
+REAL      17.8346
 LABEL    LBL7
 SKIP    50
 LABEL    L7T0

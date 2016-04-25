@@ -9,7 +9,7 @@
 				the MACC2 virtual computer.
  _______________________________________________________________
 
- April 25, 2016 at 12:57 PM
+ April 25, 2016 at 03:22 PM
  Source file: /home/gosi1cal/Desktop/MaccNCheLion/Assign02.mnc
 
  LINE #
@@ -25,24 +25,64 @@
      9  	int:  n;
     10  	}
     11  
-    12  	x = (3 + 5);
+                    LD    R7,L1T0
+                    IA    R7,L1T1
+                    STO   R7,L1T1
+                    LD    R7,L1T1
+                    IM    R7,L1T2
+                    STO   R7,L1T2
+    12  	x = (3 + 5) * 4;
                     WRNL
                     WRST      L5T0
-                    WRI       L1T1
+                    WRI       L1T2
                     WRNL      
     13  	shout "\nx =", x;
+                    LDA   R1,L2T0
+                    LD    R7,+0(R1)
+                    LD    R8,+2(R1)
+                    FA    R7,L2T1
+                    STO   R7,L2T1
+                    LDA   R1,L2T1
+                    LD    R7,+0(R1)
+                    LD    R8,+2(R1)
+                    FM    R7,L2T2
+                    WRF   R7
+                    STO   R7,L2T2
     14  	y = (2.3 + 7.1) * 5.0;
                     WRNL
                     WRST      L5T1
                     WRF       L2T2
                     WRNL      
     15  	shout "\ny =", y;
+                    LDA   R1,L3T1
+                    LD    R7,+0(R1)
+                    LD    R8,+2(R1)
+                    FS    R7,L3T2
+                    STO   R7,L3T2
+                    LDA   R1,L3T0
+                    LD    R7,+0(R1)
+                    LD    R8,+2(R1)
+                    FM    R7,L3T2
+                    WRF   R7
+                    STO   R7,L3T2
     16  	z = 5.0 * (3.6 - 2.9);
                     WRNL
                     WRST      L5T2
                     WRF       L3T2
                     WRNL      
     17  	shout "\nz =", z;
+                    LD    R7,L4T1
+                    IM    R7,L4T2
+                    STO   R7,L4T2
+                    LD    R7,L4T0
+                    IA    R7,L4T2
+                    STO   R7,L4T2
+                    LD    R7,L4T2
+                    IS    R7,L4T3
+                    STO   R7,L4T3
+                    LD    R7,L4T3
+                    ID    R7,L4T4
+                    STO   R7,L4T4
     18  	n = ((2 + 6 * 9) - 8) / 7;
                     WRNL
                     WRST      L5T3
@@ -60,6 +100,8 @@ LABEL    L1T0
 INT       3
 LABEL    L1T1
 INT       5
+LABEL    L1T2
+INT       4
 LABEL    LBL2
 REAL   0.0
 LABEL    L2T0

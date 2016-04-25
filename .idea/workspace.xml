@@ -12,8 +12,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b977f478-4697-4053-81bd-c16ff4ce96c0" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.nfs00000000012c254b00000260" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.nfs00000000012c255000000250" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.nfs00000000012c26370000024e" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.nfs00000000012c266b0000024f" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.nfs00000000012c266c00000251" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.nfs00000000012c266d00000252" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.nfs00000000012c266e00000253" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.nfs00000000012c266f00000254" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.nfs00000000012c267000000255" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.nfs00000000012c267100000256" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.nfs00000000012c26720000025f" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.nfs00000000012c267300000261" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.nfs00000000012c26740000026d" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.nfs00000000012c267500000262" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.nfs00000000012c267600000267" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.nfs00000000012c26780000026f" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.nfs00000000012c26790000026e" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.nfs00000000012c267a00000278" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.nfs00000000012c267b00000276" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.nfs00000000012c267c00000277" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.nfs00000000012c267d00000279" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.nfs00000000012c267e0000027a" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.nfs00000000012c267f0000027b" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.nfs00000000012c26800000027c" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.obj" afterPath="$PROJECT_DIR$/test.obj" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Assign02.asm" afterPath="$PROJECT_DIR$/Assign02.asm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Assign02.lst" afterPath="$PROJECT_DIR$/Assign02.lst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mnc.cpp" afterPath="$PROJECT_DIR$/mnc.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mnccode.cpp" afterPath="$PROJECT_DIR$/mnccode.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.asm" afterPath="$PROJECT_DIR$/test.asm" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.lis" afterPath="$PROJECT_DIR$/test.lis" />
@@ -43,7 +70,7 @@
         <entry file="file://$PROJECT_DIR$/mnc.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="80" column="54" selection-start-line="80" selection-start-column="18" selection-end-line="80" selection-end-column="54" />
+              <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -65,8 +92,8 @@
       <file leaf-file-name="mnccode.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mnccode.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9126214">
-              <caret line="451" column="32" selection-start-line="451" selection-start-column="32" selection-end-line="451" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.41747573">
+              <caret line="407" column="53" selection-start-line="407" selection-start-column="53" selection-end-line="407" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -97,9 +124,9 @@
         <option value="$PROJECT_DIR$/mncscan.h" />
         <option value="$PROJECT_DIR$/DataEntry.cpp" />
         <option value="$PROJECT_DIR$/mncscan.cpp" />
-        <option value="$PROJECT_DIR$/mnc.cpp" />
         <option value="$PROJECT_DIR$/mncparse.cpp" />
         <option value="$PROJECT_DIR$/mnccode.h" />
+        <option value="$PROJECT_DIR$/mnc.cpp" />
         <option value="$PROJECT_DIR$/mnccode.cpp" />
       </list>
     </option>
@@ -229,7 +256,7 @@
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3207547" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3207547" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -670,10 +697,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mnccode.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="97" column="70" selection-start-line="97" selection-start-column="65" selection-end-line="97" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mnc.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="80" column="54" selection-start-line="80" selection-start-column="18" selection-end-line="80" selection-end-column="54" />
+          <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
           <folding />
         </state>
       </provider>
@@ -689,18 +724,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mnccode.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="97" column="70" selection-start-line="97" selection-start-column="65" selection-end-line="97" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mnccode.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9126214">
-          <caret line="451" column="32" selection-start-line="451" selection-start-column="32" selection-end-line="451" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.41747573">
+          <caret line="407" column="53" selection-start-line="407" selection-start-column="53" selection-end-line="407" selection-end-column="53" />
           <folding />
         </state>
       </provider>
