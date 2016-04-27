@@ -12,18 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b977f478-4697-4053-81bd-c16ff4ce96c0" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.nfs00000000012c25400000008a" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.nfs00000000012c268900000089" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.nfs00000000012c268b0000008b" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.nfs00000000012c268c0000008c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.nfs00000000012c268f0000008d" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.nfs00000000012c26910000008e" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.obj" afterPath="$PROJECT_DIR$/test.obj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mnccode.cpp" afterPath="$PROJECT_DIR$/mnccode.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mnccode.h" afterPath="$PROJECT_DIR$/mnccode.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mncparse.cpp" afterPath="$PROJECT_DIR$/mncparse.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mncparse.h" afterPath="$PROJECT_DIR$/mncparse.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.asm" afterPath="$PROJECT_DIR$/test.asm" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.lis" afterPath="$PROJECT_DIR$/test.lis" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.lst" afterPath="$PROJECT_DIR$/test.lst" />
@@ -61,11 +51,11 @@
       <file leaf-file-name="mncparse.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mncparse.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4568869">
-              <caret line="373" column="70" selection-start-line="373" selection-start-column="70" selection-end-line="373" selection-end-column="70" />
+            <state vertical-scroll-proportion="0.3670412">
+              <caret line="644" column="1" selection-start-line="644" selection-start-column="1" selection-end-line="644" selection-end-column="1" />
               <folding>
                 <element signature="e#143#162#0" expanded="true" />
-                <element signature="e#16353#16539#0" expanded="true" />
+                <element signature="e#16352#16538#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -334,7 +324,7 @@
           <caret line="333" column="62" selection-start-line="333" selection-start-column="62" selection-end-line="333" selection-end-column="62" />
           <folding>
             <element signature="e#143#162#0" expanded="true" />
-            <element signature="e#16353#16539#0" expanded="true" />
+            <element signature="e#16352#16538#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -409,7 +399,7 @@
           <caret line="307" column="20" selection-start-line="307" selection-start-column="5" selection-end-line="307" selection-end-column="20" />
           <folding>
             <element signature="e#143#162#0" expanded="true" />
-            <element signature="e#16353#16539#0" expanded="true" />
+            <element signature="e#16352#16538#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -466,7 +456,7 @@
           <caret line="705" column="0" selection-start-line="705" selection-start-column="0" selection-end-line="705" selection-end-column="0" />
           <folding>
             <element signature="e#143#162#0" expanded="true" />
-            <element signature="e#16353#16539#0" expanded="true" />
+            <element signature="e#16352#16538#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -485,7 +475,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#143#162#0" expanded="true" />
-            <element signature="e#16353#16539#0" expanded="true" />
+            <element signature="e#16352#16538#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -547,7 +537,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#143#162#0" expanded="true" />
-            <element signature="e#16353#16539#0" expanded="true" />
+            <element signature="e#16352#16538#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -607,7 +597,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#143#162#0" expanded="true" />
-            <element signature="e#16353#16539#0" expanded="true" />
+            <element signature="e#16352#16538#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -755,11 +745,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mncparse.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4568869">
-          <caret line="373" column="70" selection-start-line="373" selection-start-column="70" selection-end-line="373" selection-end-column="70" />
+        <state vertical-scroll-proportion="0.3670412">
+          <caret line="644" column="1" selection-start-line="644" selection-start-column="1" selection-end-line="644" selection-end-column="1" />
           <folding>
             <element signature="e#143#162#0" expanded="true" />
-            <element signature="e#16353#16539#0" expanded="true" />
+            <element signature="e#16352#16538#0" expanded="true" />
           </folding>
         </state>
       </provider>

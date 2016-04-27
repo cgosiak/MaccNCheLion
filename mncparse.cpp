@@ -580,7 +580,7 @@ void Parser::ForAssign()
 	Variable();
 	// code.ProcessVar();
 	Match(ASSIGN_OP);
-	Expression(false);
+	Expression(true);
 	// code.ForAssign();
 }
 
