@@ -117,6 +117,7 @@ void SymbolTable::ReserveNewLabel(std::string id) {
 ConditionalEntry SymbolTable::CreateConditional() {
     std::string label_name = "STM" + std::to_string(total_conditonals);
     cur_jmp_lbl = "JMP" + std::to_string(total_conditonals);
+    cur_end_lbl = "END" + std::to_string(total_conditonals);
     cur_stmt_label = label_name;
     ConditionalEntry my_entry(label_name,cur_jmp_lbl);
     cur_cond = &my_entry;
@@ -125,6 +126,7 @@ ConditionalEntry SymbolTable::CreateConditional() {
 }
 
 void SymbolTable::CloseConditional() {
+    cur_cond->AddCommand("JMP    " + cur_end_lbl);
     cur_cond->AddCommand("LABEL    " + cur_jmp_lbl);
     conditional_entries.push_back(*cur_cond);
 }
@@ -144,4 +146,8 @@ ConditionalEntry SymbolTable::GetCondObject(std::string id) {
             return *entry;
         }
     }
+}
+
+std::string SymbolTable::CloseElse() {
+    return cur_end_lbl;
 }

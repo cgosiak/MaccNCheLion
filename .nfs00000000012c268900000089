@@ -9,7 +9,7 @@ decs {
 
 shout "A should equal 11:";
 
-b = 4;
+b = 9;
 c = 2;
 
 // a = b + c;
@@ -18,9 +18,9 @@ a = 10;
 
 shout "A:", a;
 
-if (a < 15)
-	shout "A is smaller";
+if (5 < b)
+	shout "5 is smaller";
 else
-	shout "A is larger";
+	shout "5 is larger";
 end
 

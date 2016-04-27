@@ -9,7 +9,7 @@
 				the MACC2 virtual computer.
  _______________________________________________________________
 
- April 26, 2016 at 08:58 PM
+ April 27, 2016 at 08:22 AM
  Source file: /home/gosi1cal/Desktop/MaccNCheLion/test.mnc
 
  LINE #
@@ -27,7 +27,7 @@
                     WRNL      
     10  shout "A should equal 11:";
     11  
-    12  b = 9;
+    12  b = 4;
     13  c = 2;
     14  
     15  // a = b + c;
@@ -39,61 +39,28 @@
                     WRNL      
     19  shout "A:", a;
     20  
-    21  if (a < b)
+    21  if (a < 15)
     22  	shout "A is smaller";
                     LD    R4,L1T0
-                    LD    R5,L2T0
+                    LD    R5,L8T0
                     IC    R4,R5
                     JLT    STM0
                     JMP    JMP0
 LABEL    STM0
 WRST      L7T2
 WRNL      
+JMP    END0
 LABEL    JMP0
 
-    23  end
-    24  if (a > b)
-    25  	shout "A is larger";
-                    LD    R4,L1T0
-                    LD    R5,L2T0
-                    IC    R4,R5
-                    JGT    STM1
-                    JMP    JMP1
-LABEL    STM1
-WRST      L7T3
-WRNL      
-LABEL    JMP1
-
-    26  end
-    27  if (a == b)
-    28  	shout "A is equal to b";
-                    LD    R4,L1T0
-                    LD    R5,L2T0
-                    IC    R4,R5
-                    JEQ    STM2
-                    JMP    JMP2
-LABEL    STM2
-WRST      L7T4
-WRNL      
-LABEL    JMP2
-
-    29  end
-    30  if (a != b)
-    31  	shout "A is not equal to b";
-                    LD    R4,L1T0
-                    LD    R5,L2T0
-                    IC    R4,R5
-                    JNE    STM3
-                    JMP    JMP3
-LABEL    STM3
-WRST      L7T5
-WRNL      
-LABEL    JMP3
-
-    32  end
-    33  
-    34  
-    35  
+    23  else
+                    WRST      L7T3
+                    WRNL      
+    24  	shout "A is larger";
+                    LABEL    END0
+    25  end
+    26  
+    27  
+    28  
                     HALT      
                     % Data Area ------------
 % ----------------------
@@ -104,7 +71,7 @@ INT       10
 LABEL    LBL2
 INT   0
 LABEL    L2T0
-INT       9
+INT       4
 LABEL    LBL3
 INT   0
 LABEL    L3T0
@@ -119,10 +86,10 @@ LABEL    L7T2
 STRING    "A is smaller"
 LABEL    L7T3
 STRING    "A is larger"
-LABEL    L7T4
-STRING    "A is equal to b"
-LABEL    L7T5
-STRING    "A is not equal to b"
+LABEL    LBL8
+INT   0
+LABEL    L8T0
+INT       15
 
                     LABEL     VARS
                     SKIP      2

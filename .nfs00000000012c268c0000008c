@@ -18,9 +18,9 @@ a = 10;
 
 shout "A:", a;
 
-if (a < 15)
-	shout "A is smaller";
+if (5 < 7)
+	shout "5 is smaller";
 else
-	shout "A is larger";
+	shout "5 is larger";
 end
 

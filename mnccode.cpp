@@ -524,5 +524,5 @@ void CodeGen::CloseCondition(string condition_name) {
 }
 
 void CodeGen::Compare_Numbers_Else(string jump_lbl) {
-	Generate("JMP    ",jump_lbl,"");
+	Generate("LABEL    ",jump_lbl,"");
 }

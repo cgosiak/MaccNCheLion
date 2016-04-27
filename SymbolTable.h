@@ -34,6 +34,8 @@ public:
 
     void CloseConditional();
 
+    std::string CloseElse();
+
     std::string GetCurrentConditionalLabel();
 
 private:
@@ -44,6 +46,7 @@ private:
 
     std::string cur_stmt_label = "";
     std::string cur_jmp_lbl = "";
+    std::string cur_end_lbl = "";
 
     std::vector<DataEntry> table_entries; // Vector object containing all entries
     std::vector<ConditionalEntry> conditional_entries; // all conditionals

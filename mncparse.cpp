@@ -354,9 +354,22 @@ void Parser::Primary(bool is_assign)
             case INT_LIT:
             case FLOAT_LIT:
             case CHEESE_LIT: {
+				if (nex_token == INT_LIT) {
+					currentVar = "INT";
+					if (!symbolTable.EntryExists(currentVar)) {
+						symbolTable.AddEntry(currentVar,TYPE_INT_LIT);
+					}
+					symbolTable.UpdateEntry(currentVar, scan.tokenBuffer.data());
+				}
                 Literal();
 				if (shout_me) {
-					code.Shout(nex_token);
+					// code.Shout(nex_token);
+					if (nex_token == INT_LIT) {
+						code.Shout_Variable(currentVar);
+					}
+					else {
+						code.Shout(nex_token);
+					}
 				}
                 break;
             }
@@ -672,10 +685,9 @@ void Parser::IfStmt()
     symbolTable.CloseConditional();
     code.CloseCondition(if_lbl);
 
-    in_conditional = true;
 	ElseClause();
 	Match(END_SYM);
-    in_conditional = false;
+	code.Compare_Numbers_Else(symbolTable.CloseElse());
 	// code.IfEnd();
 }
 
