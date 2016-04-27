@@ -361,10 +361,17 @@ void Parser::Primary(bool is_assign)
 					}
 					symbolTable.UpdateEntry(currentVar, scan.tokenBuffer.data());
 				}
+                if (nex_token == FLOAT_LIT) {
+                    currentVar = "FLOAT";
+                    if (!symbolTable.EntryExists(currentVar)) {
+                        symbolTable.AddEntry(currentVar,TYPE_FLOAT_LIT);
+                    }
+                    symbolTable.UpdateEntry(currentVar, scan.tokenBuffer.data());
+                }
                 Literal();
 				if (shout_me) {
 					// code.Shout(nex_token);
-					if (nex_token == INT_LIT) {
+					if (nex_token == INT_LIT || nex_token == FLOAT_LIT) {
 						code.Shout_Variable(currentVar);
 					}
 					else {
@@ -450,6 +457,7 @@ void Parser::Factor(bool is_assign)// ExprRec& expr)
             left_cond_set = false;
         }
         else {
+            type_assigned = symbolTable.GetDataObject(currentVar).GetType();
             left_conditional = symbolTable.GetDataObject(currentVar).GetCurrentTempVar();
             cout << "Left assigned: " << left_conditional << " which is variable " << currentVar <<  endl;
             left_cond_set = true;
@@ -609,6 +617,15 @@ void Parser::VarDecs()
 
 void Parser::SelectStmt()
 {
+    // DO NOT DO THE SELECT STATEMENT
+
+
+
+
+
+
+
+    // MARTY SAYS WE DO NOT HAVE TOOOOOOOOO
 	Match(SELECT_SYM);
 	Match(LBANANA);
 	Expression(false);
@@ -681,7 +698,7 @@ void Parser::IfStmt()
     in_stmt = false;
     in_conditional = false;
     std::string if_lbl = symbolTable.GetCurrentConditionalLabel();
-    code.Compare_Numbers(left_conditional,right_conditional,if_lbl,comp_operator);
+    code.Compare_Numbers(left_conditional,right_conditional,if_lbl,comp_operator, type_assigned);
     symbolTable.CloseConditional();
     code.CloseCondition(if_lbl);
 

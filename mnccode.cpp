@@ -490,31 +490,40 @@ void CodeGen::ProcessOperation_SymbolTable(string id, string old_lbl, Token op_u
     }
 }
 
-void CodeGen::Compare_Numbers(string lbl1, string lbl2, string jump_lbl, Token comp_op) {
+void CodeGen::Compare_Numbers(string lbl1, string lbl2, string jump_lbl, Token comp_op, DataTypes entry_type) {
 	Generate("LD    ","R4",lbl1);
 	Generate("LD    ","R5",lbl2);
-	Generate("IC    ","R4","R5");
+
+	switch (entry_type) {
+		case TYPE_INT_LIT:
+			Generate("IC    ","R4","R5");
+			break;
+		case TYPE_FLOAT_LIT:
+			Generate("FC    ","R4","R5");
+			break;
+	}
+
 	switch (comp_op) {
 		case LT_OP:
-			Generate("JLT    ",jump_lbl,"");
+			Generate("JLT    ", jump_lbl, "");
 			break;
 		case LE_OP:
-			Generate("JLE    ",jump_lbl,"");
+			Generate("JLE    ", jump_lbl, "");
 			break;
 		case GT_OP:
-			Generate("JGT    ",jump_lbl,"");
+			Generate("JGT    ", jump_lbl, "");
 			break;
 		case GE_OP:
-			Generate("JGE    ",jump_lbl,"");
+			Generate("JGE    ", jump_lbl, "");
 			break;
 		case EQ_OP1:
-			Generate("JEQ    ",jump_lbl,"");
+			Generate("JEQ    ", jump_lbl, "");
 			break;
 		case EQ_OP2:
-			Generate("JEQ    ",jump_lbl,"");
+			Generate("JEQ    ", jump_lbl, "");
 			break;
 		case NE_OP:
-			Generate("JNE    ",jump_lbl,"");
+			Generate("JNE    ", jump_lbl, "");
 			break;
 	}
 }

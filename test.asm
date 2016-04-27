@@ -1,52 +1,47 @@
 LDA       R15,VARS
-WRST      L7T0
-WRNL      
-WRST      L7T1
-WRI       L1T0
-WRNL      
-LD    R4,L1T0
-LD    R5,L8T0
-IC    R4,R5
+LD    R4,L8T0
+LD    R5,L5T0
+FC    R4,R5
 JLT    STM0
 JMP    JMP0
 LABEL    STM0
-WRST      L7T2
+WRF       L8T1
+WRST      L9T0
+WRF       L5T0
 WRNL      
 JMP    END0
 LABEL    JMP0
 
-WRST      L7T3
+WRF       L5T0
+WRST      L9T1
+WRF       L8T2
 WRNL      
 LABEL    END0
 HALT      
 % Data Area ------------
 % ----------------------
-LABEL    LBL1
-INT   0
-LABEL    L1T0
-INT       10
-LABEL    LBL2
-INT   0
-LABEL    L2T0
-INT       4
-LABEL    LBL3
-INT   0
-LABEL    L3T0
-INT       2
-LABEL    LBL7
-SKIP    50
-LABEL    L7T0
-STRING    "A should equal 11::"
-LABEL    L7T1
-STRING    "A::"
-LABEL    L7T2
-STRING    "A is smaller"
-LABEL    L7T3
-STRING    "A is larger"
+LABEL    LBL4
+REAL   0.0
+LABEL    L4T0
+REAL      1.3
+LABEL    LBL5
+REAL   0.0
+LABEL    L5T0
+REAL      1.6
 LABEL    LBL8
-INT   0
+REAL   0.0
 LABEL    L8T0
-INT       15
+REAL      1.4
+LABEL    L8T1
+REAL      1.4
+LABEL    L8T2
+REAL      1.4
+LABEL    LBL9
+SKIP    50
+LABEL    L9T0
+STRING    " is smaller than "
+LABEL    L9T1
+STRING    " is smaller than "
 
 LABEL     VARS
 SKIP      2

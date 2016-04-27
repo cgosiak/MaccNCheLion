@@ -6,6 +6,7 @@
 using namespace std;
 
 #include "mncscan.h"
+#include "DataEntry.h"
 
 enum OpKind { PLUS, MINUS, MULT, DIVN };
 
@@ -97,7 +98,7 @@ class CodeGen {
 
 	void ProcessOperation_SymbolTable(string id, string old_lbl, Token op_used);
 
-	void Compare_Numbers(string lbl1, string lbl2, string jump_lbl, Token comp_op);
+	void Compare_Numbers(string lbl1, string lbl2, string jump_lbl, Token comp_op, DataTypes entry_type);
 
     void Compare_Numbers_Else(string jump_lbl);
 

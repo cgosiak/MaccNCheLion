@@ -38,6 +38,7 @@ private:
 	std::string left_conditional = "";
 	std::string right_conditional = "";
 	Token comp_operator;
+	DataTypes type_assigned;
 
 	void SyntaxError(Token t, string msg);
 
