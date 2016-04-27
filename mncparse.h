@@ -13,6 +13,7 @@ using namespace std;
 #include "mncscan.h" // scanner class definition
 
 #include "mnccode.h" // code generator class definition
+#include "ConditionalEntry.h"
 
 class Parser
 {
@@ -22,10 +23,21 @@ public:
 
 	void SystemGoal();
 
+    ConditionalEntry *cur_conditional;
+
+    bool in_conditional = false;
+
 private:
 
 	Token savedToken;
-	bool  tokenAvailable;
+	bool tokenAvailable;
+	bool shout_me = false;
+    bool in_stmt = false;
+
+    bool left_cond_set = false;
+	std::string left_conditional = "";
+	std::string right_conditional = "";
+	Token comp_operator;
 
 	void SyntaxError(Token t, string msg);
 

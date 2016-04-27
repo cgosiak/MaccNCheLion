@@ -7,12 +7,27 @@ decs {
 	cheese: y,z;
 }
 
-shout "A should equal 2:";
+shout "A should equal 11:";
 
 b = 9;
 c = 2;
 
-a = b + c;
+// a = b + c;
+
+a = 10;
 
 shout "A:", a;
+
+if (a < b)
+	shout "A is smaller";
+end
+if (a > b)
+	shout "A is larger";
+end
+if (a == b)
+	shout "A is equal to b";
+end
+if (a != b)
+	shout "A is not equal to b";
+end
 

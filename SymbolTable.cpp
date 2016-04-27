@@ -113,3 +113,35 @@ void SymbolTable::ReserveNewLabel(std::string id) {
         //some error
     }
 }
+
+ConditionalEntry SymbolTable::CreateConditional() {
+    std::string label_name = "STM" + std::to_string(total_conditonals);
+    cur_jmp_lbl = "JMP" + std::to_string(total_conditonals);
+    cur_stmt_label = label_name;
+    ConditionalEntry my_entry(label_name,cur_jmp_lbl);
+    cur_cond = &my_entry;
+    total_conditonals++;
+    return my_entry;
+}
+
+void SymbolTable::CloseConditional() {
+    cur_cond->AddCommand("LABEL    " + cur_jmp_lbl);
+    conditional_entries.push_back(*cur_cond);
+}
+
+std::string SymbolTable::GetCurrentConditionalLabel() {
+    return cur_stmt_label;
+}
+
+ConditionalEntry SymbolTable::GetCondObject(std::string id) {
+    ConditionalEntry *entry;
+    std::cout << "Compare: " << id << " to " << conditional_entries[0].GetLabelName() << std::endl;
+    for (int i = 0; i < conditional_entries.size(); ++i) {
+        std::cout << "Compare: " << id << " to " << conditional_entries[i].GetLabelName() << std::endl;
+        if (conditional_entries[i].GetLabelName() == id) {
+            std::cout << "Found object!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
+            entry = &conditional_entries[i];
+            return *entry;
+        }
+    }
+}

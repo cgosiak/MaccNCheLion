@@ -1,60 +1,109 @@
 
    SAM 2016 Assembler Listing
 
-   April 25, 2016 at 3:54 P.M.
+   April 26, 2016 at 8:58 P.M.
    SOURCE FILE: /home/gosi1cal/Desktop/MaccNCheLion/test.asm
 
         LN    LC
          0     0: LDA       R15,VARS
          1     4: WRST      L7T0
          2     8: WRNL      
-         3     A: LD        R0,L2T0
-         4     E: STO       R0,L1T0
-         5    12: LD        R0,L3T0
-         6    16: STO       R0,L2T0
-         7    1A: LD    R7,L2T0
-         8    1E: IA    R7,L3T0
-         9    22: STO   R7,L3T0
-        10    26: WRST      L7T1
-        11    2A: WRI       L1T0
-        12    2E: WRNL      
-        13    30: HALT      
-        14    32: % Data Area ------------
-        15    32: % ----------------------
-        16    32: LABEL    LBL1
-        17    32: INT   0
-        18    34: LABEL    L1T0
-        19    34: INT       0
-        20    36: LABEL    LBL2
-        21    36: INT   0
-        22    38: LABEL    L2T0
-        23    38: INT       9
-        24    3A: LABEL    LBL3
-        25    3A: INT   0
-        26    3C: LABEL    L3T0
-        27    3C: INT       2
-        28    3E: LABEL    LBL7
-        29    3E: SKIP    50
-        30    70: LABEL    L7T0
-        31    70: STRING    "A should equal 2::"
-        32    82: LABEL    L7T1
-        33    82: STRING    "A::"
-        34    86: 
-        35    86: LABEL     VARS
-        36    86: SKIP      2
+         3     A: WRST      L7T1
+         4     E: WRI       L1T0
+         5    12: WRNL      
+         6    14: LD    R4,L1T0
+         7    18: LD    R5,L2T0
+         8    1C: IC    R4,R5
+         9    1E: JLT    STM0
+        10    22: JMP    JMP0
+        11    26: LABEL    STM0
+        12    26: WRST      L7T2
+        13    2A: WRNL      
+        14    2C: LABEL    JMP0
+        15    2C: 
+        16    2C: LD    R4,L1T0
+        17    30: LD    R5,L2T0
+        18    34: IC    R4,R5
+        19    36: JGT    STM1
+        20    3A: JMP    JMP1
+        21    3E: LABEL    STM1
+        22    3E: WRST      L7T3
+        23    42: WRNL      
+        24    44: LABEL    JMP1
+        25    44: 
+        26    44: LD    R4,L1T0
+        27    48: LD    R5,L2T0
+        28    4C: IC    R4,R5
+        29    4E: JEQ    STM2
+        30    52: JMP    JMP2
+        31    56: LABEL    STM2
+        32    56: WRST      L7T4
+        33    5A: WRNL      
+        34    5C: LABEL    JMP2
+        35    5C: 
+        36    5C: LD    R4,L1T0
+        37    60: LD    R5,L2T0
+        38    64: IC    R4,R5
+        39    66: JNE    STM3
+        40    6A: JMP    JMP3
+        41    6E: LABEL    STM3
+        42    6E: WRST      L7T5
+        43    72: WRNL      
+        44    74: LABEL    JMP3
+        45    74: 
+        46    74: HALT      
+        47    76: % Data Area ------------
+        48    76: % ----------------------
+        49    76: LABEL    LBL1
+        50    76: INT   0
+        51    78: LABEL    L1T0
+        52    78: INT       10
+        53    7A: LABEL    LBL2
+        54    7A: INT   0
+        55    7C: LABEL    L2T0
+        56    7C: INT       9
+        57    7E: LABEL    LBL3
+        58    7E: INT   0
+        59    80: LABEL    L3T0
+        60    80: INT       2
+        61    82: LABEL    LBL7
+        62    82: SKIP    50
+        63    B4: LABEL    L7T0
+        64    B4: STRING    "A should equal 11::"
+        65    C8: LABEL    L7T1
+        66    C8: STRING    "A::"
+        67    CC: LABEL    L7T2
+        68    CC: STRING    "A is smaller"
+        69    DA: LABEL    L7T3
+        70    DA: STRING    "A is larger"
+        71    E6: LABEL    L7T4
+        72    E6: STRING    "A is equal to b"
+        73    F6: LABEL    L7T5
+        74    F6: STRING    "A is not equal to b"
+        75   10A: 
+        76   10A: LABEL     VARS
+        77   10A: SKIP      2
 
 
 MACC Memory Hexadecimal Dump
 
  ADDR |   0   1   2   3   4   5   6   7   8   9   A   B   C   D   E   F
 ------+----------------------------------------------------------------
-    0 |  9F  90  00  86  D4  90  00  70  D5  80  88  10  00  38  90  10
-   10 |  00  34  88  10  00  3C  90  10  00  38  8B  90  00  38  0B  90
-   20 |  00  3C  93  90  00  3C  D4  90  00  82  D0  10  00  34  D5  80
-   30 |  F8  00  00  00  00  00  00  00  00  09  00  00  00  02  00  00
-   40 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
-   50 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
-   60 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
-   70 |  41  20  73  68  6F  75  6C  64  20  65  71  75  61  6C  20  32
-   80 |  3A  00  41  3A  00  3A  00  00
+    0 |  9F  90  01  0A  D4  90  00  B4  D5  80  D4  90  00  C8  D0  10
+   10 |  00  78  D5  80  8A  10  00  78  8A  90  00  7C  6A  05  B0  90
+   20 |  00  26  B0  10  00  2C  D4  90  00  CC  D5  80  8A  10  00  78
+   30 |  8A  90  00  7C  6A  05  B3  10  00  3E  B0  10  00  44  D4  90
+   40 |  00  DA  D5  80  8A  10  00  78  8A  90  00  7C  6A  05  B1  90
+   50 |  00  56  B0  10  00  5C  D4  90  00  E6  D5  80  8A  10  00  78
+   60 |  8A  90  00  7C  6A  05  B2  10  00  6E  B0  10  00  74  D4  90
+   70 |  00  F6  D5  80  F8  00  00  00  00  0A  00  00  00  09  00  00
+   80 |  00  02  00  00  00  00  00  00  00  00  00  00  00  00  00  00
+   90 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
+   A0 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
+   B0 |  00  00  00  00  41  20  73  68  6F  75  6C  64  20  65  71  75
+   C0 |  61  6C  20  31  31  3A  00  3A  41  3A  00  3A  41  20  69  73
+   D0 |  20  73  6D  61  6C  6C  65  72  00  72  41  20  69  73  20  6C
+   E0 |  61  72  67  65  72  00  41  20  69  73  20  65  71  75  61  6C
+   F0 |  20  74  6F  20  62  00  41  20  69  73  20  6E  6F  74  20  65
+  100 |  71  75  61  6C  20  74  6F  20  62  00  00  00
 

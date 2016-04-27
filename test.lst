@@ -9,7 +9,7 @@
 				the MACC2 virtual computer.
  _______________________________________________________________
 
- April 25, 2016 at 03:54 PM
+ April 26, 2016 at 08:58 PM
  Source file: /home/gosi1cal/Desktop/MaccNCheLion/test.mnc
 
  LINE #
@@ -25,34 +25,82 @@
      9  
                     WRST      L7T0
                     WRNL      
-    10  shout "A should equal 2:";
+    10  shout "A should equal 11:";
     11  
     12  b = 9;
     13  c = 2;
     14  
-                    LD        R0,L2T0
-                    STO       R0,L1T0
-                    LD        R0,L3T0
-                    STO       R0,L2T0
-                    LD    R7,L2T0
-                    IA    R7,L3T0
-                    STO   R7,L3T0
-    15  a = b + c;
+    15  // a = b + c;
     16  
+    17  a = 10;
+    18  
                     WRST      L7T1
                     WRI       L1T0
                     WRNL      
-    17  shout "A:", a;
-    18  
-    19  
+    19  shout "A:", a;
     20  
+    21  if (a < b)
+    22  	shout "A is smaller";
+                    LD    R4,L1T0
+                    LD    R5,L2T0
+                    IC    R4,R5
+                    JLT    STM0
+                    JMP    JMP0
+LABEL    STM0
+WRST      L7T2
+WRNL      
+LABEL    JMP0
+
+    23  end
+    24  if (a > b)
+    25  	shout "A is larger";
+                    LD    R4,L1T0
+                    LD    R5,L2T0
+                    IC    R4,R5
+                    JGT    STM1
+                    JMP    JMP1
+LABEL    STM1
+WRST      L7T3
+WRNL      
+LABEL    JMP1
+
+    26  end
+    27  if (a == b)
+    28  	shout "A is equal to b";
+                    LD    R4,L1T0
+                    LD    R5,L2T0
+                    IC    R4,R5
+                    JEQ    STM2
+                    JMP    JMP2
+LABEL    STM2
+WRST      L7T4
+WRNL      
+LABEL    JMP2
+
+    29  end
+    30  if (a != b)
+    31  	shout "A is not equal to b";
+                    LD    R4,L1T0
+                    LD    R5,L2T0
+                    IC    R4,R5
+                    JNE    STM3
+                    JMP    JMP3
+LABEL    STM3
+WRST      L7T5
+WRNL      
+LABEL    JMP3
+
+    32  end
+    33  
+    34  
+    35  
                     HALT      
                     % Data Area ------------
 % ----------------------
 LABEL    LBL1
 INT   0
 LABEL    L1T0
-INT       0
+INT       10
 LABEL    LBL2
 INT   0
 LABEL    L2T0
@@ -64,9 +112,17 @@ INT       2
 LABEL    LBL7
 SKIP    50
 LABEL    L7T0
-STRING    "A should equal 2::"
+STRING    "A should equal 11::"
 LABEL    L7T1
 STRING    "A::"
+LABEL    L7T2
+STRING    "A is smaller"
+LABEL    L7T3
+STRING    "A is larger"
+LABEL    L7T4
+STRING    "A is equal to b"
+LABEL    L7T5
+STRING    "A is not equal to b"
 
                     LABEL     VARS
                     SKIP      2

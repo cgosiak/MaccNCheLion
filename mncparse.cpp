@@ -355,12 +355,16 @@ void Parser::Primary(bool is_assign)
             case FLOAT_LIT:
             case CHEESE_LIT: {
                 Literal();
-                code.Shout(nex_token);
+				if (shout_me) {
+					code.Shout(nex_token);
+				}
                 break;
             }
             case ID: {
                 Variable();
-                code.Shout_Variable(currentVar);
+				if (shout_me) {
+					code.Shout_Variable(currentVar);
+				}
                 break;
             }
             case LBANANA:
@@ -426,6 +430,18 @@ void Parser::ExprTail(bool is_assign)
 void Parser::Factor(bool is_assign)// ExprRec& expr)
 {
 	Primary(is_assign);
+    if (in_conditional && !in_stmt) {
+        if (left_cond_set) {
+            right_conditional = symbolTable.GetDataObject(currentVar).GetCurrentTempVar();
+            cout << "Right assigned: " << right_conditional << " which is variable " << currentVar << endl;
+            left_cond_set = false;
+        }
+        else {
+            left_conditional = symbolTable.GetDataObject(currentVar).GetCurrentTempVar();
+            cout << "Left assigned: " << left_conditional << " which is variable " << currentVar <<  endl;
+            left_cond_set = true;
+        }
+    }
 	FactorTail(is_assign);
 }
 
@@ -461,7 +477,8 @@ void Parser::RelOp()
 
 void Parser::CondTail()
 {
-	switch (NextToken())
+    Token t = NextToken();
+	switch (t)
 	{
 	case LT_OP:
 	case LE_OP:
@@ -471,6 +488,7 @@ void Parser::CondTail()
 	case EQ_OP2:
 	case NE_OP:
 		RelOp();
+        comp_operator = t;
 		// code.ProcessOp();
 		Expression(false);
 		break;
@@ -637,14 +655,27 @@ void Parser::LoopStmt()
 
 void Parser::IfStmt()
 {
+	ConditionalEntry myentry = symbolTable.CreateConditional();
+	cur_conditional = &myentry;
+    in_conditional = true;
 	Match(IF_SYM);
 	Match(LBANANA);
 	Condition();
 	Match(RBANANA);
 	// code.IfThen();
+    in_stmt = true;
 	StmtList();
+    in_stmt = false;
+    in_conditional = false;
+    std::string if_lbl = symbolTable.GetCurrentConditionalLabel();
+    code.Compare_Numbers(left_conditional,right_conditional,if_lbl,comp_operator);
+    symbolTable.CloseConditional();
+    code.CloseCondition(if_lbl);
+
+    in_conditional = true;
 	ElseClause();
 	Match(END_SYM);
+    in_conditional = false;
 	// code.IfEnd();
 }
 
@@ -668,10 +699,8 @@ void Parser::ItemList(bool is_assign)//ExprRec& expr)
 {
 	ExprRec expr;
 
-
 	Expression(is_assign);
 
-    cout << "ITEM LIST" << endl;
 	ItemListTail(expr, is_assign);
 }
 
@@ -782,10 +811,12 @@ void Parser::BreakStmt()
 
 void Parser::ShoutStmt(const ExprRec& expr)
 {
+    shout_me = true;
 	Match(SHOUT_SYM);
 	ItemList(false);
 	code.NewLine();
 	Match(SEMICOLON);
+    shout_me = false;
 }
 
 void Parser::ListenStmt()

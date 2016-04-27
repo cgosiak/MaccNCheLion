@@ -97,6 +97,12 @@ class CodeGen {
 
 	void ProcessOperation_SymbolTable(string id, string old_lbl, Token op_used);
 
+	void Compare_Numbers(string lbl1, string lbl2, string jump_lbl, Token comp_op);
+
+    void Compare_Numbers_Else(string jump_lbl);
+
+    void CloseCondition(string condition_name);
+
 	void WriteExpr(const ExprRec & OutExpr);
 	// Produces the assembly code for writing the value of OutExpr.
 

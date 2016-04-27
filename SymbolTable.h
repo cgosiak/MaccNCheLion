@@ -7,11 +7,14 @@
 
 #include "DataEntry.h"
 #include <vector>
+#include "ConditionalEntry.h"
 
 class SymbolTable {
 
 public:
     SymbolTable(); // Initializes Symbol Table Object
+
+    ConditionalEntry CreateConditional(); // create a new condtional
 
     void AddEntry(std::string id, DataTypes type); // Add entry to symbol table
 
@@ -25,12 +28,25 @@ public:
 
     DataEntry GetDataObject(std::string id); // returns the data entry object
 
+    ConditionalEntry GetCondObject(std::string id);
+
     std::string FinishSymbolTable(); // Returns a string to write the symbol table to the output assembly file
+
+    void CloseConditional();
+
+    std::string GetCurrentConditionalLabel();
 
 private:
     int total_entries = 0; // Current amount of stored data entries
+    int total_conditonals = 0;
+
+    ConditionalEntry *cur_cond;
+
+    std::string cur_stmt_label = "";
+    std::string cur_jmp_lbl = "";
 
     std::vector<DataEntry> table_entries; // Vector object containing all entries
+    std::vector<ConditionalEntry> conditional_entries; // all conditionals
 
 };
 

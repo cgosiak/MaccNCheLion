@@ -28,9 +28,11 @@ extern ofstream outFile, listFile;
 #include "mncscan.h"   // Scanner class definition
 #include "mnccode.h"
 #include "SymbolTable.h"
+#include "mncparse.h"
 
 extern Scanner scan; // global Scanner object declared in micro.cpp
 extern SymbolTable symbolTable;
+extern Parser parse;
 
 // *******************
 // **  Constructor  **
@@ -88,21 +90,36 @@ string CodeGen::ExtractOp(const OpRec & o)
 
 void CodeGen::Generate(const string & s1, const string & s2, const string & s3)
 {
-	listFile.width(20);
-	listFile << ' ' << s1;
-	outFile << s1;
-	if (s2.length() > 0)
-	{
-		listFile << s2;
-		outFile << s2;
-		if (s3.length() > 0)
-		{
-			listFile << ',' << s3;
-			outFile << ',' << s3;
-		}
-	}
-	listFile << endl;
-	outFile << endl;
+    if (parse.in_conditional) {
+        std::string code_input = s1;
+        if (s2.length() > 0)
+        {
+            code_input = code_input + s2;
+            if (s3.length() > 0)
+            {
+                code_input = code_input + ", " + s3;
+            }
+        }
+        cout << "CODE INPUT: " << code_input << endl;
+        parse.cur_conditional->AddCommand(code_input);
+    }
+    else {
+        listFile.width(20);
+        listFile << ' ' << s1;
+        outFile << s1;
+        if (s2.length() > 0)
+        {
+            listFile << s2;
+            outFile << s2;
+            if (s3.length() > 0)
+            {
+                listFile << ',' << s3;
+                outFile << ',' << s3;
+            }
+        }
+        listFile << endl;
+        outFile << endl;
+    }
 }
 
 string CodeGen::GetTemp()
@@ -471,4 +488,41 @@ void CodeGen::ProcessOperation_SymbolTable(string id, string old_lbl, Token op_u
         default:
             break;
     }
+}
+
+void CodeGen::Compare_Numbers(string lbl1, string lbl2, string jump_lbl, Token comp_op) {
+	Generate("LD    ","R4",lbl1);
+	Generate("LD    ","R5",lbl2);
+	Generate("IC    ","R4","R5");
+	switch (comp_op) {
+		case LT_OP:
+			Generate("JLT    ",jump_lbl,"");
+			break;
+		case LE_OP:
+			Generate("JLE    ",jump_lbl,"");
+			break;
+		case GT_OP:
+			Generate("JGT    ",jump_lbl,"");
+			break;
+		case GE_OP:
+			Generate("JGE    ",jump_lbl,"");
+			break;
+		case EQ_OP1:
+			Generate("JEQ    ",jump_lbl,"");
+			break;
+		case EQ_OP2:
+			Generate("JEQ    ",jump_lbl,"");
+			break;
+		case NE_OP:
+			Generate("JNE    ",jump_lbl,"");
+			break;
+	}
+}
+
+void CodeGen::CloseCondition(string condition_name) {
+	Generate(symbolTable.GetCondObject(condition_name).GetAllCommands(),"","");
+}
+
+void CodeGen::Compare_Numbers_Else(string jump_lbl) {
+	Generate("JMP    ",jump_lbl,"");
 }
