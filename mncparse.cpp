@@ -33,6 +33,7 @@ struct Tokens {
 DataTypes currentType;
 std::string currentVar;
 std::string assign_to_var;
+std::string absolute_var;
 
 std::string getTokenText(int token) {
 	int size = (sizeof(Tokens) / sizeof(*Tokens));
@@ -335,7 +336,9 @@ void Parser::Primary(bool is_assign)
 				assign_to_var = currentVar;
                 Variable();
 				// Assign last accessed var with current var
-				code.Assign_Var2Var(assign_to_var,currentVar);
+                cout << "ASSIGNING:=============================" << currentVar << " to " << absolute_var << endl;
+				// code.Assign_Var2Var(assign_to_var,currentVar);
+                code.Assign_Var2Var(absolute_var,currentVar);
                 break;
             case LBANANA:
                 Match(LBANANA);
@@ -423,9 +426,13 @@ void Parser::ExprTail(bool is_assign)
 	case MINUS_OP:
 		AddOp();
 		// code.ProcessOp();
-        old_label =  symbolTable.GetDataObject(currentVar).GetCurrentTempVar();
+        // old_label =  symbolTable.GetDataObject(currentVar).GetCurrentTempVar();
+        old_label =  symbolTable.GetDataObject(absolute_var).GetCurrentTempVar();
 		Factor(is_assign);
-        code.ProcessOperation_SymbolTable(currentVar,old_label,t);
+        // code.ProcessOperation_SymbolTable(currentVar,old_label,t);
+        code.ProcessOperation_SymbolTable(absolute_var,old_label,t);
+        cout << "We are processing: " << absolute_var << " and " << currentVar << endl;
+        // code.ProcessOperation_SymbolTable(absolute_var,symbolTable.GetDataObject(currentVar).GetCurrentTempVar(),t);
 		// code.GenInfix();
 		ExprTail(is_assign);
 		break;
@@ -858,6 +865,7 @@ void Parser::ListenStmt()
 void Parser::AssignStmt()
 {
 	Variable(); // update current var
+    absolute_var = currentVar;
 	Match(ASSIGN_OP);
 	AssignTail();
 	Match(SEMICOLON);

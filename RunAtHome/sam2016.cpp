@@ -1780,7 +1780,7 @@ int main(int argc, char* argv[]) {
 	//cin.ignore(256, '\n');
 	//cin.get(); // wait for Enter 
 
-	string cmd = "./macctesting \"" + Source + "\"";
+	string cmd = "/home/caleb/Desktop/MaccNCheLion/macc \"" + Source + "\"";
 	system(cmd.c_str());
 
 	cin.get();
