@@ -11,18 +11,23 @@ SymbolTable::SymbolTable() {
 
 void SymbolTable::AddEntry(std::string id, DataTypes type) {
     std::string type_string;
+    std::string default_value;
     switch (type) {
         case TYPE_CHEESE_LIT:
             type_string = "CHEESE_LIT";
+            default_value = "";
             break;
         case TYPE_FLOAT_LIT:
             type_string = "FLOAT_LIT";
+            default_value = "0.00";
             break;
         case TYPE_INT_LIT:
             type_string = "INT_LIT";
+            default_value = "0";
             break;
         case TYPE_BOOL_LIT:
             type_string = "BOOL_LIT";
+            default_value = "FALSE";
             break;
         default:
         std::cerr << "Undefined type error" << std::endl;
@@ -44,6 +49,7 @@ void SymbolTable::AddEntry(std::string id, DataTypes type) {
         std::cout << "Added entry! Type: " << type_string << std::endl;
         DataEntry my_entry(id, type, lbl_name, total_entries);
         table_entries.push_back(my_entry);
+        // table_entries[SymbolTable::GetEntry(id)].AssignValue(default_value);
     }
 }
 

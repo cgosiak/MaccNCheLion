@@ -1,0 +1,55 @@
+/: Testing Comments
+
+Does this still work? :/
+decs {
+	int: a, b, c, d;
+	float: t,r;
+	cheese: y,z;
+}
+
+
+/:
+for (a=0; a < 5; a = a + 1)
+	shout "TEST", a;
+end
+:/
+
+a = 1;
+b = 5;
+c = 10;
+d = 20;
+
+shout "A Should be 1: ";
+shout "A:",a," B:",b," C:",c," D:",d;
+
+a = a;
+shout "A Should be 1: ";
+shout "A:",a," B:",b," C:",c," D:",d;
+
+shout "A Should be 25: ";
+
+a = b + d;
+
+shout "A:",a," B:",b," C:",c," D:",d;
+
+shout "A Should be 20: ";
+
+a = d;
+
+shout "A:",a," B:",b," C:",c," D:",d;
+
+
+shout "A Should be 21: ";
+
+a = a + 1;
+
+shout "A:",a," B:",b," C:",c," D:",d;
+
+
+shout "A Should be 10: ";
+a = (2 * 3) + 4;
+shout "A:",a," B:",b," C:",c," D:",d;
+
+
+
+

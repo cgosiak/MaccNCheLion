@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <string>
 #include <sstream>
+#include <iomanip>
 
 DataEntry::DataEntry(std::string id, DataTypes type, std::string label_name, int lbl_used) {
     variable_name = id;
@@ -54,13 +55,35 @@ void DataEntry::AssignValue(std::string val) {
             value = val;
             data_line = "SKIP    " + std::to_string(string_reservation_space);
             break;
-        case TYPE_FLOAT_LIT:
+        case TYPE_FLOAT_LIT:{
             // DataEntry::RaiseError_Assignment(val, "TYPE_FLOAT_LIT");
             if (val == "") {
                 val = "0.0";
             }
+
+            auto pos = val.find('E');
+            if (pos != std::string::npos) {
+                std::string sf = val.substr(0, pos);
+                std::string se = val.substr(pos + 1, val.size() - pos);
+
+                std::stringstream ssf(sf);
+                std::stringstream sse(se);
+
+                double f, e;
+                ssf >> f;
+                sse >> e;
+
+                double o = f * pow(10, e);
+
+                std::stringstream out;
+
+                out << std::setprecision(12) << o;
+                val = out.str();
+            }
+
             data_line = "REAL   0.0";
             break;
+        }
         default:
             DataEntry::RaiseError_Assignment(val, "TYPE_NONE");
             break;

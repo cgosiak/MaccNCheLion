@@ -1,200 +1,29 @@
 
    SAM 2016 Assembler Listing
 
-   April 28, 2016 at 1:09 P.M.
+   May 2, 2016 at 9:58 A.M.
    SOURCE FILE: /home/caleb/Desktop/MaccNCheLion/test.asm
 
         LN    LC
          0     0: LDA       R15,VARS
-         1     4: WRST      L9T0
+         1     4: WRF       L4T0
          2     8: WRNL      
-         3     A: WRST      L9T1
-         4     E: WRI       L1T0
-         5    12: WRST      L9T2
-         6    16: WRI       L2T0
-         7    1A: WRST      L9T3
-         8    1E: WRI       L3T0
-         9    22: WRST      L9T4
-        10    26: WRI       L4T0
-        11    2A: WRNL      
-        12    2C: LD        R0,L1T0
-        13    30: STO       R0,L1T0
-        14    34: WRST      L9T5
-        15    38: WRNL      
-        16    3A: WRST      L9T6
-        17    3E: WRI       L1T0
-        18    42: WRST      L9T7
-        19    46: WRI       L2T0
-        20    4A: WRST      L9T8
-        21    4E: WRI       L3T0
-        22    52: WRST      L9T9
-        23    56: WRI       L4T0
-        24    5A: WRNL      
-        25    5C: WRST      L9T10
-        26    60: WRNL      
-        27    62: LD        R0,L2T0
-        28    66: STO       R0,L1T0
-        29    6A: LD        R0,L4T0
-        30    6E: STO       R0,L1T0
-        31    72: LD    R7,L1T0
-        32    76: IA    R7,L1T0
-        33    7A: STO   R7,L1T0
-        34    7E: WRST      L9T11
-        35    82: WRI       L1T0
-        36    86: WRST      L9T12
-        37    8A: WRI       L2T0
-        38    8E: WRST      L9T13
-        39    92: WRI       L3T0
-        40    96: WRST      L9T14
-        41    9A: WRI       L4T0
-        42    9E: WRNL      
-        43    A0: WRST      L9T15
-        44    A4: WRNL      
-        45    A6: LD        R0,L4T0
-        46    AA: STO       R0,L1T0
-        47    AE: WRST      L9T16
-        48    B2: WRI       L1T0
-        49    B6: WRST      L9T17
-        50    BA: WRI       L2T0
-        51    BE: WRST      L9T18
-        52    C2: WRI       L3T0
-        53    C6: WRST      L9T19
-        54    CA: WRI       L4T0
-        55    CE: WRNL      
-        56    D0: WRST      L9T20
-        57    D4: WRNL      
-        58    D6: LD    R7,L1T1
-        59    DA: IM    R7,L1T2
-        60    DE: STO   R7,L1T2
-        61    E2: LD    R7,L1T2
-        62    E6: IA    R7,L1T3
-        63    EA: STO   R7,L1T3
-        64    EE: WRST      L9T21
-        65    F2: WRI       L1T3
-        66    F6: WRST      L9T22
-        67    FA: WRI       L2T0
-        68    FE: WRST      L9T23
-        69   102: WRI       L3T0
-        70   106: WRST      L9T24
-        71   10A: WRI       L4T0
-        72   10E: WRNL      
-        73   110: HALT      
-        74   112: % Data Area ------------
-        75   112: % ----------------------
-        76   112: LABEL    LBL1
-        77   112: INT   0
-        78   114: LABEL    L1T0
-        79   114: INT       1
-        80   116: LABEL    L1T1
-        81   116: INT       2
-        82   118: LABEL    L1T2
-        83   118: INT       3
-        84   11A: LABEL    L1T3
-        85   11A: INT       4
-        86   11C: LABEL    LBL2
-        87   11C: INT   0
-        88   11E: LABEL    L2T0
-        89   11E: INT       5
-        90   120: LABEL    LBL3
-        91   120: INT   0
-        92   122: LABEL    L3T0
-        93   122: INT       10
-        94   124: LABEL    LBL4
-        95   124: INT   0
-        96   126: LABEL    L4T0
-        97   126: INT       20
-        98   128: LABEL    LBL9
-        99   128: SKIP    50
-       100   15A: LABEL    L9T0
-       101   15A: STRING    "A Should be 1:: "
-       102   16A: LABEL    L9T1
-       103   16A: STRING    "A::"
-       104   16E: LABEL    L9T2
-       105   16E: STRING    " B::"
-       106   172: LABEL    L9T3
-       107   172: STRING    " C::"
-       108   176: LABEL    L9T4
-       109   176: STRING    " D::"
-       110   17A: LABEL    L9T5
-       111   17A: STRING    "A Should be 1:: "
-       112   18A: LABEL    L9T6
-       113   18A: STRING    "A::"
-       114   18E: LABEL    L9T7
-       115   18E: STRING    " B::"
-       116   192: LABEL    L9T8
-       117   192: STRING    " C::"
-       118   196: LABEL    L9T9
-       119   196: STRING    " D::"
-       120   19A: LABEL    L9T10
-       121   19A: STRING    "A Should be 25:: "
-       122   1AC: LABEL    L9T11
-       123   1AC: STRING    "A::"
-       124   1B0: LABEL    L9T12
-       125   1B0: STRING    " B::"
-       126   1B4: LABEL    L9T13
-       127   1B4: STRING    " C::"
-       128   1B8: LABEL    L9T14
-       129   1B8: STRING    " D::"
-       130   1BC: LABEL    L9T15
-       131   1BC: STRING    "A Should be 20:: "
-       132   1CE: LABEL    L9T16
-       133   1CE: STRING    "A::"
-       134   1D2: LABEL    L9T17
-       135   1D2: STRING    " B::"
-       136   1D6: LABEL    L9T18
-       137   1D6: STRING    " C::"
-       138   1DA: LABEL    L9T19
-       139   1DA: STRING    " D::"
-       140   1DE: LABEL    L9T20
-       141   1DE: STRING    "A Should be 10:: "
-       142   1F0: LABEL    L9T21
-       143   1F0: STRING    "A::"
-       144   1F4: LABEL    L9T22
-       145   1F4: STRING    " B::"
-       146   1F8: LABEL    L9T23
-       147   1F8: STRING    " C::"
-       148   1FC: LABEL    L9T24
-       149   1FC: STRING    " D::"
-       150   200: 
-       151   200: LABEL     VARS
-       152   200: SKIP      2
+         3     A: HALT      
+         4     C: % Data Area ------------
+         5     C: % ----------------------
+         6     C: LABEL    LBL4
+         7     C: REAL   0.0
+         8    10: LABEL    L4T0
+         9    10: REAL      5670000000
+        10    14: 
+        11    14: LABEL     VARS
+        12    14: SKIP      2
 
 
 MACC Memory Hexadecimal Dump
 
  ADDR |   0   1   2   3   4   5   6   7   8   9   A   B   C   D   E   F
 ------+----------------------------------------------------------------
-    0 |  9F  90  02  00  D4  90  01  5A  D5  80  D4  90  01  6A  D0  10
-   10 |  01  14  D4  90  01  6E  D0  10  01  1E  D4  90  01  72  D0  10
-   20 |  01  22  D4  90  01  76  D0  10  01  26  D5  80  88  10  01  14
-   30 |  90  10  01  14  D4  90  01  7A  D5  80  D4  90  01  8A  D0  10
-   40 |  01  14  D4  90  01  8E  D0  10  01  1E  D4  90  01  92  D0  10
-   50 |  01  22  D4  90  01  96  D0  10  01  26  D5  80  D4  90  01  9A
-   60 |  D5  80  88  10  01  1E  90  10  01  14  88  10  01  26  90  10
-   70 |  01  14  8B  90  01  14  0B  90  01  14  93  90  01  14  D4  90
-   80 |  01  AC  D0  10  01  14  D4  90  01  B0  D0  10  01  1E  D4  90
-   90 |  01  B4  D0  10  01  22  D4  90  01  B8  D0  10  01  26  D5  80
-   A0 |  D4  90  01  BC  D5  80  88  10  01  26  90  10  01  14  D4  90
-   B0 |  01  CE  D0  10  01  14  D4  90  01  D2  D0  10  01  1E  D4  90
-   C0 |  01  D6  D0  10  01  22  D4  90  01  DA  D0  10  01  26  D5  80
-   D0 |  D4  90  01  DE  D5  80  8B  90  01  16  1B  90  01  18  93  90
-   E0 |  01  18  8B  90  01  18  0B  90  01  1A  93  90  01  1A  D4  90
-   F0 |  01  F0  D0  10  01  1A  D4  90  01  F4  D0  10  01  1E  D4  90
-  100 |  01  F8  D0  10  01  22  D4  90  01  FC  D0  10  01  26  D5  80
-  110 |  F8  00  00  00  00  01  00  02  00  03  00  04  00  00  00  05
-  120 |  00  00  00  0A  00  00  00  14  00  00  00  00  00  00  00  00
-  130 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
-  140 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
-  150 |  00  00  00  00  00  00  00  00  00  00  41  20  53  68  6F  75
-  160 |  6C  64  20  62  65  20  31  3A  20  00  41  3A  00  3A  20  42
-  170 |  3A  00  20  43  3A  00  20  44  3A  00  41  20  53  68  6F  75
-  180 |  6C  64  20  62  65  20  31  3A  20  00  41  3A  00  3A  20  42
-  190 |  3A  00  20  43  3A  00  20  44  3A  00  41  20  53  68  6F  75
-  1A0 |  6C  64  20  62  65  20  32  35  3A  20  00  20  41  3A  00  3A
-  1B0 |  20  42  3A  00  20  43  3A  00  20  44  3A  00  41  20  53  68
-  1C0 |  6F  75  6C  64  20  62  65  20  32  30  3A  20  00  20  41  3A
-  1D0 |  00  3A  20  42  3A  00  20  43  3A  00  20  44  3A  00  41  20
-  1E0 |  53  68  6F  75  6C  64  20  62  65  20  31  30  3A  20  00  20
-  1F0 |  41  3A  00  3A  20  42  3A  00  20  43  3A  00  20  44  3A  00
-  200 |  00  00
+    0 |  9F  90  00  14  D0  90  00  10  D5  80  F8  00  00  00  00  00
+   10 |  4F  A8  FA  AB  00  00
 

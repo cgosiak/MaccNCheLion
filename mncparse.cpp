@@ -319,6 +319,7 @@ void Parser::Primary(bool is_assign)
             case TRUE_SYM:
             case INT_LIT:
             case FLOAT_LIT: {
+				cout << "Update: " << currentVar << " with " << scan.tokenBuffer.data() << endl;
                 symbolTable.UpdateEntry(currentVar, scan.tokenBuffer.data());
                 Literal();
                 ExprRec e;
@@ -652,15 +653,25 @@ void Parser::ForStmt()
 {
 	Match(FOR_SYM);
 	Match(LBANANA);
-	ForAssign();
+	ForAssign(); // Lets get all the pieces we need for the for loop here
 	Match(SEMICOLON);
+    ConditionalEntry myentry = symbolTable.CreateConditional();
+    cur_conditional = &myentry;
+    in_conditional = true;
 	Condition();
 	// code.ForBegin();
 	Match(SEMICOLON);
 	ForAssign();
 	// code.ForUpdate();
 	Match(RBANANA);
+    in_stmt = true;
 	StmtList();
+    in_stmt = false;
+    in_conditional = false;
+    std::string if_lbl = symbolTable.GetCurrentConditionalLabel();
+    code.Compare_Numbers(left_conditional,right_conditional,if_lbl,comp_operator, type_assigned);
+    symbolTable.CloseConditional();
+    code.CloseCondition(if_lbl);
 	Match(END_SYM);
 	// code.ForEnd();
 }

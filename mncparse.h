@@ -33,6 +33,7 @@ private:
 	bool tokenAvailable;
 	bool shout_me = false;
     bool in_stmt = false;
+	bool in_for_assign = false;
 
     bool left_cond_set = false;
 	std::string left_conditional = "";
