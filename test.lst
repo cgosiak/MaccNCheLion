@@ -9,8 +9,8 @@
 				the MACC2 virtual computer.
  _______________________________________________________________
 
- May 03, 2016 at 11:07 AM
- Source file: /home/caleb/Desktop/MaccNCheLion/test.mnc
+ May 03, 2016 at 12:38 PM
+ Source file: /home/gosi1cal/Desktop/MaccNCheLion/test.mnc
 
  LINE #
                     LDA	R15,VARS
@@ -19,38 +19,51 @@
      3  }
      4  
      5  a = 0;
-     6  
+     6  b = 0;
+     7  
                     WRST	L4T0
                     WRNL	
-     7  shout "Before Loop --------->";
-     8  
-     9  do
-    10  	shout "How Many Ducks: ", a;
-    11  	a = a + 1;
-                    LABEL	JMP0
-WRST	L4T1
-WRI	L1T0
-WRNL	
-LD	R0, L1T0
-STO	R0, L1T0
-LD	R7, L1T0
-IA	R7, L1T1
-STO	R7, L1T0
-LABEL	STM0
-LD	R4, L1T0
-LD	R5, L5T0
+     8  shout "Enter A: ";
+                    RDI	L1T1
+     9  listen a;
+    10  
+                    WRI	L1T1
+                    WRNL	
+    11  shout a;
+    12  
+    13  
+                    WRST	L4T1
+                    WRNL	
+    14  shout "Before Loop --------->";
+    15  
+    16  while (b < a)
+    17  	shout "B is now:", b;
+    18  	b = b + 1;
+                    LABEL	STM0
+LD	R4, L2T0
+LD	R5, L1T1
 IC	R4, R5
-JGT	END0
-JMP	JMP0
+JLT	JMP0
+JMP	END0
+LABEL	JMP0
+WRST	L4T2
+WRI	L2T0
+WRNL	
+LD	R0, L2T0
+STO	R0, L2T0
+LD	R7, L2T0
+IA	R7, L2T1
+STO	R7, L2T0
+JMP	STM0
 LABEL	END0
 
-    12  until (a > 5);
-    13  
-                    WRST	L4T2
+    19  end
+    20  
+                    WRST	L4T3
                     WRNL	
-    14  shout "After Loop  --------->";
-    15  
-    16  
+    21  shout "After Loop  --------->";
+    22  
+    23  
                     HALT	
                     % Data Area ------------
 % ----------------------
@@ -59,19 +72,23 @@ INT	0
 LABEL	L1T0
 INT	0
 LABEL	L1T1
+INT	0
+LABEL	LBL2
+INT	0
+LABEL	L2T0
+INT	0
+LABEL	L2T1
 INT	1
 LABEL	LBL4
 SKIP	50
 LABEL	L4T0
-STRING	"Before Loop --------->"
+STRING	"Enter A:: "
 LABEL	L4T1
-STRING	"How Many Ducks:: "
+STRING	"Before Loop --------->"
 LABEL	L4T2
+STRING	"B is now::"
+LABEL	L4T3
 STRING	"After Loop  --------->"
-LABEL	LBL5
-INT	0
-LABEL	L5T0
-INT	5
 
                     LABEL	VARS
                     SKIP	2
