@@ -283,13 +283,16 @@ void Parser::FactorTail(bool is_assign)//ExprRec& expr)
 	{
 	case MULT_OP:
 	case DIV_OP:
-        MultOp();
-        // code.ProcessOp();
-        old_label =  symbolTable.GetDataObject(currentVar).GetCurrentTempVar();
-        Primary(is_assign);
-        code.ProcessOperation_SymbolTable(currentVar,old_label,t);
-        // code.GenInfix();
-        FactorTail(is_assign);
+		MultOp();
+		// code.ProcessOp();
+		//  old_label =  symbolTable.GetDataObject(currentVar).GetCurrentTempVar();
+		old_label = symbolTable.GetDataObject(absolute_var).GetCurrentTempVar();
+		Primary(is_assign);
+		//  code.ProcessOperation_SymbolTable(currentVar,old_label,t);
+		code.ProcessOperation_SymbolTable(absolute_var, old_label, t);
+		cout << "We are processing: " << absolute_var << " and " << currentVar << endl;
+		// code.GenInfix();
+		FactorTail(is_assign);
 		break;
 	case RSTAPLE:
 	case RBANANA:
