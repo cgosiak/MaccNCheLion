@@ -30,7 +30,7 @@ public:
 
     std::vector<std::string> GetCommands(); // get vector of all commands
 
-    void Fix_For_Loop(std::string replace, std::string with);
+    void Fix_Loop_Labels(std::string replace, std::string with);
 
     bool Replace(std::string& str, const std::string& from, const std::string& to); // function to replace substring found in string with new string
 

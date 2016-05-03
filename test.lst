@@ -9,7 +9,7 @@
 				the MACC2 virtual computer.
  _______________________________________________________________
 
- May 03, 2016 at 10:14 AM
+ May 03, 2016 at 10:39 AM
  Source file: /home/caleb/Desktop/MaccNCheLion/test.mnc
 
  LINE #
@@ -22,35 +22,36 @@
      6  
                     WRST	L4T0
                     WRNL	
-     7  shout "Before For Loop --------->";
+     7  shout "Before Loop --------->";
      8  
-     9  for (a = 0; a < 10; a = a + 1)
-    10  	shout "A is: ", a;
+     9  while (a < 5)
+    10  	shout "How Many Ducks: ", a;
+    11  	a = a + 1;
                     LABEL	STM0
-LD	R4, L1T1
+LD	R4, L1T0
 LD	R5, L5T0
 IC	R4, R5
 JLT	JMP0
 JMP	END0
 LABEL	JMP0
 WRST	L4T1
-WRI	L1T1
+WRI	L1T0
 WRNL	
-LD	R0, L1T1
-STO	R0, L1T1
-LD	R7, L1T1
-IA	R7, L1T2
-STO	R7, L1T1
+LD	R0, L1T0
+STO	R0, L1T0
+LD	R7, L1T0
+IA	R7, L1T1
+STO	R7, L1T0
 JMP	STM0
 LABEL	END0
 
-    11  end
-    12  
+    12  end
+    13  
                     WRST	L4T2
                     WRNL	
-    13  shout "After For Loop  --------->";
-    14  
+    14  shout "After Loop  --------->";
     15  
+    16  
                     HALT	
                     % Data Area ------------
 % ----------------------
@@ -59,21 +60,19 @@ INT	0
 LABEL	L1T0
 INT	0
 LABEL	L1T1
-INT	0
-LABEL	L1T2
 INT	1
 LABEL	LBL4
 SKIP	50
 LABEL	L4T0
-STRING	"Before For Loop --------->"
+STRING	"Before Loop --------->"
 LABEL	L4T1
-STRING	"A is:: "
+STRING	"How Many Ducks:: "
 LABEL	L4T2
-STRING	"After For Loop  --------->"
+STRING	"After Loop  --------->"
 LABEL	LBL5
 INT	0
 LABEL	L5T0
-INT	10
+INT	5
 
                     LABEL	VARS
                     SKIP	2

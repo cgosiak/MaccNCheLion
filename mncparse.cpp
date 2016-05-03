@@ -686,7 +686,7 @@ void Parser::ForStmt()
 
 	string replace_label = symbolTable.GetDataObject(currentVar).GetCurrentTempVar();
 	// Fix the for loop statement list
-	myentry.Fix_For_Loop(replace_label,updater_lbl);
+	myentry.Fix_Loop_Labels(replace_label,updater_lbl);
 
 	Match(END_SYM);
     code.CloseCondition();
@@ -694,14 +694,29 @@ void Parser::ForStmt()
 
 void Parser::WhileStmt()
 {
+	ConditionalEntry myentry = symbolTable.CreateConditional(WHILE_LOOP);
+	cur_conditional = &myentry;
+	in_conditional = true; // entered if_else conditional
+
 	Match(WHILE_SYM);
 	Match(LBANANA);
+	in_condition_check = true;
 	Condition();
+	code.Compare_Numbers(left_conditional,right_conditional,myentry.cur_jmp_lbl,comp_operator, type_assigned); // Generate code for condition check
+	in_condition_check = false;
+
 	Match(RBANANA);
-	// code.WhileBegin();
+	in_stmt = true;
+	in_while = true;
 	StmtList();
+	in_stmt = false;
+	in_while = false;
 	Match(END_SYM);
-	// code.WhileEnd();
+
+	in_conditional = false;
+
+	// Wrap up and clean the statement
+	code.CloseCondition();
 }
 
 void Parser::LoopStmt()

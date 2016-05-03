@@ -87,6 +87,18 @@ std::string ConditionalEntry::GetAllCommands() {
             break;
         }
         case WHILE_LOOP: {
+            Add_Conditional_Command("JMP\t" + cur_end_lbl); // condition not met jump to end
+            Add_To_Statement_List("JMP\t" + cur_stmt_label); // go back home to start again and check for conditional
+            Add_To_Statement_List("LABEL\t" + cur_end_lbl); // end if condition not met
+
+            for (int i = 0; i < conditional_commands.size(); ++i) {
+                commands = commands + conditional_commands[i] + "\n";
+            }
+
+            for (int j = 0; j < statment_list_commands.size(); ++j) {
+                commands = commands + statment_list_commands[j] + "\n";
+            }
+
             break;
         }
         case FOR_LOOP: {
@@ -145,7 +157,7 @@ bool ConditionalEntry::Replace(std::string &str, const std::string &from, const 
     return true;
 }
 
-void ConditionalEntry::Fix_For_Loop(std::string replace, std::string with) {
+void ConditionalEntry::Fix_Loop_Labels(std::string replace, std::string with) {
     for (int i = 0; i < statment_list_commands.size(); ++i) {
         if (statment_list_commands[i].find(replace) != std::string::npos) {
             Replace(statment_list_commands[i],replace,with);

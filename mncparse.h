@@ -33,6 +33,7 @@ public:
 	bool in_if_stmt_list = false;
 	bool in_else_stmt_list = false;
 	bool in_for_stmt = false;
+	bool in_while = false;
 
 	// Just a testing fix
 	string updater_lbl = "";

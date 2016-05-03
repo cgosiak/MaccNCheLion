@@ -1,7 +1,7 @@
 
    SAM 2016 Assembler Listing
 
-   May 3, 2016 at 10:14 A.M.
+   May 3, 2016 at 10:39 A.M.
    SOURCE FILE: /home/caleb/Desktop/MaccNCheLion/test.asm
 
         LN    LC
@@ -9,20 +9,20 @@
          1     4: WRST	L4T0
          2     8: WRNL	
          3     A: LABEL	STM0
-         4     A: LD	R4, L1T1
+         4     A: LD	R4, L1T0
          5     E: LD	R5, L5T0
          6    12: IC	R4, R5
          7    14: JLT	JMP0
          8    18: JMP	END0
          9    1C: LABEL	JMP0
         10    1C: WRST	L4T1
-        11    20: WRI	L1T1
+        11    20: WRI	L1T0
         12    24: WRNL	
-        13    26: LD	R0, L1T1
-        14    2A: STO	R0, L1T1
-        15    2E: LD	R7, L1T1
-        16    32: IA	R7, L1T2
-        17    36: STO	R7, L1T1
+        13    26: LD	R0, L1T0
+        14    2A: STO	R0, L1T0
+        15    2E: LD	R7, L1T0
+        16    32: IA	R7, L1T1
+        17    36: STO	R7, L1T0
         18    3A: JMP	STM0
         19    3E: LABEL	END0
         20    3E: 
@@ -36,41 +36,39 @@
         28    48: LABEL	L1T0
         29    48: INT	0
         30    4A: LABEL	L1T1
-        31    4A: INT	0
-        32    4C: LABEL	L1T2
-        33    4C: INT	1
-        34    4E: LABEL	LBL4
-        35    4E: SKIP	50
-        36    80: LABEL	L4T0
-        37    80: STRING	"Before For Loop --------->"
-        38    9C: LABEL	L4T1
-        39    9C: STRING	"A is:: "
-        40    A4: LABEL	L4T2
-        41    A4: STRING	"After For Loop  --------->"
-        42    C0: LABEL	LBL5
-        43    C0: INT	0
-        44    C2: LABEL	L5T0
-        45    C2: INT	10
-        46    C4: 
-        47    C4: LABEL	VARS
-        48    C4: SKIP	2
+        31    4A: INT	1
+        32    4C: LABEL	LBL4
+        33    4C: SKIP	50
+        34    7E: LABEL	L4T0
+        35    7E: STRING	"Before Loop --------->"
+        36    96: LABEL	L4T1
+        37    96: STRING	"How Many Ducks:: "
+        38    A8: LABEL	L4T2
+        39    A8: STRING	"After Loop  --------->"
+        40    C0: LABEL	LBL5
+        41    C0: INT	0
+        42    C2: LABEL	L5T0
+        43    C2: INT	5
+        44    C4: 
+        45    C4: LABEL	VARS
+        46    C4: SKIP	2
 
 
 MACC Memory Hexadecimal Dump
 
  ADDR |   0   1   2   3   4   5   6   7   8   9   A   B   C   D   E   F
 ------+----------------------------------------------------------------
-    0 |  9F  90  00  C4  D4  90  00  80  D5  80  8A  10  00  4A  8A  90
-   10 |  00  C2  6A  05  B0  90  00  1C  B0  10  00  3E  D4  90  00  9C
-   20 |  D0  10  00  4A  D5  80  88  10  00  4A  90  10  00  4A  8B  90
-   30 |  00  4A  0B  90  00  4C  93  90  00  4A  B0  10  00  0A  D4  90
-   40 |  00  A4  D5  80  F8  00  00  00  00  00  00  00  00  01  00  00
+    0 |  9F  90  00  C4  D4  90  00  7E  D5  80  8A  10  00  48  8A  90
+   10 |  00  C2  6A  05  B0  90  00  1C  B0  10  00  3E  D4  90  00  96
+   20 |  D0  10  00  48  D5  80  88  10  00  48  90  10  00  48  8B  90
+   30 |  00  48  0B  90  00  4A  93  90  00  48  B0  10  00  0A  D4  90
+   40 |  00  A8  D5  80  F8  00  00  00  00  00  00  01  00  00  00  00
    50 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
    60 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
-   70 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
-   80 |  42  65  66  6F  72  65  20  46  6F  72  20  4C  6F  6F  70  20
-   90 |  2D  2D  2D  2D  2D  2D  2D  2D  2D  3E  00  3E  41  20  69  73
-   A0 |  3A  20  00  20  41  66  74  65  72  20  46  6F  72  20  4C  6F
+   70 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  42  65
+   80 |  66  6F  72  65  20  4C  6F  6F  70  20  2D  2D  2D  2D  2D  2D
+   90 |  2D  2D  2D  3E  00  3E  48  6F  77  20  4D  61  6E  79  20  44
+   A0 |  75  63  6B  73  3A  20  00  20  41  66  74  65  72  20  4C  6F
    B0 |  6F  70  20  20  2D  2D  2D  2D  2D  2D  2D  2D  2D  3E  00  3E
-   C0 |  00  00  00  0A  00  00
+   C0 |  00  00  00  05  00  00
 
