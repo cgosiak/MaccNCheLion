@@ -1,84 +1,76 @@
 
    SAM 2016 Assembler Listing
 
-   May 3, 2016 at 12:38 P.M.
+   May 3, 2016 at 1:12 P.M.
    SOURCE FILE: /home/gosi1cal/Desktop/MaccNCheLion/test.asm
 
         LN    LC
          0     0: LDA	R15,VARS
          1     4: WRST	L4T0
          2     8: WRNL	
-         3     A: RDI	L1T1
-         4     E: WRI	L1T1
-         5    12: WRNL	
-         6    14: WRST	L4T1
-         7    18: WRNL	
-         8    1A: LABEL	STM0
-         9    1A: LD	R4, L2T0
-        10    1E: LD	R5, L1T1
-        11    22: IC	R4, R5
-        12    24: JLT	JMP0
-        13    28: JMP	END0
-        14    2C: LABEL	JMP0
-        15    2C: WRST	L4T2
-        16    30: WRI	L2T0
-        17    34: WRNL	
-        18    36: LD	R0, L2T0
-        19    3A: STO	R0, L2T0
-        20    3E: LD	R7, L2T0
-        21    42: IA	R7, L2T1
-        22    46: STO	R7, L2T0
-        23    4A: JMP	STM0
-        24    4E: LABEL	END0
-        25    4E: 
-        26    4E: WRST	L4T3
-        27    52: WRNL	
-        28    54: HALT	
-        29    56: % Data Area ------------
-        30    56: % ----------------------
-        31    56: LABEL	LBL1
-        32    56: INT	0
-        33    58: LABEL	L1T0
-        34    58: INT	0
-        35    5A: LABEL	L1T1
-        36    5A: INT	0
-        37    5C: LABEL	LBL2
-        38    5C: INT	0
-        39    5E: LABEL	L2T0
-        40    5E: INT	0
-        41    60: LABEL	L2T1
-        42    60: INT	1
-        43    62: LABEL	LBL4
-        44    62: SKIP	50
-        45    94: LABEL	L4T0
-        46    94: STRING	"Enter A:: "
-        47    9E: LABEL	L4T1
-        48    9E: STRING	"Before Loop --------->"
-        49    B6: LABEL	L4T2
-        50    B6: STRING	"B is now::"
-        51    C0: LABEL	L4T3
-        52    C0: STRING	"After Loop  --------->"
-        53    D8: 
-        54    D8: LABEL	VARS
-        55    D8: SKIP	2
+         3     A: LABEL	STM0
+         4     A: LD	R4, L1T1
+         5     E: LD	R5, L5T0
+         6    12: IC	R4, R5
+         7    14: JLT	JMP0
+         8    18: JMP	END0
+         9    1C: LABEL	JMP0
+        10    1C: WRST	L4T1
+        11    20: WRI	L1T1
+        12    24: WRNL	
+        13    26: LD	R0, L1T1
+        14    2A: STO	R0, L1T1
+        15    2E: LD	R7, L1T1
+        16    32: IA	R7, L1T2
+        17    36: STO	R7, L1T1
+        18    3A: JMP	STM0
+        19    3E: LABEL	END0
+        20    3E: 
+        21    3E: WRST	L4T2
+        22    42: WRNL	
+        23    44: HALT	
+        24    46: % Data Area ------------
+        25    46: % ----------------------
+        26    46: LABEL	LBL1
+        27    46: INT	0
+        28    48: LABEL	L1T0
+        29    48: INT	0
+        30    4A: LABEL	L1T1
+        31    4A: INT	0
+        32    4C: LABEL	L1T2
+        33    4C: INT	1
+        34    4E: LABEL	LBL4
+        35    4E: SKIP	50
+        36    80: LABEL	L4T0
+        37    80: STRING	"Before Loop --------->"
+        38    98: LABEL	L4T1
+        39    98: STRING	"I hate kids:: "
+        40    A6: LABEL	L4T2
+        41    A6: STRING	"After Loop  --------->"
+        42    BE: LABEL	LBL5
+        43    BE: INT	0
+        44    C0: LABEL	L5T0
+        45    C0: INT	10
+        46    C2: 
+        47    C2: LABEL	VARS
+        48    C2: SKIP	2
 
 
 MACC Memory Hexadecimal Dump
 
  ADDR |   0   1   2   3   4   5   6   7   8   9   A   B   C   D   E   F
 ------+----------------------------------------------------------------
-    0 |  9F  90  00  D8  D4  90  00  94  D5  80  C8  10  00  5A  D0  10
-   10 |  00  5A  D5  80  D4  90  00  9E  D5  80  8A  10  00  5E  8A  90
-   20 |  00  5A  6A  05  B0  90  00  2C  B0  10  00  4E  D4  90  00  B6
-   30 |  D0  10  00  5E  D5  80  88  10  00  5E  90  10  00  5E  8B  90
-   40 |  00  5E  0B  90  00  60  93  90  00  5E  B0  10  00  1A  D4  90
-   50 |  00  C0  D5  80  F8  00  00  00  00  00  00  00  00  00  00  00
-   60 |  00  01  00  00  00  00  00  00  00  00  00  00  00  00  00  00
+    0 |  9F  90  00  C2  D4  90  00  80  D5  80  8A  10  00  4A  8A  90
+   10 |  00  C0  6A  05  B0  90  00  1C  B0  10  00  3E  D4  90  00  98
+   20 |  D0  10  00  4A  D5  80  88  10  00  4A  90  10  00  4A  8B  90
+   30 |  00  4A  0B  90  00  4C  93  90  00  4A  B0  10  00  0A  D4  90
+   40 |  00  A6  D5  80  F8  00  00  00  00  00  00  00  00  01  00  00
+   50 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
+   60 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
    70 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
-   80 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
-   90 |  00  00  00  00  45  6E  74  65  72  20  41  3A  20  00  42  65
-   A0 |  66  6F  72  65  20  4C  6F  6F  70  20  2D  2D  2D  2D  2D  2D
-   B0 |  2D  2D  2D  3E  00  3E  42  20  69  73  20  6E  6F  77  3A  00
-   C0 |  41  66  74  65  72  20  4C  6F  6F  70  20  20  2D  2D  2D  2D
-   D0 |  2D  2D  2D  2D  2D  3E  00  3E  00  00
+   80 |  42  65  66  6F  72  65  20  4C  6F  6F  70  20  2D  2D  2D  2D
+   90 |  2D  2D  2D  2D  2D  3E  00  3E  49  20  68  61  74  65  20  6B
+   A0 |  69  64  73  3A  20  00  41  66  74  65  72  20  4C  6F  6F  70
+   B0 |  20  20  2D  2D  2D  2D  2D  2D  2D  2D  2D  3E  00  3E  00  00
+   C0 |  00  0A  00  00
 

@@ -290,7 +290,6 @@ void Parser::FactorTail(bool is_assign)//ExprRec& expr)
 		Primary(is_assign);
 		//  code.ProcessOperation_SymbolTable(currentVar,old_label,t);
 		code.ProcessOperation_SymbolTable(absolute_var, old_label, t);
-		cout << "We are processing: " << absolute_var << " and " << currentVar << endl;
 		// code.GenInfix();
 		FactorTail(is_assign);
 		break;
@@ -322,7 +321,6 @@ void Parser::Primary(bool is_assign)
             case TRUE_SYM:
             case INT_LIT:
             case FLOAT_LIT: {
-				cout << "Update: " << currentVar << " with " << scan.tokenBuffer.data() << endl;
                 symbolTable.UpdateEntry(currentVar, scan.tokenBuffer.data());
                 Literal();
                 ExprRec e;
@@ -340,7 +338,6 @@ void Parser::Primary(bool is_assign)
 				assign_to_var = currentVar;
                 Variable();
 				// Assign last accessed var with current var
-                cout << "ASSIGNING:=============================" << currentVar << " to " << absolute_var << endl;
 				// code.Assign_Var2Var(assign_to_var,currentVar);
                 code.Assign_Var2Var(absolute_var,currentVar);
                 break;
@@ -435,7 +432,6 @@ void Parser::ExprTail(bool is_assign)
 		Factor(is_assign);
         // code.ProcessOperation_SymbolTable(currentVar,old_label,t);
         code.ProcessOperation_SymbolTable(absolute_var,old_label,t);
-        cout << "We are processing: " << absolute_var << " and " << currentVar << endl;
         // code.ProcessOperation_SymbolTable(absolute_var,symbolTable.GetDataObject(currentVar).GetCurrentTempVar(),t);
 		// code.GenInfix();
 		ExprTail(is_assign);
@@ -464,13 +460,11 @@ void Parser::Factor(bool is_assign)// ExprRec& expr)
     if (in_conditional && !in_stmt) {
         if (left_cond_set) {
             right_conditional = symbolTable.GetDataObject(currentVar).GetCurrentTempVar();
-            cout << "Right assigned: " << right_conditional << " which is variable " << currentVar << endl;
             left_cond_set = false;
         }
         else {
             type_assigned = symbolTable.GetDataObject(currentVar).GetType();
             left_conditional = symbolTable.GetDataObject(currentVar).GetCurrentTempVar();
-            cout << "Left assigned: " << left_conditional << " which is variable " << currentVar <<  endl;
             left_cond_set = true;
         }
     }

@@ -93,7 +93,6 @@ void DataEntry::AssignValue(std::string val) {
     temp_variables.push_back(new_data);
 
     entry_used = true;
-    std::cout << "Value: " << val << " assigned." << std::endl;
 }
 
 DataTypes DataEntry::GetType() {
@@ -261,7 +260,8 @@ void DataEntry::ReserveSpace() {
     DataEntry new_data(variable_name, entry_type, temp_name, lbl);
     cur_temp_assigned = temp_name;
 
-    new_data.ReserveCheeseSpace();
+    if (entry_type == TYPE_CHEESE_LIT || entry_type == TYPE_SPECIAL_CHEESE_LIT)
+        new_data.ReserveCheeseSpace();
     temp_variables.push_back(new_data);
 
     entry_used = true;

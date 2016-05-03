@@ -3,19 +3,11 @@ decs {
 }
 
 a = 0;
-b = 0;
-
-shout "Enter A: ";
-listen a;
-
-shout a;
-
 
 shout "Before Loop --------->";
 
-while (b < a)
-	shout "B is now:", b;
-	b = b + 1;
+for (a = 0; a < 10; a = a + 1)
+	shout "I hate kids: ", a;
 end
 
 shout "After Loop  --------->";

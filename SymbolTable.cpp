@@ -46,7 +46,6 @@ void SymbolTable::AddEntry(std::string id, DataTypes type) {
         std::string lbl_name = "LBL" + std::to_string(total_entries);
 
         // Create a new entry
-        std::cout << "Added entry! Type: " << type_string << std::endl;
         DataEntry my_entry(id, type, lbl_name, total_entries);
         table_entries.push_back(my_entry);
         // table_entries[SymbolTable::GetEntry(id)].AssignValue(default_value);
@@ -111,6 +110,7 @@ std::string SymbolTable::FinishSymbolTable() {
     return symbol_table;
 }
 
+
 void SymbolTable::ReserveNewLabel(std::string id) {
     if (SymbolTable::EntryExists(id)) {
         table_entries[SymbolTable::GetEntry(id)].ReserveSpace();
@@ -139,11 +139,8 @@ std::string SymbolTable::GetCurrentConditionalLabel() {
 
 ConditionalEntry SymbolTable::GetCondObject(std::string id) {
     ConditionalEntry *entry;
-    std::cout << "Compare: " << id << " to " << conditional_entries[0].GetLabelName() << std::endl;
     for (int i = 0; i < conditional_entries.size(); ++i) {
-        std::cout << "Compare: " << id << " to " << conditional_entries[i].GetLabelName() << std::endl;
         if (conditional_entries[i].GetLabelName() == id) {
-            std::cout << "Found object!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
             entry = &conditional_entries[i];
             return *entry;
         }

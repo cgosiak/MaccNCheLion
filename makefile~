@@ -4,8 +4,8 @@ FLAGS = -std=c++11
 
 all:   MNC
 
-MNC: mnc.cpp mncparse.o mncscan.o mnccode.o SymbolTable.o DataEntry.o
-	$(CXX) $(FLAGS) DataEntry.cpp SymbolTable.o mncparse.o mncscan.o mnccode.o mnc.cpp -o MNC
+MNC: mnc.cpp mncparse.o mncscan.o mnccode.o SymbolTable.o DataEntry.o ConditionalEntry.o
+	$(CXX) $(FLAGS) ConditionalEntry.o DataEntry.o SymbolTable.o mncparse.o mncscan.o mnccode.o mnc.cpp -o MNC
 
 mncparse.o: mncparse.cpp
 	$(CXX) $(FLAGS) -c mncparse.cpp
@@ -21,6 +21,9 @@ SymbolTable.o: SymbolTable.cpp
 
 DataEntry.o: DataEntry.cpp
 	$(CXX) $(FLAGS) -c DataEntry.cpp
+
+ConditionalEntry.o: ConditionalEntry.cpp
+	$(CXX) $(FLAGS) -c ConditionalEntry.cpp
 
 clobber:
 	rm -f *.o *.exe *.lis *.obj core micro sam maccc trace.txt
