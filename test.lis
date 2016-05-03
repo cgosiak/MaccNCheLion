@@ -1,29 +1,71 @@
 
    SAM 2016 Assembler Listing
 
-   May 2, 2016 at 9:58 A.M.
+   May 3, 2016 at 9:16 A.M.
    SOURCE FILE: /home/caleb/Desktop/MaccNCheLion/test.asm
 
         LN    LC
-         0     0: LDA       R15,VARS
-         1     4: WRF       L4T0
-         2     8: WRNL      
-         3     A: HALT      
-         4     C: % Data Area ------------
-         5     C: % ----------------------
-         6     C: LABEL    LBL4
-         7     C: REAL   0.0
-         8    10: LABEL    L4T0
-         9    10: REAL      5670000000
-        10    14: 
-        11    14: LABEL     VARS
-        12    14: SKIP      2
+         0     0: LDA	R15,VARS
+         1     4: WRST	L4T0
+         2     8: WRNL	
+         3     A: LABEL	STM0
+         4     A: LD	R4, L1T0
+         5     E: LD	R5, L5T0
+         6    12: IC	R4, R5
+         7    14: JNE	IF0
+         8    18: JMP	ELSE0
+         9    1C: LABEL	IF0
+        10    1C: WRST	L4T1
+        11    20: WRNL	
+        12    22: JMP	END0
+        13    26: LABEL	ELSE0
+        14    26: WRST	L4T2
+        15    2A: WRNL	
+        16    2C: LABEL	END0
+        17    2C: 
+        18    2C: WRST	L4T3
+        19    30: WRNL	
+        20    32: HALT	
+        21    34: % Data Area ------------
+        22    34: % ----------------------
+        23    34: LABEL	LBL1
+        24    34: INT	0
+        25    36: LABEL	L1T0
+        26    36: INT	5
+        27    38: LABEL	LBL4
+        28    38: SKIP	50
+        29    6A: LABEL	L4T0
+        30    6A: STRING	"Before For Loop --------->"
+        31    86: LABEL	L4T1
+        32    86: STRING	"is not equal to 5"
+        33    98: LABEL	L4T2
+        34    98: STRING	"is equal to 5"
+        35    A6: LABEL	L4T3
+        36    A6: STRING	"After For Loop  --------->"
+        37    C2: LABEL	LBL5
+        38    C2: INT	0
+        39    C4: LABEL	L5T0
+        40    C4: INT	5
+        41    C6: 
+        42    C6: LABEL	VARS
+        43    C6: SKIP	2
 
 
 MACC Memory Hexadecimal Dump
 
  ADDR |   0   1   2   3   4   5   6   7   8   9   A   B   C   D   E   F
 ------+----------------------------------------------------------------
-    0 |  9F  90  00  14  D0  90  00  10  D5  80  F8  00  00  00  00  00
-   10 |  4F  A8  FA  AB  00  00
+    0 |  9F  90  00  C6  D4  90  00  6A  D5  80  8A  10  00  36  8A  90
+   10 |  00  C4  6A  05  B2  10  00  1C  B0  10  00  26  D4  90  00  86
+   20 |  D5  80  B0  10  00  2C  D4  90  00  98  D5  80  D4  90  00  A6
+   30 |  D5  80  F8  00  00  00  00  05  00  00  00  00  00  00  00  00
+   40 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
+   50 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
+   60 |  00  00  00  00  00  00  00  00  00  00  42  65  66  6F  72  65
+   70 |  20  46  6F  72  20  4C  6F  6F  70  20  2D  2D  2D  2D  2D  2D
+   80 |  2D  2D  2D  3E  00  3E  69  73  20  6E  6F  74  20  65  71  75
+   90 |  61  6C  20  74  6F  20  35  00  69  73  20  65  71  75  61  6C
+   A0 |  20  74  6F  20  35  00  41  66  74  65  72  20  46  6F  72  20
+   B0 |  4C  6F  6F  70  20  20  2D  2D  2D  2D  2D  2D  2D  2D  2D  3E
+   C0 |  00  3E  00  00  00  05  00  00
 

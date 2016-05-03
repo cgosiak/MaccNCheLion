@@ -103,7 +103,7 @@ std::string SymbolTable::FinishSymbolTable() {
     for (int i = 0; i < total_entries; ++i) {
         if (table_entries[i].WasUsed()) {
             // Add entry to finished symbol table
-            symbol_table = symbol_table + "LABEL    " + table_entries[i].GetDataLabel() + "\n" + table_entries[i].GetDataLine() + "\n";
+            symbol_table = symbol_table + "LABEL\t" + table_entries[i].GetDataLabel() + "\n" + table_entries[i].GetDataLine() + "\n";
             symbol_table = symbol_table + table_entries[i].GetTempLabels();
         }
     }
@@ -120,25 +120,21 @@ void SymbolTable::ReserveNewLabel(std::string id) {
     }
 }
 
-ConditionalEntry SymbolTable::CreateConditional() {
-    std::string label_name = "STM" + std::to_string(total_conditonals);
-    cur_jmp_lbl = "JMP" + std::to_string(total_conditonals);
-    cur_end_lbl = "END" + std::to_string(total_conditonals);
-    cur_stmt_label = label_name;
-    ConditionalEntry my_entry(label_name,cur_jmp_lbl);
+ConditionalEntry SymbolTable::CreateConditional(ConditionalType type_used) {
+    ConditionalEntry my_entry(total_conditonals, type_used);
     cur_cond = &my_entry;
     total_conditonals++;
     return my_entry;
 }
 
 void SymbolTable::CloseConditional() {
-    cur_cond->AddCommand("JMP    " + cur_end_lbl);
-    cur_cond->AddCommand("LABEL    " + cur_jmp_lbl);
+    cur_cond->AddCommand("JMP    " + cur_cond->cur_end_lbl);
+    cur_cond->AddCommand("LABEL    " + cur_cond->cur_jmp_lbl);
     conditional_entries.push_back(*cur_cond);
 }
 
 std::string SymbolTable::GetCurrentConditionalLabel() {
-    return cur_stmt_label;
+    return cur_cond->cur_stmt_label;
 }
 
 ConditionalEntry SymbolTable::GetCondObject(std::string id) {
@@ -155,5 +151,5 @@ ConditionalEntry SymbolTable::GetCondObject(std::string id) {
 }
 
 std::string SymbolTable::CloseElse() {
-    return cur_end_lbl;
+    return cur_cond->cur_end_lbl;
 }

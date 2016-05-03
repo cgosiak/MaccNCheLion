@@ -2,8 +2,14 @@ decs {
 	int: a, b, c;
 }
 
-a = 0;
+a = 5;
 
-for (a = 0; a < 5; a = a + 1)
-	shout "A is now: ", a;
+shout "Before For Loop --------->";
+
+if (a != 5)
+	shout "is not equal to 5";
+else
+	shout "is equal to 5";
 end
+
+shout "After For Loop  --------->";

@@ -25,15 +25,19 @@ public:
 
     ConditionalEntry *cur_conditional;
 
+	// A bunch of bools to keep track of conditional entries
     bool in_conditional = false;
+    bool in_stmt = false;
+    bool in_for_assign = false;
+    bool in_condition_check = false;
+	bool in_if_stmt_list = false;
+	bool in_else_stmt_list = false;
 
 private:
 
 	Token savedToken;
 	bool tokenAvailable;
 	bool shout_me = false;
-    bool in_stmt = false;
-	bool in_for_assign = false;
 
     bool left_cond_set = false;
 	std::string left_conditional = "";

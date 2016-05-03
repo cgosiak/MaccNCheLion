@@ -236,7 +236,7 @@ Token Scanner::GetNextToken()
 		if (sourceFile.peek() == '/') {// comment
 			do  // skip comment
 				currentChar = NextChar();
-			while (currentChar != '\n');
+			while (currentChar != '\n' && currentChar != -52);
 		}
 		else if (sourceFile.peek() == ':') {// comment
 			currentChar = NextChar();

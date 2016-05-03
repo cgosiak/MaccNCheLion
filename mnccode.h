@@ -104,6 +104,8 @@ class CodeGen {
 
     void CloseCondition(string condition_name);
 
+	void CloseCondition();
+
 	void WriteExpr(const ExprRec & OutExpr);
 	// Produces the assembly code for writing the value of OutExpr.
 

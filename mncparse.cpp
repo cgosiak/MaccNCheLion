@@ -653,15 +653,21 @@ void Parser::ForStmt()
 {
 	Match(FOR_SYM);
 	Match(LBANANA);
+    in_for_assign = false;
 	ForAssign(); // Lets get all the pieces we need for the for loop here
 	Match(SEMICOLON);
-    ConditionalEntry myentry = symbolTable.CreateConditional();
+    ConditionalEntry myentry = symbolTable.CreateConditional(FOR_LOOP);
     cur_conditional = &myentry;
     in_conditional = true;
+    in_condition_check = true;
 	Condition();
+    code.Compare_Numbers(left_conditional,right_conditional,symbolTable.cur_cond->cur_jmp_lbl,comp_operator, type_assigned);
+    in_condition_check = false;
 	// code.ForBegin();
 	Match(SEMICOLON);
+    in_for_assign = true;
 	ForAssign();
+    in_for_assign = false;
 	// code.ForUpdate();
 	Match(RBANANA);
     in_stmt = true;
@@ -669,10 +675,9 @@ void Parser::ForStmt()
     in_stmt = false;
     in_conditional = false;
     std::string if_lbl = symbolTable.GetCurrentConditionalLabel();
-    code.Compare_Numbers(left_conditional,right_conditional,if_lbl,comp_operator, type_assigned);
-    symbolTable.CloseConditional();
-    code.CloseCondition(if_lbl);
 	Match(END_SYM);
+    symbolTable.CloseConditional();
+    code.CloseCondition();
 	// code.ForEnd();
 }
 
@@ -703,27 +708,36 @@ void Parser::LoopStmt()
 
 void Parser::IfStmt()
 {
-	ConditionalEntry myentry = symbolTable.CreateConditional();
+	ConditionalEntry myentry = symbolTable.CreateConditional(IF_ELSE);
 	cur_conditional = &myentry;
-    in_conditional = true;
+    in_conditional = true; // entered if_else conditional
+
 	Match(IF_SYM);
 	Match(LBANANA);
-	Condition();
-	Match(RBANANA);
-	// code.IfThen();
-    in_stmt = true;
-	StmtList();
-    in_stmt = false;
-    in_conditional = false;
-    std::string if_lbl = symbolTable.GetCurrentConditionalLabel();
-    code.Compare_Numbers(left_conditional,right_conditional,if_lbl,comp_operator, type_assigned);
-    symbolTable.CloseConditional();
-    code.CloseCondition(if_lbl);
 
+	// Get the condition to check
+	in_condition_check = true;
+	Condition();
+	code.Compare_Numbers(left_conditional,right_conditional,myentry.cur_if_lbl,comp_operator, type_assigned); // Generate code for condition check
+	in_condition_check = false;
+
+	Match(RBANANA);
+
+	// Generate code for the if
+    in_if_stmt_list = true;
+	StmtList();
+    in_if_stmt_list = false;
+
+	// Generate code for the else
+	in_else_stmt_list = true;
 	ElseClause();
+	in_else_stmt_list = false;
+
 	Match(END_SYM);
-	code.Compare_Numbers_Else(symbolTable.CloseElse());
-	// code.IfEnd();
+	in_conditional = false;
+
+	// Wrap up and clean the statement
+	code.CloseCondition();
 }
 
 void Parser::ItemListTail(ExprRec& expr, bool is_assign)
