@@ -656,29 +656,40 @@ void Parser::ForStmt()
     in_for_assign = false;
 	ForAssign(); // Lets get all the pieces we need for the for loop here
 	Match(SEMICOLON);
+
+	// Get the updater label
+	updater_lbl = symbolTable.GetDataObject(currentVar).GetCurrentTempVar();
+
     ConditionalEntry myentry = symbolTable.CreateConditional(FOR_LOOP);
     cur_conditional = &myentry;
     in_conditional = true;
+	in_for_stmt = true;
+
     in_condition_check = true;
 	Condition();
     code.Compare_Numbers(left_conditional,right_conditional,symbolTable.cur_cond->cur_jmp_lbl,comp_operator, type_assigned);
     in_condition_check = false;
-	// code.ForBegin();
+
 	Match(SEMICOLON);
     in_for_assign = true;
 	ForAssign();
     in_for_assign = false;
-	// code.ForUpdate();
+
 	Match(RBANANA);
+
     in_stmt = true;
 	StmtList();
     in_stmt = false;
+
     in_conditional = false;
-    std::string if_lbl = symbolTable.GetCurrentConditionalLabel();
+	in_for_stmt = false;
+
+	string replace_label = symbolTable.GetDataObject(currentVar).GetCurrentTempVar();
+	// Fix the for loop statement list
+	myentry.Fix_For_Loop(replace_label,updater_lbl);
+
 	Match(END_SYM);
-    symbolTable.CloseConditional();
     code.CloseCondition();
-	// code.ForEnd();
 }
 
 void Parser::WhileStmt()

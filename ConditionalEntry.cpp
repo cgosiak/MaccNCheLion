@@ -17,6 +17,7 @@ ConditionalEntry::ConditionalEntry(int condition_num, ConditionalType type_used)
     Add_Conditional_Command("LABEL\t" + cur_stmt_label); // the very first label showing the beginning of a condition/loop
     Add_If_Command("LABEL\t" + cur_if_lbl); // label for the top of the if statement
     Add_Else_Command("LABEL\t" + cur_else_lbl); // label for the else statement
+    Add_To_Statement_List("LABEL\t" + cur_jmp_lbl);
 
     switch (type_used) {
         case IF_ELSE:{
@@ -85,22 +86,25 @@ std::string ConditionalEntry::GetAllCommands() {
 
             break;
         }
-        case WHILE_LOOP:
+        case WHILE_LOOP: {
+            break;
+        }
         case FOR_LOOP: {
-            commands = commands + "LABEL    " + cur_stmt_label + "\n";
+            Add_Conditional_Command("JMP\t" + cur_end_lbl); // condition not met jump to end
+            Add_For_Updater("JMP\t" + cur_stmt_label); // always go back to the beginning of the statement, let the conditional take care of where to go
+            Add_For_Updater("LABEL\t" + cur_end_lbl); // label to end goes after all other code in loop
+
             for (int i = 0; i < conditional_commands.size(); ++i) {
                 commands = commands + conditional_commands[i] + "\n";
             }
-            commands = commands + "JMP      " + cur_end_lbl + "\n";
-            commands = commands + "LABEL    " + cur_jmp_lbl + "\n";
+
             for (int j = 0; j < statment_list_commands.size(); ++j) {
                 commands = commands + statment_list_commands[j] + "\n";
             }
+
             for (int k = 0; k < update_commands.size(); ++k) {
                 commands = commands + update_commands[k] + "\n";
             }
-            commands = commands + "JMP      " + cur_stmt_label + "\n";
-            commands = commands + "LABEL    " + cur_end_lbl + "\n";
             break;
         }
     }
@@ -130,4 +134,21 @@ void ConditionalEntry::Add_If_Command(std::string used) {
 
 void ConditionalEntry::Add_Else_Command(std::string used) {
     else_commands.push_back(used);
+}
+
+
+bool ConditionalEntry::Replace(std::string &str, const std::string &from, const std::string &to) {
+    size_t start_pos = str.find(from);
+    if(start_pos == std::string::npos)
+        return false;
+    str.replace(start_pos, from.length(), to);
+    return true;
+}
+
+void ConditionalEntry::Fix_For_Loop(std::string replace, std::string with) {
+    for (int i = 0; i < statment_list_commands.size(); ++i) {
+        if (statment_list_commands[i].find(replace) != std::string::npos) {
+            Replace(statment_list_commands[i],replace,with);
+        }
+    }
 }

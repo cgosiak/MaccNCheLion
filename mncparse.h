@@ -32,6 +32,10 @@ public:
     bool in_condition_check = false;
 	bool in_if_stmt_list = false;
 	bool in_else_stmt_list = false;
+	bool in_for_stmt = false;
+
+	// Just a testing fix
+	string updater_lbl = "";
 
 private:
 

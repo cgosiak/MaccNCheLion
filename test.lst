@@ -9,7 +9,7 @@
 				the MACC2 virtual computer.
  _______________________________________________________________
 
- May 03, 2016 at 09:16 AM
+ May 03, 2016 at 10:14 AM
  Source file: /home/caleb/Desktop/MaccNCheLion/test.mnc
 
  LINE #
@@ -18,59 +18,62 @@
      2  	int: a, b, c;
      3  }
      4  
-     5  a = 5;
+     5  a = 0;
      6  
                     WRST	L4T0
                     WRNL	
      7  shout "Before For Loop --------->";
      8  
-     9  if (a != 5)
-    10  	shout "is not equal to 5";
-    11  else
-    12  	shout "is equal to 5";
+     9  for (a = 0; a < 10; a = a + 1)
+    10  	shout "A is: ", a;
                     LABEL	STM0
-LD	R4, L1T0
+LD	R4, L1T1
 LD	R5, L5T0
 IC	R4, R5
-JNE	IF0
-JMP	ELSE0
-LABEL	IF0
-WRST	L4T1
-WRNL	
+JLT	JMP0
 JMP	END0
-LABEL	ELSE0
-WRST	L4T2
+LABEL	JMP0
+WRST	L4T1
+WRI	L1T1
 WRNL	
+LD	R0, L1T1
+STO	R0, L1T1
+LD	R7, L1T1
+IA	R7, L1T2
+STO	R7, L1T1
+JMP	STM0
 LABEL	END0
 
-    13  end
-    14  
-                    WRST	L4T3
+    11  end
+    12  
+                    WRST	L4T2
                     WRNL	
-    15  shout "After For Loop  --------->";
-    16  
-    17  
+    13  shout "After For Loop  --------->";
+    14  
+    15  
                     HALT	
                     % Data Area ------------
 % ----------------------
 LABEL	LBL1
 INT	0
 LABEL	L1T0
-INT	5
+INT	0
+LABEL	L1T1
+INT	0
+LABEL	L1T2
+INT	1
 LABEL	LBL4
 SKIP	50
 LABEL	L4T0
 STRING	"Before For Loop --------->"
 LABEL	L4T1
-STRING	"is not equal to 5"
+STRING	"A is:: "
 LABEL	L4T2
-STRING	"is equal to 5"
-LABEL	L4T3
 STRING	"After For Loop  --------->"
 LABEL	LBL5
 INT	0
 LABEL	L5T0
-INT	5
+INT	10
 
                     LABEL	VARS
                     SKIP	2
