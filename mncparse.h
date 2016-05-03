@@ -34,6 +34,7 @@ public:
 	bool in_else_stmt_list = false;
 	bool in_for_stmt = false;
 	bool in_while = false;
+	bool in_do_loop = false;
 
 	// Just a testing fix
 	string updater_lbl = "";

@@ -6,9 +6,9 @@ a = 0;
 
 shout "Before Loop --------->";
 
-while (a < 5)
+do
 	shout "How Many Ducks: ", a;
 	a = a + 1;
-end
+until (a > 5);
 
 shout "After Loop  --------->";

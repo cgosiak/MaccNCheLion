@@ -8,7 +8,7 @@
 #include <vector>
 #include <string>
 
-enum ConditionalType {FOR_LOOP, IF_ELSE, WHILE_LOOP};
+enum ConditionalType {FOR_LOOP, IF_ELSE, WHILE_LOOP, DO_LOOP};
 
 class ConditionalEntry {
 public:

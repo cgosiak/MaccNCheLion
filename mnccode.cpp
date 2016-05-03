@@ -434,8 +434,10 @@ void CodeGen::ProcessOperation_SymbolTable(string id, string old_lbl, Token op_u
     string storage = "";
     string cur_temp_lbl = symbolTable.GetDataObject(id).GetCurrentTempVar();
     string sto_lbl;
-    if (parse.in_for_stmt || parse.in_while) {
+    if (parse.in_for_stmt || parse.in_while || parse.in_do_loop) {
         sto_lbl = old_lbl;
+        update_lbl = old_lbl;
+        replace_lbl = cur_temp_lbl;
     }
     else {
         sto_lbl = cur_temp_lbl;

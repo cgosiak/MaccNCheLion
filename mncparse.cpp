@@ -721,15 +721,42 @@ void Parser::WhileStmt()
 
 void Parser::LoopStmt()
 {
+	ConditionalEntry myentry = symbolTable.CreateConditional(DO_LOOP);
+	cur_conditional = &myentry;
+	in_conditional = true; // entered if_else conditional
+
 	Match(DO_SYM);
 	// code.LoopBegin();
+	in_stmt = true;
+	in_do_loop = true;
 	StmtList();
+	in_stmt = false;
+	in_do_loop = false;
 	Match(UNTIL_SYM);
 	Match(LBANANA);
+
+	in_condition_check = true;
+
+	// Get the updater label
+	updater_lbl = symbolTable.GetDataObject(absolute_var).GetCurrentTempVar();
+
 	Condition();
+	code.Compare_Numbers(left_conditional,right_conditional,myentry.cur_end_lbl,comp_operator, type_assigned); // Generate code for condition check
+	in_condition_check = false;
+
+	string replace_label = symbolTable.GetDataObject(currentVar).GetCurrentTempVar();
+	// Fix the for loop statement list
+	myentry.Fix_Loop_Labels(code.replace_lbl,code.update_lbl);
+
+
 	Match(RBANANA);
 	// code.LoopEnd();
 	Match(SEMICOLON);
+
+	in_conditional = false;
+
+	// Wrap up and clean the statement
+	code.CloseCondition();
 }
 
 void Parser::IfStmt()

@@ -9,7 +9,7 @@
 				the MACC2 virtual computer.
  _______________________________________________________________
 
- May 03, 2016 at 10:39 AM
+ May 03, 2016 at 11:07 AM
  Source file: /home/caleb/Desktop/MaccNCheLion/test.mnc
 
  LINE #
@@ -24,16 +24,10 @@
                     WRNL	
      7  shout "Before Loop --------->";
      8  
-     9  while (a < 5)
+     9  do
     10  	shout "How Many Ducks: ", a;
     11  	a = a + 1;
-                    LABEL	STM0
-LD	R4, L1T0
-LD	R5, L5T0
-IC	R4, R5
-JLT	JMP0
-JMP	END0
-LABEL	JMP0
+                    LABEL	JMP0
 WRST	L4T1
 WRI	L1T0
 WRNL	
@@ -42,10 +36,15 @@ STO	R0, L1T0
 LD	R7, L1T0
 IA	R7, L1T1
 STO	R7, L1T0
-JMP	STM0
+LABEL	STM0
+LD	R4, L1T0
+LD	R5, L5T0
+IC	R4, R5
+JGT	END0
+JMP	JMP0
 LABEL	END0
 
-    12  end
+    12  until (a > 5);
     13  
                     WRST	L4T2
                     WRNL	

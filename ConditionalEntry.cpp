@@ -119,6 +119,18 @@ std::string ConditionalEntry::GetAllCommands() {
             }
             break;
         }
+        case DO_LOOP: {
+            Add_Conditional_Command("JMP\t" + cur_jmp_lbl); // back to top, if condition not met
+            Add_Conditional_Command("LABEL\t" + cur_end_lbl); // end with the condition
+
+            for (int i = 0; i < statment_list_commands.size(); ++i) {
+                commands = commands + statment_list_commands[i] + "\n";
+            }
+
+            for (int j = 0; j < conditional_commands.size(); ++j) {
+                commands = commands + conditional_commands[j] + "\n";
+            }
+        }
     }
 
     return commands;
@@ -158,9 +170,18 @@ bool ConditionalEntry::Replace(std::string &str, const std::string &from, const 
 }
 
 void ConditionalEntry::Fix_Loop_Labels(std::string replace, std::string with) {
-    for (int i = 0; i < statment_list_commands.size(); ++i) {
-        if (statment_list_commands[i].find(replace) != std::string::npos) {
-            Replace(statment_list_commands[i],replace,with);
+    if (type_assigned == FOR_LOOP) {
+        for (int i = 0; i < statment_list_commands.size(); ++i) {
+            if (statment_list_commands[i].find(replace) != std::string::npos) {
+                Replace(statment_list_commands[i], replace, with);
+            }
+        }
+    }
+    if (type_assigned == DO_LOOP) {
+        for (int i = 0; i < conditional_commands.size(); ++i) {
+            if (conditional_commands[i].find(replace) != std::string::npos) {
+                Replace(conditional_commands[i], replace, with);
+            }
         }
     }
 }

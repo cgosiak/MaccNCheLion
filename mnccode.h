@@ -36,6 +36,9 @@ class CodeGen {
 	/* _____________________________________________________________________________
 	*/
 
+	string update_lbl = "";
+	string replace_lbl = "";
+
 	void Start();
 	// Initializes the compiler.
 
