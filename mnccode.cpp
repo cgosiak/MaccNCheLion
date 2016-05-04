@@ -379,8 +379,8 @@ void CodeGen::WriteString(string input)
         if (input[i] == '\\' && i != input.length() - 1){
             if ( input[i + 1] == 'n') {
 
-                // symbolTable.UpdateEntry("DECS",s);
-                // Shout_Variable("DECS");
+                symbolTable.UpdateEntry("DECS",s);
+                Shout_Variable("DECS");
 
                 Generate("WRNL", "", "");
                 i++;

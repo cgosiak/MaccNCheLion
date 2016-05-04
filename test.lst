@@ -9,71 +9,41 @@
 				the MACC2 virtual computer.
  _______________________________________________________________
 
- May 03, 2016 at 01:12 PM
- Source file: /home/gosi1cal/Desktop/MaccNCheLion/test.mnc
+ May 04, 2016 at 09:59 AM
+ Source file: test.mnc
 
  LINE #
                     LDA	R15,VARS
      1  decs {
      2  	int: a, b, c;
-     3  }
-     4  
-     5  a = 0;
+     3  	cheese: t, r;
+     4  }
+     5  
      6  
-                    WRST	L4T0
+                    WRST	L6T0
+                    WRNL
+                    WRST	L6T1
+                    WRNL
+                    WRST	L6T2
+                    WRNL
+                    WRST	L6T3
                     WRNL	
-     7  shout "Before Loop --------->";
+     7  shout "This\nis\na\ntest";
      8  
-     9  for (a = 0; a < 10; a = a + 1)
-    10  	shout "I hate kids: ", a;
-                    LABEL	STM0
-LD	R4, L1T1
-LD	R5, L5T0
-IC	R4, R5
-JLT	JMP0
-JMP	END0
-LABEL	JMP0
-WRST	L4T1
-WRI	L1T1
-WRNL	
-LD	R0, L1T1
-STO	R0, L1T1
-LD	R7, L1T1
-IA	R7, L1T2
-STO	R7, L1T1
-JMP	STM0
-LABEL	END0
-
-    11  end
-    12  
-                    WRST	L4T2
-                    WRNL	
-    13  shout "After Loop  --------->";
-    14  
-    15  
+     9  
                     HALT	
                     % Data Area ------------
 % ----------------------
-LABEL	LBL1
-INT	0
-LABEL	L1T0
-INT	0
-LABEL	L1T1
-INT	0
-LABEL	L1T2
-INT	1
-LABEL	LBL4
+LABEL	LBL6
 SKIP	50
-LABEL	L4T0
-STRING	"Before Loop --------->"
-LABEL	L4T1
-STRING	"I hate kids:: "
-LABEL	L4T2
-STRING	"After Loop  --------->"
-LABEL	LBL5
-INT	0
-LABEL	L5T0
-INT	10
+LABEL	L6T0
+STRING	"This"
+LABEL	L6T1
+STRING	"is"
+LABEL	L6T2
+STRING	"a"
+LABEL	L6T3
+STRING	"test"
 
                     LABEL	VARS
                     SKIP	2

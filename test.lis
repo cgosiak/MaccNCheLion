@@ -1,76 +1,46 @@
 
    SAM 2016 Assembler Listing
 
-   May 3, 2016 at 1:12 P.M.
-   SOURCE FILE: /home/gosi1cal/Desktop/MaccNCheLion/test.asm
+   May 4, 2016 at 9:59 A.M.
+   SOURCE FILE: test.asm
 
         LN    LC
          0     0: LDA	R15,VARS
-         1     4: WRST	L4T0
-         2     8: WRNL	
-         3     A: LABEL	STM0
-         4     A: LD	R4, L1T1
-         5     E: LD	R5, L5T0
-         6    12: IC	R4, R5
-         7    14: JLT	JMP0
-         8    18: JMP	END0
-         9    1C: LABEL	JMP0
-        10    1C: WRST	L4T1
-        11    20: WRI	L1T1
-        12    24: WRNL	
-        13    26: LD	R0, L1T1
-        14    2A: STO	R0, L1T1
-        15    2E: LD	R7, L1T1
-        16    32: IA	R7, L1T2
-        17    36: STO	R7, L1T1
-        18    3A: JMP	STM0
-        19    3E: LABEL	END0
-        20    3E: 
-        21    3E: WRST	L4T2
-        22    42: WRNL	
-        23    44: HALT	
-        24    46: % Data Area ------------
-        25    46: % ----------------------
-        26    46: LABEL	LBL1
-        27    46: INT	0
-        28    48: LABEL	L1T0
-        29    48: INT	0
-        30    4A: LABEL	L1T1
-        31    4A: INT	0
-        32    4C: LABEL	L1T2
-        33    4C: INT	1
-        34    4E: LABEL	LBL4
-        35    4E: SKIP	50
-        36    80: LABEL	L4T0
-        37    80: STRING	"Before Loop --------->"
-        38    98: LABEL	L4T1
-        39    98: STRING	"I hate kids:: "
-        40    A6: LABEL	L4T2
-        41    A6: STRING	"After Loop  --------->"
-        42    BE: LABEL	LBL5
-        43    BE: INT	0
-        44    C0: LABEL	L5T0
-        45    C0: INT	10
-        46    C2: 
-        47    C2: LABEL	VARS
-        48    C2: SKIP	2
+         1     4: WRST	L6T0
+         2     8: WRNL
+         3     A: WRST	L6T1
+         4     E: WRNL
+         5    10: WRST	L6T2
+         6    14: WRNL
+         7    16: WRST	L6T3
+         8    1A: WRNL	
+         9    1C: HALT	
+        10    1E: % Data Area ------------
+        11    1E: % ----------------------
+        12    1E: LABEL	LBL6
+        13    1E: SKIP	50
+        14    50: LABEL	L6T0
+        15    50: STRING	"This"
+        16    56: LABEL	L6T1
+        17    56: STRING	"is"
+        18    5A: LABEL	L6T2
+        19    5A: STRING	"a"
+        20    5C: LABEL	L6T3
+        21    5C: STRING	"test"
+        22    62: 
+        23    62: LABEL	VARS
+        24    62: SKIP	2
 
 
 MACC Memory Hexadecimal Dump
 
  ADDR |   0   1   2   3   4   5   6   7   8   9   A   B   C   D   E   F
 ------+----------------------------------------------------------------
-    0 |  9F  90  00  C2  D4  90  00  80  D5  80  8A  10  00  4A  8A  90
-   10 |  00  C0  6A  05  B0  90  00  1C  B0  10  00  3E  D4  90  00  98
-   20 |  D0  10  00  4A  D5  80  88  10  00  4A  90  10  00  4A  8B  90
-   30 |  00  4A  0B  90  00  4C  93  90  00  4A  B0  10  00  0A  D4  90
-   40 |  00  A6  D5  80  F8  00  00  00  00  00  00  00  00  01  00  00
-   50 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
-   60 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
-   70 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
-   80 |  42  65  66  6F  72  65  20  4C  6F  6F  70  20  2D  2D  2D  2D
-   90 |  2D  2D  2D  2D  2D  3E  00  3E  49  20  68  61  74  65  20  6B
-   A0 |  69  64  73  3A  20  00  41  66  74  65  72  20  4C  6F  6F  70
-   B0 |  20  20  2D  2D  2D  2D  2D  2D  2D  2D  2D  3E  00  3E  00  00
-   C0 |  00  0A  00  00
+    0 |  9F  90  00  62  D4  90  00  50  D5  80  D4  90  00  56  D5  80
+   10 |  D4  90  00  5A  D5  80  D4  90  00  5C  D5  80  F8  00  00  00
+   20 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
+   30 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
+   40 |  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00  00
+   50 |  54  68  69  73  00  73  69  73  00  73  61  00  74  65  73  74
+   60 |  00  74  00  00
 

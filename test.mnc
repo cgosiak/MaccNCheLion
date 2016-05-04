@@ -1,13 +1,7 @@
 decs {
 	int: a, b, c;
+	cheese: t, r;
 }
 
-a = 0;
 
-shout "Before Loop --------->";
-
-for (a = 0; a < 10; a = a + 1)
-	shout "I hate kids: ", a;
-end
-
-shout "After Loop  --------->";
+shout "This\nis\na\ntest";
